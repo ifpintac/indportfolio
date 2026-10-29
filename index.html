@@ -706,6 +706,14 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
   .ct-facts{grid-template-columns:minmax(0,1fr);gap:14px}
   .ct-links{grid-template-columns:minmax(0,1fr)}
 }
+.sec-title{display:grid;gap:8px;min-width:0;flex:1 1 320px}
+.filter-hint span{min-width:0}
+.filter-hint .ic.px{flex:0 0 auto;align-self:center}
+.filter-hint{margin:0;display:flex;align-items:baseline;gap:10px;max-width:100%;font-family:var(--f-mono);font-weight:600;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;color:var(--signal-ink)}
+.filter-hint .ic.px{--cell:2px;animation:hintnudge 1.2s steps(2) infinite}
+@keyframes hintnudge{50%{transform:translateX(3px)}}
+@media (max-width:820px){.filter-hint .ic.px{transform:rotate(90deg);animation:none}}
+@media (prefers-reduced-motion: reduce){.filter-hint .ic.px{animation:none}}
 
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
@@ -786,7 +794,10 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
 <!-- ================= PROJECTS ================= -->
 <section class="board-sec wrap" id="projects" aria-labelledby="board-h">
   <div class="sec-label">
-    <h2 id="board-h">Selected projects</h2>
+    <div class="sec-title">
+      <h2 id="board-h">Selected projects</h2>
+      <p class="filter-hint"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg><span>Pick a filter to see only the work you're after. The whole page follows.</span></p>
+    </div>
     <div class="filters" role="group" aria-label="Filter projects">
       <button type="button" data-f="all" aria-pressed="true">All<sup>14</sup></button>
       <button type="button" data-f="featured" aria-pressed="false"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg>Featured<sup>4</sup></button>
