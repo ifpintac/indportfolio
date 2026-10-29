@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ifpintac.github.io/indportfolio/sitemap.xml
+Sitemap: https://niccopintac.com/sitemap.xml

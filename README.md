@@ -2,7 +2,7 @@
 
 Portfolio site of **Isiah Niccolas Pintac (Nicco)**, product and footwear designer based in Manila, Philippines.
 
-**Live site:** https://ifpintac.github.io/indportfolio/
+**Live site:** https://niccopintac.com/
 
 It's a single static page with no build step and no dependencies to install. Plain HTML, CSS and JavaScript.
 
@@ -37,15 +37,15 @@ Light mode is the default, and visitors can switch to dark mode with the toggle.
 1. Push these files to the `main` branch.
 2. On GitHub, open **Settings → Pages**.
 3. Under **Build and deployment**, choose **Deploy from a branch**, then pick `main` and `/ (root)`, and save.
-4. After a minute or two the site is live at `https://ifpintac.github.io/indportfolio/`.
+4. After a minute or two the site is live at `https://niccopintac.com/`.
 
-### Using a custom domain later
+### Custom domain
 
-If you move the site to your own domain (for example `niccopintac.com`), update the address in these places so link previews and search results point to the right URL:
+The site is served at **niccopintac.com** (registered at Porkbun). The `CNAME` file tells GitHub Pages which domain to use.
 
-- `index.html`: the `canonical` link, `og:url`, `og:image`, `twitter:image` and the `url` / `@id` values in the JSON-LD block
-- `robots.txt` and `sitemap.xml`
-- `404.html`: the two `/indportfolio/` paths become `/`
+DNS at Porkbun points the root domain at GitHub Pages with four `A` records (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) and four `AAAA` records (`2606:50c0:8000::153` to `2606:50c0:8003::153`), and `www` is a `CNAME` to `ifpintac.github.io`. HTTPS is enforced in Settings → Pages.
+
+If the domain ever changes, update `CNAME`, the `canonical` link, `og:url`, `og:image`, `twitter:image` and the JSON-LD `url` / `@id` values in `index.html`, plus `robots.txt` and `sitemap.xml`.
 
 ## Preview locally
 
