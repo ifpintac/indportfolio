@@ -645,6 +645,22 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
   .case-text .lede{font-size:1.25rem}
   .case-text p:not(.lede){font-size:1.03rem}
 }
+/* filter: last visible case loses its divider; floating "showing" pill */
+.case.last-vis{border-bottom:0}
+.fpill{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:46;display:flex;align-items:center;gap:14px;
+  background:var(--fg);color:var(--bg);padding:8px 8px 8px 16px;clip-path:var(--px-corner);box-shadow:0 10px 30px -10px rgba(0,0,0,.45);max-width:calc(100vw - 32px)}
+.fpill-l{font-family:var(--f-mono);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.fpill-l b{font-weight:700}
+.fpill .code{color:color-mix(in srgb,var(--bg) 70%,var(--fg))}
+.fpill button{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--signal);color:var(--on-signal);border:0;padding:9px 12px;cursor:pointer;clip-path:var(--px-corner);white-space:nowrap}
+.fpill button:hover{background:var(--bg);color:var(--fg)}
+.fpill button .ic{width:14px;height:14px}
+@media (max-width:420px){.fpill .code{display:none}}
+.board .star .ic.px,.filters button .ic.px,.feat-badge .ic.px{--cell:1.5px}
+.board .star .ic.px{--cell:2px}
+.filters button .ic.px{--cell:1.5px}
+.board .star{margin-top:-2px}
 
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
@@ -728,7 +744,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     <h2 id="board-h">Selected projects</h2>
     <div class="filters" role="group" aria-label="Filter projects">
       <button type="button" data-f="all" aria-pressed="true">All<sup>14</sup></button>
-      <button type="button" data-f="featured" aria-pressed="false"><svg class="ic px" style="--cw:7;--ch:8" viewBox="0 0 7 8" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="0" y="3" width="7" height="1"/><rect x="1" y="4" width="5" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="1" y="6" width="2" height="1"/><rect x="4" y="6" width="2" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/></svg>Featured<sup>4</sup></button>
+      <button type="button" data-f="featured" aria-pressed="false"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg>Featured<sup>4</sup></button>
       <button type="button" data-f="product" aria-pressed="false">Product<sup>5</sup></button>
       <button type="button" data-f="footwear" aria-pressed="false">Footwear<sup>6</sup></button>
       <button type="button" data-f="3d" aria-pressed="false">3D<sup>3</sup></button>
@@ -736,13 +752,13 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
   </div>
   <div class="board-head mono" aria-hidden="true"><span>No.</span><span>Project</span><span>Discipline</span><span>Made with</span><span>Stage</span><span></span></div>
   <ol class="board" id="board">
-    <li data-d="footwear" data-feat="1"><a href="#wave" data-peek="wv-street"><span class="code mono">FW-01</span><span class="t">Wave Technical Footwear<span class="star" title="Featured"><svg class="ic px" style="--cw:7;--ch:8" viewBox="0 0 7 8" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="0" y="3" width="7" height="1"/><rect x="1" y="4" width="5" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="1" y="6" width="2" height="1"/><rect x="4" y="6" width="2" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/></svg></span></span><span class="c-disc muted">Footwear</span><span class="c-built muted">Neoprene, molded EVA, Vibram</span><span class="st status p">4 rounds</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
-    <li data-d="product" data-feat="1"><a href="#pocket-wrestler" data-peek="pw-hero"><span class="code mono">PD-01</span><span class="t">Pocket Wrestler<span class="star" title="Featured"><svg class="ic px" style="--cw:7;--ch:8" viewBox="0 0 7 8" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="0" y="3" width="7" height="1"/><rect x="1" y="4" width="5" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="1" y="6" width="2" height="1"/><rect x="4" y="6" width="2" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/></svg></span></span><span class="c-disc muted">Product</span><span class="c-built muted">3D printing, snap-fit assembly</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
-    <li data-d="3d" data-feat="1"><a href="#vesper" data-peek="vs-lineup"><span class="code mono">3D-01</span><span class="t">Vesper Mini Echo<span class="star" title="Featured"><svg class="ic px" style="--cw:7;--ch:8" viewBox="0 0 7 8" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="0" y="3" width="7" height="1"/><rect x="1" y="4" width="5" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="1" y="6" width="2" height="1"/><rect x="4" y="6" width="2" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/></svg></span></span><span class="c-disc muted">3D</span><span class="c-built muted">Blender, Cycles</span><span class="st status">Concept</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
+    <li data-d="footwear" data-feat="1"><a href="#wave" data-peek="wv-street"><span class="code mono">FW-01</span><span class="t">Wave Technical Footwear<span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></span><span class="c-disc muted">Footwear</span><span class="c-built muted">Neoprene, molded EVA, Vibram</span><span class="st status p">4 rounds</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
+    <li data-d="product" data-feat="1"><a href="#pocket-wrestler" data-peek="pw-hero"><span class="code mono">PD-01</span><span class="t">Pocket Wrestler<span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></span><span class="c-disc muted">Product</span><span class="c-built muted">3D printing, snap-fit assembly</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
+    <li data-d="3d" data-feat="1"><a href="#vesper" data-peek="vs-lineup"><span class="code mono">3D-01</span><span class="t">Vesper Mini Echo<span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></span><span class="c-disc muted">3D</span><span class="c-built muted">Blender, Cycles</span><span class="st status">Concept</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="footwear"><a href="#bloom" data-peek="bl-hero"><span class="code mono">FW-02</span><span class="t">Bloom Climbing Shoes</span><span class="c-disc muted">Footwear</span><span class="c-built muted">Friction rubber, printed textiles</span><span class="st status">Concept</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="product"><a href="#e-kuliglig" data-peek="ek-hero"><span class="code mono">PD-02</span><span class="t">E&#8209;kuliglig Tractor</span><span class="c-disc muted">Product</span><span class="c-built muted">Electric drive, sealed chassis</span><span class="st status">Concept</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="product"><a href="#urban-mobility" data-peek="um-hero"><span class="code mono">PD-03</span><span class="t">Urban Mobility E&#8209;trike</span><span class="c-disc muted">Product</span><span class="c-built muted">Vehicle and route system</span><span class="st status">Concept</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
-    <li data-d="footwear" data-feat="1"><a href="#finn-cotton" data-peek="fc-art"><span class="code mono">FW-03</span><span class="t">Finn Cotton Collection<span class="star" title="Featured"><svg class="ic px" style="--cw:7;--ch:8" viewBox="0 0 7 8" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="0" y="3" width="7" height="1"/><rect x="1" y="4" width="5" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="1" y="6" width="2" height="1"/><rect x="4" y="6" width="2" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="6" y="7" width="1" height="1"/></svg></span></span><span class="c-disc muted">Footwear</span><span class="c-built muted">Sketches, CMF, tech packs</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
+    <li data-d="footwear" data-feat="1"><a href="#finn-cotton" data-peek="fc-art"><span class="code mono">FW-03</span><span class="t">Finn Cotton Collection<span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></span><span class="c-disc muted">Footwear</span><span class="c-built muted">Sketches, CMF, tech packs</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="3d"><a href="#quest3" data-peek="r-q3-hero"><span class="code mono">3D-02</span><span class="t">Meta Quest 3</span><span class="c-disc muted">3D</span><span class="c-built muted">Blender, Cycles</span><span class="st status">Render study</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="footwear"><a href="#bigwasi" data-peek="bw-proto"><span class="code mono">FW-04</span><span class="t">BIGWASI</span><span class="c-disc muted">Footwear</span><span class="c-built muted">Negros loom weave, neoprene, EVA</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
     <li data-d="footwear"><a href="#pamba" data-peek="pb-pair"><span class="code mono">FW-05</span><span class="t">PAMBA Sneakers</span><span class="c-disc muted">Footwear</span><span class="c-built muted">Handmade leather and suede</span><span class="st status p">Prototype</span><span class="arr"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span></a></li>
@@ -754,14 +770,14 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
 </section>
 
 <!-- ================= PRODUCT ================= -->
-<section class="wrap disc" id="product" aria-labelledby="pd-h">
+<section class="wrap disc" id="product" data-sec="product" aria-labelledby="pd-h">
   <div class="disc-head">
-    <span class="mono">01 · 5 projects</span>
+    <span class="mono">01 · <span class="cnt" data-n="5">5 projects</span></span>
     <h2 id="pd-h">Product<br>Design</h2>
     <p>Gear, vehicles and machines built around local problems, and designed with manufacturing in mind from the first sketch.</p>
   </div>
 
-  <article class="case" id="pocket-wrestler" data-group>
+  <article class="case" id="pocket-wrestler" data-d="product" data-feat="1" data-group>
     <header class="case-head"><span class="code mono">PD-01</span><h3>Pocket Wrestler</h3><span class="status p">Prototype</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:1/1;--pos:50% 45%"><div class="fr"><img src="img/pw-hero.webp" width="1131" height="1500" alt="Pocket Wrestler units in black, cream, mint, pink and rust on a terrazzo surface" decoding="async" loading="lazy"></div></figure>
@@ -810,7 +826,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case flip" id="urban-mobility" data-group>
+  <article class="case flip" id="urban-mobility" data-d="product" data-group>
     <header class="case-head"><span class="code mono">PD-03</span><h3>Urban Mobility E&#8209;trike</h3><span class="status">Concept</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:3/2"><div class="fr"><img src="img/um-hero.webp" width="886" height="592" alt="Dark green faceted e-trike with a glass canopy in a parking structure" decoding="async" loading="lazy"></div></figure>
@@ -857,7 +873,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case" id="e-kuliglig" data-group>
+  <article class="case" id="e-kuliglig" data-d="product" data-group>
     <header class="case-head"><span class="code mono">PD-02</span><h3>E&#8209;kuliglig Tractor</h3><span class="status">Concept</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:3/2"><div class="fr"><img src="img/ek-hero.webp" srcset="img/ek-hero-800.webp 800w, img/ek-hero.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" width="1800" height="1143" alt="Farmer steering the red E-kuliglig hand tractor through a field at sunset" decoding="async" loading="lazy"></div></figure>
@@ -889,7 +905,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case flip" id="jolt-board" data-group>
+  <article class="case flip" id="jolt-board" data-d="product" data-group>
     <header class="case-head"><span class="code mono">PD-04</span><h3>Jolt Board</h3><span class="status">Concept</span></header>
     <div class="case-body">
       <div class="stack">
@@ -912,7 +928,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case" id="booths" data-group>
+  <article class="case" id="booths" data-d="product" data-group>
     <header class="case-head"><span class="code mono">PD-05</span><h3>Exhibition Booths</h3><span class="status">Concept</span></header>
     <div class="grid g2" style="margin-top:0">
       <figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="img/bt-lounge.webp" width="887" height="648" alt="Booth with warm wood textures, slatted walls and pendant lights" decoding="async" loading="lazy"></div><figcaption>Coffee and spirits lounge: warm timber, slatted privacy walls, pendant lights</figcaption></figure>
@@ -922,14 +938,14 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
 </section>
 
 <!-- ================= FOOTWEAR ================= -->
-<section class="wrap disc" id="footwear" aria-labelledby="fw-h">
+<section class="wrap disc" id="footwear" data-sec="footwear" aria-labelledby="fw-h">
   <div class="disc-head">
-    <span class="mono">02 · 6 projects · Designing shoes since 2018</span>
+    <span class="mono">02 · <span class="cnt" data-n="6">6 projects</span> · Designing shoes since 2018</span>
     <h2 id="fw-h">Footwear<br>Design</h2>
     <p>Technical sneakers, climbing shoes and full collections, taken from sketch to tech pack to factory sample with Filipino makers and materials.</p>
   </div>
 
-  <article class="case" id="wave" data-group>
+  <article class="case" id="wave" data-d="footwear" data-feat="1" data-group>
     <header class="case-head"><span class="code mono">FW-01</span><h3>Wave Technical Footwear</h3><span class="status p">3 prototypes + final</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:3/2"><div class="fr"><img src="img/wv-street.webp" srcset="img/wv-street-800.webp 800w, img/wv-street.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" width="1800" height="1005" alt="Wave sneakers on wet asphalt next to a yellow road line and cables" decoding="async" loading="lazy"></div></figure>
@@ -973,7 +989,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case flip" id="bloom" data-group>
+  <article class="case flip" id="bloom" data-d="footwear" data-group>
     <header class="case-head"><span class="code mono">FW-02</span><h3>Bloom Climbing Shoes</h3><span class="status">Concept</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:3/2"><div class="fr"><img src="img/bl-hero.webp" srcset="img/bl-hero-800.webp 800w, img/bl-hero.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" width="1800" height="1005" alt="Dark floral and pink floral Bloom climbing shoes on moss among flowers" decoding="async" loading="lazy"></div></figure>
@@ -1006,7 +1022,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case" id="finn-cotton" data-group>
+  <article class="case" id="finn-cotton" data-d="footwear" data-feat="1" data-group>
     <header class="case-head"><span class="code mono">FW-03</span><h3>Finn Cotton Collection</h3><span class="status p">Prototype</span></header>
     <div class="case-body">
       <figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="img/fc-art.webp" width="808" height="632" alt="Painterly concept sketch of a high-top sneaker with Japanese-inspired graphics" decoding="async" loading="lazy"></div></figure>
@@ -1043,7 +1059,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case flip" id="bigwasi" data-group>
+  <article class="case flip" id="bigwasi" data-d="footwear" data-group>
     <header class="case-head"><span class="code mono">FW-04</span><h3>BIGWASI</h3><span class="status p">Prototype</span></header>
     <div class="case-body">
       <div class="grid g2 keep2" style="margin-top:0">
@@ -1065,7 +1081,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case" id="pamba" data-group>
+  <article class="case" id="pamba" data-d="footwear" data-group>
     <header class="case-head"><span class="code mono">FW-05</span><h3>PAMBA Sneakers</h3><span class="status p">Prototype</span></header>
     <figure class="ph zoom" style="--ar:21/9;--pos:50% 58%"><div class="fr"><img src="img/pb-pair.webp" srcset="img/pb-pair-800.webp 800w, img/pb-pair.webp 1500w" sizes="(max-width: 900px) 100vw, 60vw" width="1500" height="999" alt="Black and cream PAMBA sneakers side by side on a workbench" decoding="async" loading="lazy"></div></figure>
     <div class="case-split">
@@ -1109,7 +1125,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <article class="case" id="patchwork" data-group>
+  <article class="case" id="patchwork" data-d="footwear" data-group>
     <header class="case-head"><span class="code mono">FW-06</span><h3>Patchwork Rag Basketball</h3><span class="status">Concept</span></header>
     <figure class="ph sheet zoom" style="--ar:2/1;--pad:3% 8%"><div class="fr"><img src="img/rg-shoe.webp" srcset="img/rg-shoe-800.webp 800w, img/rg-shoe.webp 1200w" sizes="(max-width: 900px) 100vw, 60vw" width="1200" height="708" alt="Basketball shoe render with a multicolor patchwork upper" decoding="async" loading="lazy"></div></figure>
     <div class="case-split">
@@ -1151,7 +1167,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
     </div>
   </article>
 
-  <div class="case" data-group>
+  <div class="case" id="sketchbook" data-d="footwear" data-extra="1" data-group>
     <header class="case-head"><span class="code mono">FW-00</span><h3>Sketchbook</h3><span class="mono muted">Concepts and client work · drag to scroll</span></header>
     <div class="strip">
       <figure class="zoom"><img src="img/cn-01.webp" width="758" height="552" alt="Footwear concept render 1" decoding="async" loading="lazy"><figcaption>Concept 01</figcaption></figure>
@@ -1175,15 +1191,15 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
 </section>
 
 <!-- ================= RENDERS ================= -->
-<section class="lab" id="renders" aria-labelledby="rn-h">
+<section class="lab" id="renders" data-sec="3d" aria-labelledby="rn-h">
   <div class="wrap">
     <div class="disc-head">
-      <span class="mono">03 · 3 projects · Blender and Cycles</span>
+      <span class="mono">03 · <span class="cnt" data-n="3">3 projects</span> · Blender and Cycles</span>
       <h2 id="rn-h">3D<br>Renders</h2>
       <p>Product visualization from scene setup to final frame: lighting, materials, camera and art direction, from clean catalogue angles to moody hero shots.</p>
     </div>
 
-    <article class="case" id="vesper" data-group>
+    <article class="case" id="vesper" data-d="3d" data-feat="1" data-group>
       <header class="case-head"><span class="code mono">3D-01</span><h3>Vesper Mini Echo</h3><span class="status p">Concept</span></header>
       <div class="case-body">
         <figure class="ph zoom" style="--ar:16/9"><div class="fr"><img src="img/vs-lineup.webp" srcset="img/vs-lineup-800.webp 800w, img/vs-lineup.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" width="1800" height="1012" alt="Three Vesper Mini Echo pedals in cream, teal and rust on a white studio floor" decoding="async" loading="lazy"></div></figure>
@@ -1211,7 +1227,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
       </div>
     </article>
 
-    <article class="case flip" id="quest3" data-group>
+    <article class="case flip" id="quest3" data-d="3d" data-group>
       <header class="case-head"><span class="code mono">3D-02</span><h3>Meta Quest 3</h3><span class="status">Render study</span></header>
       <div class="case-body">
         <figure class="ph zoom" style="--ar:16/9;--pos:45% 50%"><div class="fr"><img src="img/r-q3-hero.webp" srcset="img/r-q3-hero-800.webp 800w, img/r-q3-hero.webp 1700w" sizes="(max-width: 900px) 100vw, 60vw" width="1700" height="956" alt="Meta Quest 3 headset at a three-quarter angle on a pale blue backdrop" decoding="async" loading="lazy"></div></figure>
@@ -1239,7 +1255,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
       </div>
     </article>
 
-    <article class="case" id="f1" data-group>
+    <article class="case" id="f1" data-d="3d" data-group>
       <header class="case-head"><span class="code mono">3D-03</span><h3>Formula 1 Car</h3><span class="status">Render study</span></header>
       <div class="case-body">
         <figure class="ph zoom" style="--ar:3/2;--pos:50% 60%"><div class="fr"><img src="img/r-f1.webp" srcset="img/r-f1-800.webp 800w, img/r-f1.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="2400" height="1600" alt="Red Formula 1 car on a dark reflective studio floor under a soft overhead light" decoding="async" loading="lazy"></div></figure>
@@ -1380,6 +1396,8 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
   </footer>
 </section>
 </main>
+
+<div class="fpill" id="fpill" hidden><span class="fpill-l">Showing <b id="fpill-name">Featured</b> <span id="fpill-n" class="code"></span></span><button type="button" id="fpill-x">Show all <svg aria-hidden="true" focusable="false" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button></div>
 
 <div class="peek" id="peek" aria-hidden="true"><img alt="" src="img/wv-street.webp"></div>
 
@@ -1570,12 +1588,48 @@ void main(){
 
 
   /* Project board: filters + hover preview */
+  /* The filter drives the whole page: the list, every case study and the section headers */
   const fBtns = $$('.filters button');
-  fBtns.forEach(b => b.addEventListener('click', () => {
-    const f = b.dataset.f;
-    fBtns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-    $$('#board li').forEach(li => { li.hidden = !(f === 'all' || li.dataset.d === f || (f === 'featured' && li.dataset.feat === '1')); });
-  }));
+  const fNames = { all: 'All', featured: 'Featured', product: 'Product', footwear: 'Footwear', '3d': '3D' };
+  const fPill = $('#fpill'), fPillName = $('#fpill-name'), fPillN = $('#fpill-n');
+  let curF = 'all', boardInView = true;
+  const matches = (el, f) => f === 'all' || el.dataset.d === f || (f === 'featured' && el.dataset.feat === '1');
+  const syncPill = () => { fPill.hidden = curF === 'all' || boardInView; };
+  function applyFilter(f) {
+    curF = f;
+    fBtns.forEach(x => x.setAttribute('aria-pressed', String(x.dataset.f === f)));
+    $$('#board li').forEach(li => { li.hidden = !matches(li, f); });
+    let total = 0;
+    $$('[data-sec]').forEach(sec => {
+      const cases = $$('.case[data-d]', sec);
+      let vis = 0, last = null;
+      cases.forEach(c => {
+        const show = f === 'all' || (!c.dataset.extra && matches(c, f)) || (c.dataset.extra && f === c.dataset.d);
+        c.hidden = !show; c.classList.remove('last-vis');
+        if (show) { last = c; if (!c.dataset.extra) vis++; }
+      });
+      if (last) last.classList.add('last-vis');
+      sec.hidden = !last;
+      total += vis;
+      const cnt = $('.cnt', sec);
+      if (cnt) { const n = +cnt.dataset.n; cnt.textContent = vis === n ? n + ' projects' : vis + ' of ' + n + ' projects'; }
+    });
+    fPillName.textContent = fNames[f] || f;
+    fPillN.textContent = total + (total === 1 ? ' project' : ' projects');
+    syncPill();
+  }
+  fBtns.forEach(b => b.addEventListener('click', () => applyFilter(b.dataset.f)));
+  $('#fpill-x').addEventListener('click', () => {
+    applyFilter('all');
+    document.getElementById('projects').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  });
+  new IntersectionObserver(es => { boardInView = es[0].isIntersecting; syncPill(); }).observe($('#board'));
+  /* A link to something the filter has hidden clears the filter first */
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || curF === 'all') return;
+    const t = document.getElementById(a.getAttribute('href').slice(1));
+    if (t && (t.hidden || t.closest('[hidden]'))) applyFilter('all');
+  }, true);
   const peek = $('#peek'), pimg = $('img', peek);
   if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
     let tx = 0, ty = 0, x = 0, y = 0, pr = 0;
