@@ -11,6 +11,7 @@ It's a single static page with no build step and no dependencies to install. Pla
 ```
 index.html            The whole site: markup, styles and scripts
 404.html              "Page not found" page for GitHub Pages
+Nicco-Pintac-Portfolio-2026.pdf  Printable slide-deck version of the portfolio, linked from About and Contact
 img/                  Project images (WebP), 800px mobile versions (*-800.webp)
                       and the social share image (nicco-pintac-portfolio.jpg)
 favicon.svg           Browser tab icon
