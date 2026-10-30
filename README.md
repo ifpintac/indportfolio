@@ -12,7 +12,7 @@ It's a single static page with no build step and no dependencies to install. Pla
 index.html            The whole site: markup, styles and scripts
 404.html              "Page not found" page for GitHub Pages
 img/                  Project images (WebP), 800px mobile versions (*-800.webp)
-                      and the social share image (og-cover.jpg)
+                      and the social share image (nicco-pintac-portfolio.jpg)
 favicon.svg           Browser tab icon
 favicon-32.png        PNG fallback icon
 apple-touch-icon.png  Home-screen icon for iPhone and iPad
@@ -60,7 +60,7 @@ Then visit http://localhost:8000.
 ## Updating content
 
 - **Text:** edit `index.html`. Each project is an `<article class="case" id="…">` block.
-- **Images:** add a WebP to `img/` and reference it with `width` and `height` set, so the layout doesn't jump while it loads.
+- **Images:** add a WebP to `img/` with a descriptive name (for example `nicco-pintac-wave-technical-sneaker.webp`, which helps image search) and reference it with `width` and `height` set, so the layout doesn't jump while it loads.
 - **Project list:** each row lives in `<ol class="board" id="board">`. Rows with `data-feat="1"` are featured.
 
 ## Credits
