@@ -298,15 +298,44 @@ figcaption{font-family:var(--f-mono);font-weight:600;font-size:0.76rem;letter-sp
 .tag dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
 
 /* colorway grid */
-.cw-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:14px}
-.cw-tile{margin:0;display:grid;gap:8px;cursor:zoom-in}
-.cw-tile .fr{position:relative;aspect-ratio:1/1;background:var(--studio);overflow:hidden}
-.cw-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:9%;transition:transform .5s cubic-bezier(.2,.6,.2,1)}
-.cw-tile:hover img{transform:rotate(-8deg) scale(1.06)}
-.cw-tile figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px}
-.cw-tile figcaption span:last-child{color:var(--muted);opacity:.8}
-@media (max-width:900px){.cw-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media (max-width:520px){.cw-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.cw-tile figcaption{flex-direction:column;gap:1px}}
+/* Colorway picker */
+.cw-pick{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3.4vw,56px);align-items:center;margin-top:14px}
+.cw-stage{position:relative;margin:0;aspect-ratio:5/4;background:var(--studio);overflow:hidden;cursor:zoom-in}
+.cw-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:5% 12%;opacity:0;transform:rotate(-16deg) scale(.88);
+  transition:opacity .3s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
+.cw-stage img.out{opacity:0;transform:rotate(14deg) scale(.94);transition:opacity .25s ease,transform .5s ease}
+.cw-stage img.on{opacity:1;transform:none}
+.cw-stage:hover img.on{transform:rotate(-4deg) scale(1.03)}
+.cw-panel{display:grid;gap:16px;align-content:center;min-width:0}
+.cw-no{display:flex;align-items:baseline;gap:12px}
+.cw-no .px{font-family:var(--f-pixel);font-size:13px;letter-spacing:.02em}
+.cw-no .px b{font-weight:400;color:var(--fg)}
+.cw-cur{margin:0;font-family:var(--f-display);font-weight:700;font-size:clamp(2.6rem,5vw,4.4rem);line-height:.9;text-transform:uppercase;overflow-wrap:anywhere}
+.cw-cols{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0}
+.cw-cols span{display:inline-flex;align-items:center;gap:8px}
+.cw-cols b{font-weight:600}
+.cw-cols i{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.22),0 0 0 1px color-mix(in srgb,var(--fg) 18%,transparent)}
+.cw-dots{display:grid;grid-template-columns:repeat(6,44px);gap:12px;margin-top:4px}
+.cw-dot{position:relative;width:44px;height:44px;padding:0;border:0;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle,var(--t) 0 35%,var(--f) 37% 100%);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.22),inset 0 -3px 0 rgba(0,0,0,.12),0 0 0 1px color-mix(in srgb,var(--fg) 14%,transparent);transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.cw-dot:hover{transform:translateY(-2px)}
+.cw-dot[aria-checked="true"]{outline:2px solid var(--fg);outline-offset:3px}
+.cw-dot:focus-visible{outline:2px dashed var(--fg);outline-offset:3px}
+.cw-dot .tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,4px);padding:6px 9px 5px;background:var(--fg);color:var(--bg);
+  font-family:var(--f-pixel);font-size:11px;line-height:1;letter-spacing:.02em;white-space:nowrap;text-transform:uppercase;
+  clip-path:var(--px-corner);opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:2}
+.cw-dot:nth-child(6n+1) .tip{left:0;transform:translate(0,4px)}
+.cw-dot:nth-child(6n) .tip{left:auto;right:0;transform:translate(0,4px)}
+.cw-dot:nth-child(n+7) .tip{bottom:auto;top:calc(100% + 10px)}
+.cw-dot:hover .tip,.cw-dot:focus-visible .tip{opacity:1;transform:translate(-50%,0)}
+.cw-dot:nth-child(6n+1):hover .tip,.cw-dot:nth-child(6n+1):focus-visible .tip,.cw-dot:nth-child(6n):hover .tip,.cw-dot:nth-child(6n):focus-visible .tip{transform:translate(0,0)}
+.cw-hint{margin:0;font-size:.95rem;max-width:44ch}
+@media (hover:none){.cw-dot .tip,.cw-hint .h-hover{display:none}.cw-dot:hover{transform:none}.cw-stage:hover img.on{transform:none}}
+@media (hover:hover){.cw-hint .h-touch{display:none}}
+@media (max-width:900px){.cw-pick{grid-template-columns:minmax(0,1fr)}.cw-stage{aspect-ratio:1/1}}
+@media (max-width:380px){.cw-dots{grid-template-columns:repeat(6,40px);gap:10px}.cw-dot{width:40px;height:40px}}
+@media (prefers-reduced-motion:reduce){.cw-stage img,.cw-stage img.out,.cw-stage:hover img.on{transform:none;transition:opacity .2s ease}}
 
 /* system redesign */
 .sys{margin-top:clamp(36px,5vw,64px);border-top:2px solid var(--fg)}
@@ -858,20 +887,15 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
       </div>
     </div>
     <div class="sub-h"><b>Gym colorways</b><span class="mono muted">Rendered in Blender</span><span class="ln"></span></div>
-    <div class="cw-grid">
-      <figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-b24.webp" width="660" height="760" alt="Pocket Wrestler B24 colorway, yellow frame with a blue inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>B24</span><span>Yellow / blue</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-bhive.webp" width="660" height="760" alt="Pocket Wrestler Bhive colorway, blue frame with a cream inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Bhive</span><span>Blue / cream</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-bspace.webp" width="660" height="760" alt="Pocket Wrestler Bspace colorway, teal frame with a red inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Bspace</span><span>Teal / red</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-bworld.webp" width="660" height="760" alt="Pocket Wrestler Bworld colorway, sky frame with a navy inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Bworld</span><span>Sky / navy</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-ccm.webp" width="660" height="760" alt="Pocket Wrestler CCM colorway, orange frame with a orange inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>CCM</span><span>Orange / orange</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-flowstate.webp" width="660" height="760" alt="Pocket Wrestler Flowstate colorway, pink frame with a yellow inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Flowstate</span><span>Pink / yellow</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-goodclimbs.webp" width="660" height="760" alt="Pocket Wrestler Goodclimbs colorway, lime frame with a orange inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Goodclimbs</span><span>Lime / orange</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-pump-factory.webp" width="660" height="760" alt="Pocket Wrestler Pump Factory colorway, steel frame with a red inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Pump Factory</span><span>Steel / red</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-rock-on.webp" width="660" height="760" alt="Pocket Wrestler Rock On colorway, mint frame with a white inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Rock On</span><span>Mint / white</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-ts.webp" width="660" height="760" alt="Pocket Wrestler TS colorway, yellow frame with a white inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>TS</span><span>Yellow / white</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-urban-peak.webp" width="660" height="760" alt="Pocket Wrestler Urban Peak colorway, black frame with a green inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Urban Peak</span><span>Black / green</span></figcaption></figure>
-<figure class="cw-tile"><div class="fr"><img src="img/nicco-pintac-pocket-wrestler-colorway-vertex.webp" width="660" height="760" alt="Pocket Wrestler Vertex colorway, purple frame with a orange inner track" decoding="async" loading="lazy"></div><figcaption class="mono"><span>Vertex</span><span>Purple / orange</span></figcaption></figure>
-
+    <div class="cw-pick" data-cw>
+      <figure class="cw-stage"><img class="on" src="img/nicco-pintac-pocket-wrestler-colorway-b24.webp" width="660" height="760" alt="Pocket Wrestler B24 colorway, yellow frame with a blue inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-bhive.webp" width="660" height="760" alt="Pocket Wrestler Bhive colorway, blue frame with a cream inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-bspace.webp" width="660" height="760" alt="Pocket Wrestler Bspace colorway, teal frame with a red inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-bworld.webp" width="660" height="760" alt="Pocket Wrestler Bworld colorway, sky frame with a navy inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-ccm.webp" width="660" height="760" alt="Pocket Wrestler CCM colorway, orange frame with a orange inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-flowstate.webp" width="660" height="760" alt="Pocket Wrestler Flowstate colorway, pink frame with a yellow inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-goodclimbs.webp" width="660" height="760" alt="Pocket Wrestler Goodclimbs colorway, lime frame with a orange inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-pump-factory.webp" width="660" height="760" alt="Pocket Wrestler Pump Factory colorway, steel frame with a red inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-rock-on.webp" width="660" height="760" alt="Pocket Wrestler Rock On colorway, mint frame with a white inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-ts.webp" width="660" height="760" alt="Pocket Wrestler TS colorway, yellow frame with a white inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-urban-peak.webp" width="660" height="760" alt="Pocket Wrestler Urban Peak colorway, black frame with a green inner track" decoding="async" loading="lazy"><img src="img/nicco-pintac-pocket-wrestler-colorway-vertex.webp" width="660" height="760" alt="Pocket Wrestler Vertex colorway, purple frame with a orange inner track" decoding="async" loading="lazy"></figure>
+      <div class="cw-panel">
+        <div class="cw-no"><span class="mono muted">Colorway</span><span class="px"><b>01</b> / 12</span></div>
+        <h4 class="cw-cur">B24</h4>
+        <p class="cw-cols mono"><span><i style="background:#D4B062"></i><b>Yellow</b> frame</span><span><i style="background:#1E77BD"></i><b>Blue</b> track</span></p>
+        <div class="cw-dots" role="radiogroup" aria-label="Gym colorways"><button type="button" class="cw-dot" role="radio" aria-checked="true" tabindex="0" aria-label="B24: yellow frame, blue track" data-name="B24" data-f="Yellow" data-t="Blue" style="--f:#D4B062;--t:#1E77BD"><span class="tip" aria-hidden="true">B24</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Bhive: blue frame, cream track" data-name="Bhive" data-f="Blue" data-t="Cream" style="--f:#3B62C9;--t:#B4B595"><span class="tip" aria-hidden="true">Bhive</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Bspace: teal frame, red track" data-name="Bspace" data-f="Teal" data-t="Red" style="--f:#2C8D8B;--t:#C3492B"><span class="tip" aria-hidden="true">Bspace</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Bworld: sky frame, navy track" data-name="Bworld" data-f="Sky" data-t="Navy" style="--f:#8BC5D2;--t:#125D78"><span class="tip" aria-hidden="true">Bworld</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="CCM: orange frame, orange track" data-name="CCM" data-f="Orange" data-t="Orange" style="--f:#DF8D4C;--t:#C1680B"><span class="tip" aria-hidden="true">CCM</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Flowstate: pink frame, yellow track" data-name="Flowstate" data-f="Pink" data-t="Yellow" style="--f:#E16CAD;--t:#BB9E38"><span class="tip" aria-hidden="true">Flowstate</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Goodclimbs: lime frame, orange track" data-name="Goodclimbs" data-f="Lime" data-t="Orange" style="--f:#95CE6A;--t:#C2530B"><span class="tip" aria-hidden="true">Goodclimbs</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Pump Factory: steel frame, red track" data-name="Pump Factory" data-f="Steel" data-t="Red" style="--f:#4C73A0;--t:#C61E04"><span class="tip" aria-hidden="true">Pump Factory</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Rock On: mint frame, white track" data-name="Rock On" data-f="Mint" data-t="White" style="--f:#92CEC0;--t:#ECECEA"><span class="tip" aria-hidden="true">Rock On</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="TS: yellow frame, white track" data-name="TS" data-f="Yellow" data-t="White" style="--f:#D3BA6C;--t:#ECECEA"><span class="tip" aria-hidden="true">TS</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Urban Peak: black frame, green track" data-name="Urban Peak" data-f="Black" data-t="Green" style="--f:#292929;--t:#166401"><span class="tip" aria-hidden="true">Urban Peak</span></button><button type="button" class="cw-dot" role="radio" aria-checked="false" tabindex="-1" aria-label="Vertex: purple frame, orange track" data-name="Vertex" data-f="Purple" data-t="Orange" style="--f:#7D6EDA;--t:#C16939"><span class="tip" aria-hidden="true">Vertex</span></button></div>
+        <p class="cw-hint muted"><span class="h-hover">Hover a swatch to see the gym, click to swap the colorway.</span><span class="h-touch">Tap a swatch to swap the colorway.</span> Each one is named after a Manila climbing gym.</p>
+      </div>
     </div>
     <div class="sub-h"><b>From sketch to print</b><span class="ln"></span></div>
     <div class="grid g3">
@@ -1784,7 +1808,7 @@ void main(){
   const stage = $('.lb-stage'), zIn = $('#lb-zin'), zOut = $('#lb-zout'), zFit = $('#lb-zfit'), zPct = $('#lb-zpct');
   const ZMIN = 1, ZMAX = 5;
   let list = [], li = 0, z = 1, tx = 0, ty = 0;
-  const imgsIn = g => $$('.zoom img, .cw-tile img', g);
+  const imgsIn = g => $$('.zoom img, .cw-tile img, .cw-stage img', g);
   const bounds = () => {
     const sw = stage.clientWidth, sh = stage.clientHeight, iw = lbImg.offsetWidth * z, ih = lbImg.offsetHeight * z;
     return [Math.max(0, (iw - sw) / 2), Math.max(0, (ih - sh) / 2)];
@@ -1812,7 +1836,7 @@ void main(){
     const im = list[li];
     resetZoom();
     lbImg.src = im.getAttribute('src'); lbImg.alt = im.alt;
-    lbImg.classList.toggle('light', !!im.closest('.studio, .sheet, .cw-tile'));
+    lbImg.classList.toggle('light', !!im.closest('.studio, .sheet, .cw-tile, .cw-stage'));
     const cap = im.closest('figure')?.querySelector('figcaption')?.textContent?.replace(/\s+/g, ' ').trim();
     lbCap.textContent = cap ? cap + ' · ' + im.alt : im.alt;
     lbCount.textContent = String(li + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
@@ -1823,12 +1847,13 @@ void main(){
     if (!lb.open) { try { lb.showModal(); } catch (_) { lb.setAttribute('open', ''); } }
   }
   const go = d => { li = (li + d + list.length) % list.length; render(); };
-  $$('.zoom, .cw-tile').forEach(f => {
-    const im = $('img', f); if (!im) return;
+  const lbTarget = f => f.classList.contains('cw-stage') ? $('img.on', f) : $('img', f);
+  $$('.zoom, .cw-tile, .cw-stage').forEach(f => {
+    const im = lbTarget(f); if (!im) return;
     f.tabIndex = 0; f.setAttribute('role', 'button'); f.setAttribute('aria-label', 'Enlarge: ' + im.alt);
-    f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(im); } });
+    f.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(lbTarget(f)); } });
   });
-  document.addEventListener('click', e => { const f = e.target.closest('.zoom, .cw-tile'); if (f && $('img', f)) openLb($('img', f)); });
+  document.addEventListener('click', e => { const f = e.target.closest('.zoom, .cw-tile, .cw-stage'); if (f && lbTarget(f)) openLb(lbTarget(f)); });
   $('#lb-prev').addEventListener('click', () => go(-1));
   $('#lb-next').addEventListener('click', () => go(1));
   $('#lb-close').addEventListener('click', () => lb.close());
@@ -1909,6 +1934,35 @@ void main(){
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && mNav.classList.contains('open')) { setMenu(false); mBtn.focus(); } });
   document.addEventListener('click', e => { if (mNav.classList.contains('open') && !e.target.closest('#mnav, #menu-btn')) setMenu(false); });
   matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  /* ================= Colorway picker ================= */
+  $$('[data-cw]').forEach(root => {
+    const stage = $('.cw-stage', root), imgs = $$('img', stage), dots = $$('.cw-dot', root);
+    const elName = $('.cw-cur', root), elNo = $('.cw-no b', root), cols = $$('.cw-cols span', root);
+    let cur = Math.max(0, dots.findIndex(d => d.getAttribute('aria-checked') === 'true'));
+    const pick = (i, focus) => {
+      if (i !== cur) {
+        const prev = imgs[cur]; prev.classList.remove('on');
+        if (!reduce) { prev.classList.add('out'); setTimeout(() => prev.classList.remove('out'), 520); }
+        imgs[i].classList.remove('out'); imgs[i].classList.add('on');
+        dots[cur].setAttribute('aria-checked', 'false'); dots[cur].tabIndex = -1;
+        dots[i].setAttribute('aria-checked', 'true'); dots[i].tabIndex = 0;
+        cur = i;
+        const d = dots[i].dataset, st = getComputedStyle(dots[i]);
+        elName.textContent = d.name; elNo.textContent = String(i + 1).padStart(2, '0');
+        $('i', cols[0]).style.background = st.getPropertyValue('--f'); $('b', cols[0]).textContent = d.f;
+        $('i', cols[1]).style.background = st.getPropertyValue('--t'); $('b', cols[1]).textContent = d.t;
+        stage.setAttribute('aria-label', 'Enlarge: ' + imgs[i].alt);
+      }
+      if (focus) dots[i].focus();
+    };
+    dots.forEach((d, i) => d.addEventListener('click', () => pick(i)));
+    $('.cw-dots', root).addEventListener('keydown', e => {
+      const n = dots.length, k = e.key;
+      const to = k === 'ArrowRight' || k === 'ArrowDown' ? (cur + 1) % n : k === 'ArrowLeft' || k === 'ArrowUp' ? (cur - 1 + n) % n : k === 'Home' ? 0 : k === 'End' ? n - 1 : -1;
+      if (to >= 0) { e.preventDefault(); pick(to, true); }
+    });
+  });
 
   /* ================= Pixel TV: bouncing logo screensaver ================= */
   (() => {
