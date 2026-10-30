@@ -20,6 +20,7 @@ robots.txt            Lets search engines crawl the site
 sitemap.xml           Tells search engines where the page is
 .nojekyll             Tells GitHub Pages to serve the files as they are
 google*.html          Google Search Console ownership check (keep it)
+b39a9e555c83119ecc1395b44b58db36.txt  IndexNow key, tells Bing and other engines about updates (keep it)
 ```
 
 ## Sections
