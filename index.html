@@ -1920,7 +1920,7 @@ void main(){
     const COLORS = ['#7ED957', '#FF6A26', '#F3C82F', '#4FA3FF', '#F09BB9', '#FFFFFF', '#A88BFF', '#2FD3C3'];
     const elCh = $('#tv-ch'), elScore = $('#tv-score'), elMsg = $('#tv-msg');
     let ux = 52, uy = 20, ci = 0, ch = 3, corners = 0, flash = 0, noise = 0, power = reduce ? 1 : 0, led = 0;
-    let running = false, raf = 0, acc = 0, last = 0, visible = false, msgT = 0;
+    let running = false, raf = 0, acc = 0, last = 0, visible = false, msgT = 0, played = false;
     const tri = (u, r) => { const m = ((u % (2 * r)) + 2 * r) % (2 * r); return m <= r ? m : 2 * r - m; };
 
     /* Logo sprite from the page's own logo paths, hard-edged for the 8-bit look */
@@ -2016,14 +2016,21 @@ void main(){
       if (n) render();
     };
     const setRun = on => {
-      running = on && !reduce && visible && !document.hidden;
+      running = on && (!reduce || played) && visible && !document.hidden;
       if (running && !raf) { last = 0; raf = requestAnimationFrame(loop); }
     };
-    $('#tv-btn').addEventListener('click', () => {
+    /* With reduced motion on, the TV waits for a tap instead of playing by itself */
+    const btn = $('#tv-btn');
+    btn.addEventListener('click', () => {
+      visible = true;
+      if (reduce && !played) {
+        played = true; elScore.textContent = 'Corners ' + corners; btn.setAttribute('aria-label', 'Change channel');
+        setRun(true); return;
+      }
       ch = ch >= 99 ? 2 : ch + 1; elCh.textContent = 'CH ' + String(ch).padStart(2, '0');
-      ci = (ci + 3) % COLORS.length; noise = reduce ? 0 : 7; render();
+      ci = (ci + 3) % COLORS.length; noise = 7; render(); setRun(true);
     });
-    if (reduce) { ux = Math.round(WR / 2); uy = Math.round(HR / 2); elScore.textContent = ''; }
+    if (reduce) { ux = Math.round(WR / 2); uy = Math.round(HR / 2); elScore.textContent = 'Tap to play'; btn.setAttribute('aria-label', 'Play the bouncing logo'); }
     drawBody(); render();
     new IntersectionObserver(es => { visible = es[0].isIntersecting; setRun(true); }, { threshold: .15 }).observe(cv);
     document.addEventListener('visibilitychange', () => setRun(true));
