@@ -19,6 +19,7 @@ apple-touch-icon.png  Home-screen icon for iPhone and iPad
 robots.txt            Lets search engines crawl the site
 sitemap.xml           Tells search engines where the page is
 .nojekyll             Tells GitHub Pages to serve the files as they are
+google*.html          Google Search Console ownership check (keep it)
 ```
 
 ## Sections
