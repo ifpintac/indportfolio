@@ -1443,6 +1443,53 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 @media (prefers-reduced-motion:reduce){.g-hero .g-plate img{animation:none}.g-lens{transition:none}}
 .g-fr{position:relative}
 
+/* ===================== Collection explorer (Finn Cotton) ===================== */
+.fcx{--ink:#191B17}
+.fcx-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:clamp(12px,1.6vw,20px)}
+.fcx-tabs button{display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto auto;column-gap:12px;align-items:center;text-align:left;padding:8px 14px 8px 8px;
+  background:#fff;color:var(--ink);border:1px solid rgba(25,27,23,.14);border-radius:10px;cursor:pointer;font:inherit;transition:border-color .2s,box-shadow .2s}
+.fcx-tabs button:hover{border-color:rgba(25,27,23,.4)}
+.fcx-tabs button[aria-selected="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.fcx-tabs .th{grid-row:1 / 4;width:84px;aspect-ratio:3/2;display:block}
+.fcx-tabs .th img{width:100%;height:100%;object-fit:contain}
+.fcx-tabs .n{font-size:.68rem;color:rgba(25,27,23,.55)}
+.fcx-tabs b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.05rem,1.3vw,1.3rem);line-height:1;text-transform:uppercase}
+.fcx-tabs .c{font-size:.82rem;color:rgba(25,27,23,.6)}
+.fcx-p{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(16px,3vw,48px);align-items:center}
+.fcx-p[hidden]{display:none}
+.fcx-stage{position:relative;margin:0 auto;background:#fff;border-radius:12px;aspect-ratio:var(--ar);overflow:hidden;width:min(100%,calc((100svh - var(--barh) - 200px) * var(--ar)))}
+.fcx-i{position:absolute;inset:0;opacity:0;transition:opacity .35s ease;pointer-events:none}
+.fcx-i.on{opacity:1;pointer-events:auto}
+.fcx-i img{width:100%;height:100%;object-fit:contain}
+.fcx-side h3{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,3.4vw,3.2rem);line-height:.9;text-transform:uppercase;margin:6px 0 12px}
+.fcx-side > .mono{margin:0}
+.fcx-desc{margin:0 0 18px;font-size:1.02rem;line-height:1.6;color:rgba(25,27,23,.8);max-width:40ch}
+.fcx-cut{display:inline-flex;padding:3px;border-radius:999px;background:rgba(25,27,23,.08);margin-bottom:18px}
+.fcx-cut button{border:0;background:transparent;color:var(--ink);font-family:var(--f-mono);font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:999px;cursor:pointer}
+.fcx-cut button[aria-checked="true"]{background:var(--ink);color:#fff}
+.fcx-cur{display:grid;gap:4px;margin:0 0 12px;border-top:2px solid var(--ink);padding-top:12px}
+.fcx-cur .i{font-weight:600;color:var(--ink)}
+.fcx-cur .l{font-family:var(--f-display);font-weight:700;font-size:1.5rem;line-height:1;text-transform:uppercase}
+.fcx-sw{display:flex;flex-wrap:wrap;gap:12px}
+.fcx-dot{position:relative;width:36px;height:36px;border-radius:50%;border:0;padding:0;cursor:pointer;background:linear-gradient(135deg,var(--a) 0 50%,var(--b) 50% 100%);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),0 0 0 1px rgba(25,27,23,.12);transition:transform .2s cubic-bezier(.2,.7,.2,1)}
+.fcx-dot:hover{transform:scale(1.1)}
+.fcx-dot[aria-checked="true"]{outline:2px solid var(--ink);outline-offset:3px}
+.fcx-dot:focus-visible{outline:2px dashed var(--ink);outline-offset:3px}
+.fcx-dot .tip{position:absolute;z-index:2;left:50%;top:calc(100% + 10px);transform:translate(-50%,-4px);padding:5px 8px 4px;background:var(--ink);color:#fff;white-space:nowrap;
+  font-family:var(--f-mono);font-weight:600;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s}
+@media (hover:hover){.fcx-dot:hover .tip{opacity:1;transform:translate(-50%,0)}}
+@media (max-width:899px){
+  .fcx-stage{width:100%}
+  .fcx-tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--gut));padding:2px var(--gut) 4px;scroll-padding-inline:var(--gut)}
+  .fcx-tabs::-webkit-scrollbar{display:none}
+  .fcx-tabs button{flex:0 0 auto;min-width:210px}
+  .fcx-p{grid-template-columns:minmax(0,1fr)}
+  .fcx-side h3{font-size:2rem}
+  .fcx-dot{width:40px;height:40px}
+}
+@media (prefers-reduced-motion:reduce){.fcx-i{transition:none}}
+
 </style>
 
 </head>
@@ -1834,7 +1881,7 @@ void main(){
     const im = list[li];
     resetZoom();
     lbImg.src = im.getAttribute('src'); lbImg.alt = im.alt;
-    lbImg.classList.toggle('light', !!im.closest('.studio, .sheet, .cw-tile, .cw-stage'));
+    lbImg.classList.toggle('light', !!im.closest('.studio, .sheet, .cw-tile, .cw-stage, .fcx-stage, .fitfr'));
     const cap = im.closest('figure')?.querySelector('figcaption')?.textContent?.replace(/\s+/g, ' ').trim();
     lbCap.textContent = cap ? cap + ' · ' + im.alt : im.alt;
     lbCount.textContent = String(li + 1).padStart(2, '0') + ' / ' + String(list.length).padStart(2, '0');
@@ -1934,7 +1981,7 @@ void main(){
   matchMedia('(min-width: 861px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
   /* ================= Colorway picker ================= */
-  $$('[data-cw]').forEach(root => {
+  $$('.cw-pick[data-cw]').forEach(root => {
     const stage = $('.cw-stage', root), imgs = $$('img', stage), dots = $$('.cw-dot', root);
     const elName = $('.cw-cur', root), elNo = $('.cw-no b', root), cols = $$('.cw-cols span', root);
     let cur = Math.max(0, dots.findIndex(d => d.getAttribute('aria-checked') === 'true'));
@@ -2140,6 +2187,30 @@ void main(){
     });
     f.addEventListener('pointermove', place);
     f.addEventListener('pointerleave', () => lens && lens.classList.remove('on'));
+  });
+
+  /* Collection explorer: design tabs, colorway swatches and a low/high switch */
+  $$('[data-fcx]').forEach(x => {
+    const tabs = $$('[role="tab"]', x), panels = $$('.fcx-p', x);
+    const pick = i => { tabs.forEach((t, j) => { t.setAttribute('aria-selected', j === i); t.tabIndex = j === i ? 0 : -1; panels[j].hidden = j !== i; }); };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => pick(i));
+      t.addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); const n = (i + d + tabs.length) % tabs.length; pick(n); tabs[n].focus(); });
+    });
+    panels.forEach(p => {
+      const dots = $$('.fcx-dot', p), cuts = $$('.fcx-cut [role="radio"]', p), items = $$('.fcx-i', p);
+      let cw = dots[0].dataset.cw, cut = cuts.length ? cuts[0].dataset.cut : null;
+      const show = () => {
+        items.forEach(it => it.classList.toggle('on', it.dataset.cw === cw && (!cut || it.dataset.cut === cut)));
+        dots.forEach((d, i) => { const on = d.dataset.cw === cw; d.setAttribute('aria-checked', on); d.tabIndex = on ? 0 : -1; if (on) { $('.fcx-cur .i', p).textContent = i + 1; $('.fcx-cur .l', p).textContent = d.dataset.label; } });
+        cuts.forEach(c => { const on = c.dataset.cut === cut; c.setAttribute('aria-checked', on); c.tabIndex = on ? 0 : -1; });
+      };
+      const radio = (list, set) => list.forEach((b, i) => {
+        b.addEventListener('click', () => { set(b); show(); });
+        b.addEventListener('keydown', e => { const d = ['ArrowRight', 'ArrowDown'].includes(e.key) ? 1 : ['ArrowLeft', 'ArrowUp'].includes(e.key) ? -1 : 0; if (!d) return; e.preventDefault(); const n = list[(i + d + list.length) % list.length]; set(n); show(); n.focus(); });
+      });
+      radio(dots, b => { cw = b.dataset.cw; }); radio(cuts, b => { cut = b.dataset.cut; });
+    });
   });
 })();
 </script>
