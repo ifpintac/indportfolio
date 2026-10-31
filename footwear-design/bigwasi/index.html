@@ -898,6 +898,143 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 }
 @media (max-width:560px){.hb-grid,.hb-svc{grid-template-columns:minmax(0,1fr)}}
 
+/* ===================== Case study v2: whole products, chapters, justified galleries ===================== */
+:root{--rh:min(76svh,760px)}
+.cs-head{grid-template-columns:minmax(0,1fr);align-items:start;gap:clamp(18px,2.4vw,32px)}
+.cs-head h1{overflow-wrap:break-word;font-size:clamp(2.6rem,min(8.6vw,calc(86vw / var(--len,10) / .62)),8.6rem);max-width:none}
+.cs-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:end}
+.cs-intro .lede{margin:0}
+.cs-meta{align-self:end}
+
+/* figures: the frame always takes the image's own shape, or holds it whole on its own background */
+.jf{margin:0;min-width:0;display:grid;gap:8px;align-content:start}
+.jf .fr{position:relative;aspect-ratio:var(--ar);background:var(--mat,var(--studio));overflow:hidden}
+.jf .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.jf.cut .fr img{padding:var(--pad,6%)}
+.jf.fit .fr{aspect-ratio:var(--fa)}
+.jf.zoom .fr img{transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.jf.zoom:hover .fr img{transform:scale(1.025)}
+
+/* justified rows: one shared height, widths follow each image's aspect ratio */
+.jr{display:flex;gap:12px;align-items:flex-start;width:100%;max-width:min(calc(var(--rh) * var(--sum) + var(--gp,0px)),var(--mw,100%));margin-inline:auto}
+.jr > .jf{flex:var(--ar) 1 0}
+
+/* cover stage */
+.cs-stage{background:var(--mat,var(--bg-2))}
+.cs-stage > .wrap{padding-block:0}
+.cs-stage.cut > .wrap,.cs-stage.multi > .wrap{padding-block:clamp(16px,3vw,40px)}
+.cs-stage.multi{background:var(--bg-2)}
+.lab .cs-stage.multi,.cs-lab .cs-stage.multi{background:var(--lab-2)}
+.stg-in{width:min(100%,var(--mw),calc(min(84svh,980px) * var(--ar)));margin-inline:auto}
+.cs-stage .jf .fr{background:transparent}
+.cs-stage.cut .jf .fr{background:var(--mat)}
+
+/* overview */
+.cs2-body{padding-bottom:clamp(8px,2vw,24px)}
+.ov2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px clamp(24px,4vw,72px);align-items:start;padding-top:clamp(40px,6vw,84px)}
+.ov2-t p{font-size:clamp(1.12rem,1.35vw,1.3rem);line-height:1.62;max-width:60ch;margin:0 0 16px;text-wrap:pretty}
+
+.ov2-s{display:grid;gap:18px;align-content:start}
+.ov2-s .tag{margin:0}
+
+/* key facts */
+.kf{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));margin:clamp(32px,4.4vw,60px) 0 0;border-top:2px solid var(--fg);border-bottom:1px solid var(--line)}
+.kf > div{padding:16px 16px 18px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:8px}
+.kf > div + div{border-left:1px solid var(--line);padding-left:16px}
+.kf dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.1rem,4.2vw,3.9rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kf dt{color:var(--muted);font-size:.98rem;line-height:1.35;max-width:22ch}
+
+/* chapters */
+.ch{padding-top:clamp(56px,8vw,120px)}
+.ch-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(24px,4vw,72px);align-items:start;border-top:2px solid var(--fg);padding-top:16px}
+.ch-k{display:grid;gap:10px;align-content:start}
+.ch-n{color:var(--muted)}
+.ch-h h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,4vw,3.6rem);line-height:.92;text-transform:uppercase;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.ch-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:62ch;margin:0 0 14px;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.ch-t p:last-child{margin-bottom:0}
+.ch-m{display:grid;gap:12px;margin-top:clamp(24px,3.4vw,44px)}
+.ch-m > .sys{margin-top:0}
+.ch-m > .cw-pick,.ch-m > .cw2{margin-top:0}
+
+/* split: text beside one image */
+.sp{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.sp.flip .sp-t{order:2}
+.sp-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:52ch;margin:0 0 14px}
+.sp-t .pal{margin-bottom:12px}
+.sp-cap{color:var(--muted);font-size:1rem}
+.sp .jr{max-width:none}
+
+/* parts list beside an image */
+.pt{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.pt .jr{max-width:none}
+.pt-l{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg);counter-reset:pt}
+.pt-l li{display:grid;gap:4px;padding:14px 0 15px;border-bottom:1px solid var(--line)}
+.pt-l b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.05;text-transform:uppercase}
+.pt-l span{color:var(--muted);font-size:1rem;line-height:1.5}
+
+/* sequences */
+.stp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px}
+.stp-i{display:grid;gap:12px;align-content:start;min-width:0}
+.stp-top{display:flex;align-items:center;gap:10px}
+.stp-top b{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,3.4vw,3rem);line-height:1}
+.stp-top .ln{flex:1;height:1px;background:var(--line-2)}
+.stp-i p{margin:0;font-size:.98rem;line-height:1.55;max-width:42ch}
+
+/* outbound links */
+.lk{display:grid;gap:8px;margin-top:8px}
+.lk p{margin:0}
+.lk ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.lk a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.lk a:hover{background:var(--bg-2)}
+.ch-m > .lk{margin-top:clamp(12px,2vw,24px);max-width:640px}
+.pal.wide{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* renders pages: the whole case sits in the dark lab */
+.cs2.cs-lab{margin-top:0;padding-block:0 clamp(40px,6vw,80px)}
+.lab .ch-h,.lab .pt-l,.lab .kf,.lab .stp-top{border-color:var(--lab-fg)}
+.lab .ch-n,.lab .kf dt,.lab .pt-l span,.lab .sp-cap{color:var(--lab-muted)}
+.lab .ch-t p,.lab .ov2-t p,.lab .sp-t p{color:color-mix(in srgb,var(--lab-fg) 84%,var(--lab))}
+
+.lab .kf > div + div,.lab .pt-l li{border-color:var(--lab-line)}
+.lab .stp-top .ln{background:var(--lab-line)}
+
+@media (max-width:899px){
+  .cs-intro,.ov2,.ch-h,.sp,.pt{grid-template-columns:minmax(0,1fr)}
+  .sp.flip .sp-t{order:0}
+  .kf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kf > div:nth-child(3){border-left:0;padding-left:0}
+  .kf > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .lab .kf > div:nth-child(n+3){border-color:var(--lab-line)}
+  .stp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding-bottom:4px;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .stp::-webkit-scrollbar{display:none}
+  .stp-i{flex:0 0 min(78vw,360px);scroll-snap-align:start}
+  .stp::after{content:"";flex:0 0 1px}
+}
+@media (max-width:699px){
+  :root{--rh:min(70svh,560px)}
+  .jr.scroll{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:none;width:auto;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .jr.scroll::-webkit-scrollbar{display:none}
+  .jr.scroll > .jf{flex:0 0 auto;width:min(82vw,calc(58vw * var(--ar)));scroll-snap-align:start}
+  .jr.scroll::after{content:"";flex:0 0 1px}
+  .jr.stack{flex-direction:column;align-items:stretch;max-width:none}
+  .jr.stack > .jf{flex:none}
+  .stg-in{width:min(100%,calc(78svh * var(--ar)))}
+  .cs-stage:not(.cut):not(.multi) > .wrap{padding-inline:0}
+  .cs-stage.multi .jr{flex-direction:column;align-items:stretch;max-width:none}
+  .cs-stage.multi .jr > .jf{flex:none}
+  .kf dd{font-size:clamp(1.9rem,9vw,2.6rem)}
+}
+.ph.whole .fr{background:var(--mat,var(--bg-2))}
+.ph.whole .fr img{object-fit:contain}
+.ph.whole.studio .fr,.ph.whole.sheet .fr{background:var(--mat,var(--studio))}
+/* home teasers: the image keeps its own shape inside the panel, so the product is never cut */
+.tz-img.whole{container-type:size;display:grid;place-items:center;overflow:visible}
+.tz-img.whole .fr{position:relative;inset:auto;width:min(100cqw,calc(100cqh * var(--ar)));height:auto;aspect-ratio:var(--ar);background:var(--mat)}
+.tz-img.whole.studio .fr,.tz-img.whole.sheet .fr{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto}
+@media (prefers-reduced-motion:reduce){.jf.zoom:hover .fr img{transform:none}}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -919,6 +1056,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
 </style>
+
 </head>
 <body>
 
@@ -942,7 +1080,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <div class="cs-head">
     <div class="cs-title">
       <div class="cs-tags"><span class="code mono">FW-04</span><span class="status p">Prototype</span></div>
-      <h1>BIGWASI</h1>
+      <h1 style="--len:7">BIGWASI</h1>
       <p class="cs-kick mono">Avant-garde high-top with Negros handwoven cloth</p>
     </div>
     <div class="cs-intro">
@@ -951,55 +1089,15 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
     </div>
   </div>
 </section>
-
-<section class="cs-body"><div class="wrap">
-<article class="case cs-case" id="bigwasi">
-
-
-<div class="grid g2 keep2" style="margin-top:0">
-<figure class="ph zoom" style="--ar:1/1"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-concept-sketch.webp" width="890" height="881" alt="Annotated BIGWASI sketch listing its materials" decoding="async" loading="lazy"></div><figcaption>Annotated concept sketch</figcaption></figure>
-<figure class="ph zoom" style="--ar:1/1"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-prototype.webp" width="960" height="960" alt="BIGWASI prototype with woven textile straps and rope lacing on a white sole" decoding="async" loading="lazy"></div><figcaption>Finished prototype</figcaption></figure>
+<article class="cs2" id="bigwasi">
+<div class="cs-stage" style="--mat:#D9DBE1"><div class="wrap"><div class="stg-in" style="--ar:1.0000;--mw:1200px"><figure class="jf zoom" style="--ar:1.0000;--mat:#D9DBE1"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-prototype.webp" fetchpriority="high" width="960" height="960" alt="BIGWASI prototype with woven textile straps and rope lacing on a white sole" decoding="async"></div></figure></div></div></div>
+<div class="wrap cs2-body">
+<section class="ov2"><div class="ov2-t"><p>The high-top sits on a bold, sculptural EVA sole, with straps that wrap around the upper and cloth rope in place of laces. It pushes a sneaker toward experimental, almost futuristic form.</p><p>To ground those forms in Filipino identity, the straps are loom-woven textiles, hand-crafted by indigenous communities in Negros.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Spec · FW-04</div><dt>Type</dt><dd>Avant-garde high-top</dd><dt>Textile</dt><dd>Loom-woven cloth from Negros</dd><dt>Laces</dt><dd>Cloth rope</dd><dt>Upper</dt><dd>Neoprene, donkey leather, diamond-textured cloth</dd><dt>Sole</dt><dd>Sculpted EVA</dd><dt>Stage</dt><dd>Prototype</dd></dl></aside></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">01</span><h2>The sketch</h2></div><div class="ch-t"><p>The concept sketch set up the wrap: woven bands crossing the upper at angles, rope lacing that climbs the vamp and winds around the ankle, and a heavy, sculpted sole, drawn from the side, front and top.</p><p>A second, annotated sketch mapped each material onto the upper.</p></div></div><div class="ch-m"><div class="jr stack" style="--sum:2.3454;--gp:12px"><figure class="jf zoom" style="--ar:1.3352;--mat:#FFFFFF"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-color-concept-sketch.webp" width="960" height="719" alt="Color concept sketch of BIGWASI from the side, front and top, with woven straps and rope laces" decoding="async" loading="lazy"></div><figcaption>Side, front and top</figcaption></figure><figure class="jf zoom" style="--ar:1.0102;--mat:#3E3E3E"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-concept-sketch.webp" width="890" height="881" alt="Annotated BIGWASI sketch listing its materials" decoding="async" loading="lazy"></div><figcaption>Annotated materials</figcaption></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">02</span><h2>Made by hand</h2></div><div class="ch-t"><p>The prototype was built at the workshop. The neoprene sock upper was lasted first, and the sole was built up from layers of EVA and shaped by hand into the curved platform.</p></div></div><div class="ch-m"><div class="jr stack" style="--sum:2.8824;--gp:12px"><figure class="jf zoom" style="--ar:1.2290;--mat:#E1D8C9"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-upper-on-last.webp" width="730" height="594" alt="Black neoprene sock upper on a last at the workshop" decoding="async" loading="lazy"></div><figcaption>Upper on the last</figcaption></figure><figure class="jf zoom" style="--ar:1.6534;--mat:#85818C"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-workshop-straps.webp" width="959" height="580" alt="BIGWASI upper with straps on the workbench" decoding="async" loading="lazy"></div><figcaption>Straps going on</figcaption></figure></div><div class="jr stack" style="--sum:2.8882;--gp:12px"><figure class="jf zoom" style="--ar:1.4017;--mat:#977E6D"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-layered-eva.webp" width="834" height="595" alt="Layers of white EVA being shaped into the sole" decoding="async" loading="lazy"></div><figcaption>Layered EVA</figcaption></figure><figure class="jf zoom" style="--ar:1.4865;--mat:#746B6E"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-eva-sole-shaping.webp" width="883" height="594" alt="Shaped EVA sole block on the workbench" decoding="async" loading="lazy"></div><figcaption>Shaping the sole</figcaption></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">03</span><h2>Up close</h2></div><div class="ch-t"><p>Around the woven cloth sit neoprene, donkey leather and diamond-textured cloth. The organic, tactile weave plays against smoother synthetic surfaces, so every panel brings a different texture, a rhythm that breaks from standard sneaker construction.</p></div></div><div class="ch-m"><div class="stp" style="--n:3"><div class="stp-i"><div class="stp-top"><b>01</b><span class="mono muted">The sole</span><span class="ln"></span></div><figure class="jf zoom fit" style="--ar:1.3333;--mat:#DDE1E3;--fa:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-layered-eva-sole.webp" width="400" height="300" alt="Close-up of the BIGWASI heel on its thick, layered white EVA sole" decoding="async" loading="lazy"></div></figure><p>A thick white EVA platform, built up in layers and curved up at the heel, carries the whole silhouette.</p></div><div class="stp-i"><div class="stp-top"><b>02</b><span class="mono muted">The straps</span><span class="ln"></span></div><figure class="jf zoom fit" style="--ar:1.3333;--mat:#77818C;--fa:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-negros-woven-straps.webp" width="440" height="330" alt="Close-up of black and white woven straps crossing a neoprene upper above a black leather toe" decoding="async" loading="lazy"></div></figure><p>Bands of Negros loom-woven cloth cross the upper at angles, over neoprene and a donkey leather toe cap.</p></div><div class="stp-i"><div class="stp-top"><b>03</b><span class="mono muted">The lacing</span><span class="ln"></span></div><figure class="jf zoom fit" style="--ar:1.3333;--mat:#C0C7D1;--fa:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-rope-lacing-ankle.webp" width="360" height="270" alt="Close-up of cream cloth rope wound around the ankle under a woven collar strap" decoding="async" loading="lazy"></div></figure><p>Cream cloth rope crosses the vamp and winds around the ankle in place of standard laces.</p></div></div></div></section>
 </div>
-<div class="case-split">
-<div class="case-text">
-
-<p>I wanted to push a sneaker toward experimental, almost futuristic form while keeping it rooted in something traditional. The result is a high-top on a bold, sculptural EVA sole, with straps that wrap around the upper and cloth rope where the laces would normally go.</p>
-<p>The Filipino side lives in the textile. The straps are loom-woven cloth, handmade by indigenous weavers in Negros. Around them sit neoprene, donkey leather and diamond-textured cloth, so the handmade weave plays against smoother surfaces and every panel brings a different texture. That rhythm of materials breaks from the way sneakers are usually put together.</p>
-</div>
-<div class="split-side">
-<dl class="tag">
-<div class="th">Spec · FW-04</div>
-<dt>Type</dt><dd>Avant-garde high-top</dd>
-<dt>Textile</dt><dd>Loom-woven cloth from Negros</dd>
-<dt>Laces</dt><dd>Cloth rope</dd>
-<dt>Upper</dt><dd>Neoprene, donkey leather, diamond-textured cloth</dd>
-<dt>Sole</dt><dd>Sculpted EVA</dd>
-<dt>Stage</dt><dd>Prototype</dd>
-</dl>
-<figure class="ph zoom" style="--ar:25/11"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-front-side-back-sketch.webp" width="500" height="220" alt="Line drawings of BIGWASI from the front, side and back" decoding="async" loading="lazy"></div><figcaption>Front, side and back views</figcaption></figure>
-</div>
-</div>
-<div class="sub-h"><b>Three moves</b><span class="mono muted">Up close on the prototype</span><span class="ln"></span></div>
-<div class="steps3">
-<div class="pstep">
-<div class="step-top"><b>01</b><span class="mono muted">The sole</span><span class="ln"></span></div>
-<figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-layered-eva-sole.webp" width="400" height="300" alt="Close-up of the BIGWASI heel on its thick, layered white EVA sole" decoding="async" loading="lazy"></div></figure>
-<p>A thick white EVA platform, built up in layers and curved up at the heel, carries the whole silhouette.</p>
-</div>
-<div class="pstep">
-<div class="step-top"><b>02</b><span class="mono muted">The straps</span><span class="ln"></span></div>
-<figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-negros-woven-straps.webp" width="440" height="330" alt="Close-up of black and white woven straps crossing a neoprene upper above a black leather toe" decoding="async" loading="lazy"></div></figure>
-<p>Bands of Negros loom-woven cloth cross the upper at angles, over neoprene and a donkey leather toe cap.</p>
-</div>
-<div class="pstep">
-<div class="step-top"><b>03</b><span class="mono muted">The lacing</span><span class="ln"></span></div>
-<figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="../../img/nicco-pintac-bigwasi-sneaker-rope-lacing-ankle.webp" width="360" height="270" alt="Close-up of cream cloth rope wound around the ankle under a woven collar strap" decoding="async" loading="lazy"></div></figure>
-<p>Cream cloth rope crosses the vamp and winds around the ankle in place of standard laces.</p>
-</div>
-</div>
-
 </article>
-</div></section>
 <nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../footwear-design/finn-cotton-sneaker-collection/"><span class="mono muted">Previous</span><span class="code mono">FW-03</span><b>Finn Cotton Collection</b><span class="k">Original sneaker collection for a Filipino brand</span></a><a class="cs-nc hub" href="../../footwear-design/"><span class="mono muted">All</span><b>Footwear design</b><span class="k">6 projects</span></a><a class="cs-nc" href="../../footwear-design/pamba-sneakers/"><span class="mono muted">Next</span><span class="code mono">FW-05</span><b>PAMBA Sneakers</b><span class="k">Handmade premium court sneaker</span></a></nav>
 <section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">

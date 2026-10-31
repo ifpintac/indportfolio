@@ -898,6 +898,143 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 }
 @media (max-width:560px){.hb-grid,.hb-svc{grid-template-columns:minmax(0,1fr)}}
 
+/* ===================== Case study v2: whole products, chapters, justified galleries ===================== */
+:root{--rh:min(76svh,760px)}
+.cs-head{grid-template-columns:minmax(0,1fr);align-items:start;gap:clamp(18px,2.4vw,32px)}
+.cs-head h1{overflow-wrap:break-word;font-size:clamp(2.6rem,min(8.6vw,calc(86vw / var(--len,10) / .62)),8.6rem);max-width:none}
+.cs-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:end}
+.cs-intro .lede{margin:0}
+.cs-meta{align-self:end}
+
+/* figures: the frame always takes the image's own shape, or holds it whole on its own background */
+.jf{margin:0;min-width:0;display:grid;gap:8px;align-content:start}
+.jf .fr{position:relative;aspect-ratio:var(--ar);background:var(--mat,var(--studio));overflow:hidden}
+.jf .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.jf.cut .fr img{padding:var(--pad,6%)}
+.jf.fit .fr{aspect-ratio:var(--fa)}
+.jf.zoom .fr img{transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.jf.zoom:hover .fr img{transform:scale(1.025)}
+
+/* justified rows: one shared height, widths follow each image's aspect ratio */
+.jr{display:flex;gap:12px;align-items:flex-start;width:100%;max-width:min(calc(var(--rh) * var(--sum) + var(--gp,0px)),var(--mw,100%));margin-inline:auto}
+.jr > .jf{flex:var(--ar) 1 0}
+
+/* cover stage */
+.cs-stage{background:var(--mat,var(--bg-2))}
+.cs-stage > .wrap{padding-block:0}
+.cs-stage.cut > .wrap,.cs-stage.multi > .wrap{padding-block:clamp(16px,3vw,40px)}
+.cs-stage.multi{background:var(--bg-2)}
+.lab .cs-stage.multi,.cs-lab .cs-stage.multi{background:var(--lab-2)}
+.stg-in{width:min(100%,var(--mw),calc(min(84svh,980px) * var(--ar)));margin-inline:auto}
+.cs-stage .jf .fr{background:transparent}
+.cs-stage.cut .jf .fr{background:var(--mat)}
+
+/* overview */
+.cs2-body{padding-bottom:clamp(8px,2vw,24px)}
+.ov2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px clamp(24px,4vw,72px);align-items:start;padding-top:clamp(40px,6vw,84px)}
+.ov2-t p{font-size:clamp(1.12rem,1.35vw,1.3rem);line-height:1.62;max-width:60ch;margin:0 0 16px;text-wrap:pretty}
+
+.ov2-s{display:grid;gap:18px;align-content:start}
+.ov2-s .tag{margin:0}
+
+/* key facts */
+.kf{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));margin:clamp(32px,4.4vw,60px) 0 0;border-top:2px solid var(--fg);border-bottom:1px solid var(--line)}
+.kf > div{padding:16px 16px 18px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:8px}
+.kf > div + div{border-left:1px solid var(--line);padding-left:16px}
+.kf dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.1rem,4.2vw,3.9rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kf dt{color:var(--muted);font-size:.98rem;line-height:1.35;max-width:22ch}
+
+/* chapters */
+.ch{padding-top:clamp(56px,8vw,120px)}
+.ch-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(24px,4vw,72px);align-items:start;border-top:2px solid var(--fg);padding-top:16px}
+.ch-k{display:grid;gap:10px;align-content:start}
+.ch-n{color:var(--muted)}
+.ch-h h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,4vw,3.6rem);line-height:.92;text-transform:uppercase;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.ch-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:62ch;margin:0 0 14px;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.ch-t p:last-child{margin-bottom:0}
+.ch-m{display:grid;gap:12px;margin-top:clamp(24px,3.4vw,44px)}
+.ch-m > .sys{margin-top:0}
+.ch-m > .cw-pick,.ch-m > .cw2{margin-top:0}
+
+/* split: text beside one image */
+.sp{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.sp.flip .sp-t{order:2}
+.sp-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:52ch;margin:0 0 14px}
+.sp-t .pal{margin-bottom:12px}
+.sp-cap{color:var(--muted);font-size:1rem}
+.sp .jr{max-width:none}
+
+/* parts list beside an image */
+.pt{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.pt .jr{max-width:none}
+.pt-l{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg);counter-reset:pt}
+.pt-l li{display:grid;gap:4px;padding:14px 0 15px;border-bottom:1px solid var(--line)}
+.pt-l b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.05;text-transform:uppercase}
+.pt-l span{color:var(--muted);font-size:1rem;line-height:1.5}
+
+/* sequences */
+.stp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px}
+.stp-i{display:grid;gap:12px;align-content:start;min-width:0}
+.stp-top{display:flex;align-items:center;gap:10px}
+.stp-top b{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,3.4vw,3rem);line-height:1}
+.stp-top .ln{flex:1;height:1px;background:var(--line-2)}
+.stp-i p{margin:0;font-size:.98rem;line-height:1.55;max-width:42ch}
+
+/* outbound links */
+.lk{display:grid;gap:8px;margin-top:8px}
+.lk p{margin:0}
+.lk ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.lk a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.lk a:hover{background:var(--bg-2)}
+.ch-m > .lk{margin-top:clamp(12px,2vw,24px);max-width:640px}
+.pal.wide{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* renders pages: the whole case sits in the dark lab */
+.cs2.cs-lab{margin-top:0;padding-block:0 clamp(40px,6vw,80px)}
+.lab .ch-h,.lab .pt-l,.lab .kf,.lab .stp-top{border-color:var(--lab-fg)}
+.lab .ch-n,.lab .kf dt,.lab .pt-l span,.lab .sp-cap{color:var(--lab-muted)}
+.lab .ch-t p,.lab .ov2-t p,.lab .sp-t p{color:color-mix(in srgb,var(--lab-fg) 84%,var(--lab))}
+
+.lab .kf > div + div,.lab .pt-l li{border-color:var(--lab-line)}
+.lab .stp-top .ln{background:var(--lab-line)}
+
+@media (max-width:899px){
+  .cs-intro,.ov2,.ch-h,.sp,.pt{grid-template-columns:minmax(0,1fr)}
+  .sp.flip .sp-t{order:0}
+  .kf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kf > div:nth-child(3){border-left:0;padding-left:0}
+  .kf > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .lab .kf > div:nth-child(n+3){border-color:var(--lab-line)}
+  .stp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding-bottom:4px;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .stp::-webkit-scrollbar{display:none}
+  .stp-i{flex:0 0 min(78vw,360px);scroll-snap-align:start}
+  .stp::after{content:"";flex:0 0 1px}
+}
+@media (max-width:699px){
+  :root{--rh:min(70svh,560px)}
+  .jr.scroll{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:none;width:auto;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .jr.scroll::-webkit-scrollbar{display:none}
+  .jr.scroll > .jf{flex:0 0 auto;width:min(82vw,calc(58vw * var(--ar)));scroll-snap-align:start}
+  .jr.scroll::after{content:"";flex:0 0 1px}
+  .jr.stack{flex-direction:column;align-items:stretch;max-width:none}
+  .jr.stack > .jf{flex:none}
+  .stg-in{width:min(100%,calc(78svh * var(--ar)))}
+  .cs-stage:not(.cut):not(.multi) > .wrap{padding-inline:0}
+  .cs-stage.multi .jr{flex-direction:column;align-items:stretch;max-width:none}
+  .cs-stage.multi .jr > .jf{flex:none}
+  .kf dd{font-size:clamp(1.9rem,9vw,2.6rem)}
+}
+.ph.whole .fr{background:var(--mat,var(--bg-2))}
+.ph.whole .fr img{object-fit:contain}
+.ph.whole.studio .fr,.ph.whole.sheet .fr{background:var(--mat,var(--studio))}
+/* home teasers: the image keeps its own shape inside the panel, so the product is never cut */
+.tz-img.whole{container-type:size;display:grid;place-items:center;overflow:visible}
+.tz-img.whole .fr{position:relative;inset:auto;width:min(100cqw,calc(100cqh * var(--ar)));height:auto;aspect-ratio:var(--ar);background:var(--mat)}
+.tz-img.whole.studio .fr,.tz-img.whole.sheet .fr{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto}
+@media (prefers-reduced-motion:reduce){.jf.zoom:hover .fr img{transform:none}}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -919,6 +1056,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
 </style>
+
 </head>
 <body>
 
@@ -942,7 +1080,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <div class="cs-head">
     <div class="cs-title">
       <div class="cs-tags"><span class="code mono">PD-05</span><span class="status">Concept</span></div>
-      <h1>Exhibition Booths</h1>
+      <h1 style="--len:10">Exhibition Booths</h1>
       <p class="cs-kick mono">Two trade fair stand concepts</p>
     </div>
     <div class="cs-intro">
@@ -951,18 +1089,14 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
     </div>
   </div>
 </section>
-
-<section class="cs-body"><div class="wrap">
-<article class="case cs-case" id="booths">
-<div class="cs-ov"><p class="cs-ov-l mono">Overview</p><div class="cs-prose"><p>Both stands are concepts for trade fair floors, where a booth has seconds to pull people in. One leans on warm materials and light; the other on bold graphics and open space to demo products.</p></div><aside class="cs-side"></aside></div>
-
-<div class="grid g2" style="margin-top:0">
-<figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-coffee-lounge.webp" width="887" height="648" alt="Booth with warm wood textures, slatted walls and pendant lights" decoding="async" loading="lazy"></div><figcaption>Coffee and spirits lounge: warm timber, slatted privacy walls, pendant lights</figcaption></figure>
-<figure class="ph zoom" style="--ar:4/3"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-tech-gaming.webp" width="798" height="798" alt="Angular red canopy booth with geometric branding" decoding="async" loading="lazy"></div><figcaption>Tech and gaming stand: angular canopy, bold graphics, open demo zones</figcaption></figure>
+<article class="cs2" id="booths">
+<div class="cs-stage multi"><div class="wrap"><div class="jr stack" style="--sum:2.3690;--gp:12px;--rh:min(70svh,720px)"><figure class="jf zoom" style="--ar:1.3690;--mat:#42403D"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-coffee-lounge.webp" fetchpriority="high" width="1024" height="748" alt="Coffee and spirits lounge booth with black slats, a timber counter and a colorful graphic wall in an exhibition hall" decoding="async"></div></figure><figure class="jf zoom" style="--ar:1.0000;--mat:#4F4F54"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-tech-gaming.webp" fetchpriority="high" width="922" height="922" alt="Tech and gaming stand with an angular red canopy and demo counters in an exhibition hall" decoding="async"></div></figure></div></div></div>
+<div class="wrap cs2-body">
+<section class="ov2"><div class="ov2-t"><p>On a trade fair floor, a booth has seconds to pull people in from the aisle.</p><p>The lounge does it with warm materials and low light, built for conversations over a tasting. The tech stand does it with bold graphics and open floor space, so products can be tried hands-on.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Brief · PD-05</div><dt>Type</dt><dd>Trade fair stands</dd><dt>Concepts</dt><dd>2</dd><dt>Lounge</dt><dd>Coffee and premium liquor brands</dd><dt>Tech stand</dt><dd>Technology and video game clients</dd></dl></aside></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><h2>Coffee and spirits lounge</h2></div><div class="ch-t"><p>For modern coffee and premium liquor brands. Warm wood textures, slatted privacy walls and pendant lighting create an inviting, high-end lounge atmosphere tailored for networking and product tasting.</p><p>A run of black slats rises from the floor and curves over the top as a canopy that carries the logo, half screening the stand from the aisle. Under it, a timber-slatted bar counter with high stools sits in front of a bold graphic wall.</p></div></div><div class="ch-m"><div class="jr stack" style="--sum:2.7397;--gp:12px"><figure class="jf zoom" style="--ar:1.3699;--mat:#B4B4B4"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-coffee-lounge-front.webp" srcset="../../img/nicco-pintac-exhibition-booth-coffee-lounge-front-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-coffee-lounge-front.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1168" alt="Front view of the lounge booth with slatted canopy, logo, pendant lights and timber bar" decoding="async" loading="lazy"></div><figcaption>Front</figcaption></figure><figure class="jf zoom" style="--ar:1.3699;--mat:#CBCBCB"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-coffee-lounge-counter.webp" srcset="../../img/nicco-pintac-exhibition-booth-coffee-lounge-counter-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-coffee-lounge-counter.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1168" alt="Angled view of the lounge booth showing the timber counter and stools" decoding="async" loading="lazy"></div><figcaption>Counter and stools</figcaption></figure></div><div class="jr keep" style="--sum:1.3699;--gp:0px;--mw:2400px"><figure class="jf zoom" style="--ar:1.3699;--mat:#ECECEC"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-coffee-lounge-three-quarter.webp" srcset="../../img/nicco-pintac-exhibition-booth-coffee-lounge-three-quarter-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-coffee-lounge-three-quarter.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1168" alt="Lounge booth from a high three-quarter angle, showing the slats curving from wall to canopy" decoding="async" loading="lazy"></div><figcaption>High three-quarter</figcaption></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><h2>Tech and gaming stand</h2></div><div class="ch-t"><p>For technology and video game clients. A sleek, angular canopy with high-contrast geometric branding hangs over an open layout that puts interactive hardware display zones first, with a streamlined flow for high-traffic product demos.</p><p>Two long demo counters lined with laptops face the aisles, branded panels mark the entrance, and a glazed room at the back gives a quieter space with seating.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:2.0000;--gp:12px"><figure class="jf zoom" style="--ar:1.0000;--mat:#D4D4D4"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-tech-gaming-demo-counters.webp" srcset="../../img/nicco-pintac-exhibition-booth-tech-gaming-demo-counters-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-tech-gaming-demo-counters.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1600" alt="Tech stand with a suspended red canopy ring, demo counters with laptops and a logo panel" decoding="async" loading="lazy"></div><figcaption>Demo counters</figcaption></figure><figure class="jf zoom" style="--ar:1.0000;--mat:#D7D7D7"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-tech-gaming-canopy.webp" srcset="../../img/nicco-pintac-exhibition-booth-tech-gaming-canopy-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-tech-gaming-canopy.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1600" alt="Side view of the tech stand showing the canopy and the angled back wall" decoding="async" loading="lazy"></div><figcaption>Canopy and back wall</figcaption></figure></div><div class="jr keep" style="--sum:1.0000;--gp:0px;--mw:2400px"><figure class="jf zoom" style="--ar:1.0000;--mat:#ECECEC"><div class="fr"><img src="../../img/nicco-pintac-exhibition-booth-tech-gaming-top-view.webp" srcset="../../img/nicco-pintac-exhibition-booth-tech-gaming-top-view-800.webp 800w, ../../img/nicco-pintac-exhibition-booth-tech-gaming-top-view.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1600" alt="Tech stand from above, showing the open demo floor and the glazed room at the back" decoding="async" loading="lazy"></div><figcaption>From above</figcaption></figure></div></div></section>
 </div>
-
 </article>
-</div></section>
 <nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../product-design/jolt-board-electric-skateboard/"><span class="mono muted">Previous</span><span class="code mono">PD-04</span><b>Jolt Board</b><span class="k">Electric skateboard for city commuters</span></a><a class="cs-nc hub" href="../../product-design/"><span class="mono muted">All</span><b>Product design</b><span class="k">5 projects</span></a><a class="cs-nc" href="../../footwear-design/wave-technical-sneaker/"><span class="mono muted">Next</span><span class="code mono">FW-01</span><b>Wave Technical Footwear</b><span class="k">Weather-resistant technical sneaker</span></a></nav>
 <section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">

@@ -898,6 +898,143 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 }
 @media (max-width:560px){.hb-grid,.hb-svc{grid-template-columns:minmax(0,1fr)}}
 
+/* ===================== Case study v2: whole products, chapters, justified galleries ===================== */
+:root{--rh:min(76svh,760px)}
+.cs-head{grid-template-columns:minmax(0,1fr);align-items:start;gap:clamp(18px,2.4vw,32px)}
+.cs-head h1{overflow-wrap:break-word;font-size:clamp(2.6rem,min(8.6vw,calc(86vw / var(--len,10) / .62)),8.6rem);max-width:none}
+.cs-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:end}
+.cs-intro .lede{margin:0}
+.cs-meta{align-self:end}
+
+/* figures: the frame always takes the image's own shape, or holds it whole on its own background */
+.jf{margin:0;min-width:0;display:grid;gap:8px;align-content:start}
+.jf .fr{position:relative;aspect-ratio:var(--ar);background:var(--mat,var(--studio));overflow:hidden}
+.jf .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.jf.cut .fr img{padding:var(--pad,6%)}
+.jf.fit .fr{aspect-ratio:var(--fa)}
+.jf.zoom .fr img{transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.jf.zoom:hover .fr img{transform:scale(1.025)}
+
+/* justified rows: one shared height, widths follow each image's aspect ratio */
+.jr{display:flex;gap:12px;align-items:flex-start;width:100%;max-width:min(calc(var(--rh) * var(--sum) + var(--gp,0px)),var(--mw,100%));margin-inline:auto}
+.jr > .jf{flex:var(--ar) 1 0}
+
+/* cover stage */
+.cs-stage{background:var(--mat,var(--bg-2))}
+.cs-stage > .wrap{padding-block:0}
+.cs-stage.cut > .wrap,.cs-stage.multi > .wrap{padding-block:clamp(16px,3vw,40px)}
+.cs-stage.multi{background:var(--bg-2)}
+.lab .cs-stage.multi,.cs-lab .cs-stage.multi{background:var(--lab-2)}
+.stg-in{width:min(100%,var(--mw),calc(min(84svh,980px) * var(--ar)));margin-inline:auto}
+.cs-stage .jf .fr{background:transparent}
+.cs-stage.cut .jf .fr{background:var(--mat)}
+
+/* overview */
+.cs2-body{padding-bottom:clamp(8px,2vw,24px)}
+.ov2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px clamp(24px,4vw,72px);align-items:start;padding-top:clamp(40px,6vw,84px)}
+.ov2-t p{font-size:clamp(1.12rem,1.35vw,1.3rem);line-height:1.62;max-width:60ch;margin:0 0 16px;text-wrap:pretty}
+
+.ov2-s{display:grid;gap:18px;align-content:start}
+.ov2-s .tag{margin:0}
+
+/* key facts */
+.kf{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));margin:clamp(32px,4.4vw,60px) 0 0;border-top:2px solid var(--fg);border-bottom:1px solid var(--line)}
+.kf > div{padding:16px 16px 18px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:8px}
+.kf > div + div{border-left:1px solid var(--line);padding-left:16px}
+.kf dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.1rem,4.2vw,3.9rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kf dt{color:var(--muted);font-size:.98rem;line-height:1.35;max-width:22ch}
+
+/* chapters */
+.ch{padding-top:clamp(56px,8vw,120px)}
+.ch-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(24px,4vw,72px);align-items:start;border-top:2px solid var(--fg);padding-top:16px}
+.ch-k{display:grid;gap:10px;align-content:start}
+.ch-n{color:var(--muted)}
+.ch-h h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,4vw,3.6rem);line-height:.92;text-transform:uppercase;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.ch-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:62ch;margin:0 0 14px;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.ch-t p:last-child{margin-bottom:0}
+.ch-m{display:grid;gap:12px;margin-top:clamp(24px,3.4vw,44px)}
+.ch-m > .sys{margin-top:0}
+.ch-m > .cw-pick,.ch-m > .cw2{margin-top:0}
+
+/* split: text beside one image */
+.sp{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.sp.flip .sp-t{order:2}
+.sp-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:52ch;margin:0 0 14px}
+.sp-t .pal{margin-bottom:12px}
+.sp-cap{color:var(--muted);font-size:1rem}
+.sp .jr{max-width:none}
+
+/* parts list beside an image */
+.pt{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.pt .jr{max-width:none}
+.pt-l{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg);counter-reset:pt}
+.pt-l li{display:grid;gap:4px;padding:14px 0 15px;border-bottom:1px solid var(--line)}
+.pt-l b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.05;text-transform:uppercase}
+.pt-l span{color:var(--muted);font-size:1rem;line-height:1.5}
+
+/* sequences */
+.stp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px}
+.stp-i{display:grid;gap:12px;align-content:start;min-width:0}
+.stp-top{display:flex;align-items:center;gap:10px}
+.stp-top b{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,3.4vw,3rem);line-height:1}
+.stp-top .ln{flex:1;height:1px;background:var(--line-2)}
+.stp-i p{margin:0;font-size:.98rem;line-height:1.55;max-width:42ch}
+
+/* outbound links */
+.lk{display:grid;gap:8px;margin-top:8px}
+.lk p{margin:0}
+.lk ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.lk a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.lk a:hover{background:var(--bg-2)}
+.ch-m > .lk{margin-top:clamp(12px,2vw,24px);max-width:640px}
+.pal.wide{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* renders pages: the whole case sits in the dark lab */
+.cs2.cs-lab{margin-top:0;padding-block:0 clamp(40px,6vw,80px)}
+.lab .ch-h,.lab .pt-l,.lab .kf,.lab .stp-top{border-color:var(--lab-fg)}
+.lab .ch-n,.lab .kf dt,.lab .pt-l span,.lab .sp-cap{color:var(--lab-muted)}
+.lab .ch-t p,.lab .ov2-t p,.lab .sp-t p{color:color-mix(in srgb,var(--lab-fg) 84%,var(--lab))}
+
+.lab .kf > div + div,.lab .pt-l li{border-color:var(--lab-line)}
+.lab .stp-top .ln{background:var(--lab-line)}
+
+@media (max-width:899px){
+  .cs-intro,.ov2,.ch-h,.sp,.pt{grid-template-columns:minmax(0,1fr)}
+  .sp.flip .sp-t{order:0}
+  .kf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kf > div:nth-child(3){border-left:0;padding-left:0}
+  .kf > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .lab .kf > div:nth-child(n+3){border-color:var(--lab-line)}
+  .stp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding-bottom:4px;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .stp::-webkit-scrollbar{display:none}
+  .stp-i{flex:0 0 min(78vw,360px);scroll-snap-align:start}
+  .stp::after{content:"";flex:0 0 1px}
+}
+@media (max-width:699px){
+  :root{--rh:min(70svh,560px)}
+  .jr.scroll{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:none;width:auto;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .jr.scroll::-webkit-scrollbar{display:none}
+  .jr.scroll > .jf{flex:0 0 auto;width:min(82vw,calc(58vw * var(--ar)));scroll-snap-align:start}
+  .jr.scroll::after{content:"";flex:0 0 1px}
+  .jr.stack{flex-direction:column;align-items:stretch;max-width:none}
+  .jr.stack > .jf{flex:none}
+  .stg-in{width:min(100%,calc(78svh * var(--ar)))}
+  .cs-stage:not(.cut):not(.multi) > .wrap{padding-inline:0}
+  .cs-stage.multi .jr{flex-direction:column;align-items:stretch;max-width:none}
+  .cs-stage.multi .jr > .jf{flex:none}
+  .kf dd{font-size:clamp(1.9rem,9vw,2.6rem)}
+}
+.ph.whole .fr{background:var(--mat,var(--bg-2))}
+.ph.whole .fr img{object-fit:contain}
+.ph.whole.studio .fr,.ph.whole.sheet .fr{background:var(--mat,var(--studio))}
+/* home teasers: the image keeps its own shape inside the panel, so the product is never cut */
+.tz-img.whole{container-type:size;display:grid;place-items:center;overflow:visible}
+.tz-img.whole .fr{position:relative;inset:auto;width:min(100cqw,calc(100cqh * var(--ar)));height:auto;aspect-ratio:var(--ar);background:var(--mat)}
+.tz-img.whole.studio .fr,.tz-img.whole.sheet .fr{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto}
+@media (prefers-reduced-motion:reduce){.jf.zoom:hover .fr img{transform:none}}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -919,6 +1056,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
 </style>
+
 </head>
 <body>
 
@@ -942,7 +1080,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <div class="cs-head">
     <div class="cs-title">
       <div class="cs-tags"><span class="code mono">FW-05</span><span class="status p">Prototype</span></div>
-      <h1>PAMBA Sneakers</h1>
+      <h1 style="--len:8">PAMBA Sneakers</h1>
       <p class="cs-kick mono">Handmade premium court sneaker</p>
     </div>
     <div class="cs-intro">
@@ -951,54 +1089,28 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
     </div>
   </div>
 </section>
-<div class="wrap cs-cover-w"><figure class="ph zoom cs-cover" style="--ar:21/9;--pos:50% 58%;max-width:1380px"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneakers.webp" srcset="../../img/nicco-pintac-pamba-sneakers-800.webp 800w, ../../img/nicco-pintac-pamba-sneakers.webp 1500w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="1500" height="999" alt="Black and cream PAMBA sneakers side by side on a workbench" decoding="async"></div></figure></div>
-<section class="cs-body"><div class="wrap">
-<article class="case cs-case" id="pamba">
-
-
-
-<div class="case-split">
-<div class="case-text">
-
-<p>The silhouette is a clean, low-profile court shoe with a perforated toe, a padded collar, a serrated-edge cupsole and gold-tipped laces. It's meant to be the everyday pair that goes with everything.</p>
-<p>The story lives in the materials. Each colorway layers several leathers and suedes in close tones, so the shoe reads as one color from across the room and shows its texture up close.</p>
+<article class="cs2" id="pamba">
+<div class="cs-stage" style="--mat:#A46C4D"><div class="wrap"><div class="stg-in" style="--ar:1.5015;--mw:1600px"><figure class="jf zoom" style="--ar:1.5015;--mat:#A46C4D"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneakers.webp" srcset="../../img/nicco-pintac-pamba-sneakers-800.webp 800w, ../../img/nicco-pintac-pamba-sneakers.webp 2048w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="2048" height="1364" alt="Black and cream PAMBA sneakers side by side on a workbench" decoding="async"></div></figure></div></div></div>
+<div class="wrap cs2-body">
+<section class="ov2"><div class="ov2-t"><p>It's meant to be the everyday pair that goes with everything: a clean, low-profile court shoe with a perforated toe, a padded collar, gold-tipped laces and a serrated-edge cupsole.</p><p>The story lives in the colorways. The Sampaguita and the Carabao each layer leathers and suedes in close tones, drawn from the national flower and from the water buffalo of the Filipino farm.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Spec · FW-05</div><dt>Type</dt><dd>Premium casual sneaker</dd><dt>Build</dt><dd>Handmade</dd><dt>Upper</dt><dd>Leather and suede</dd><dt>Colorways</dt><dd>Sampaguita, Carabao</dd><dt>Stage</dt><dd>Prototype</dd></dl></aside></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">01</span><h2>Finding the colorways</h2></div><div class="ch-t"><p>Colorway research started from Filipino food, plants and animals, sampling a small palette from each.</p><p>Two made the cut. From the plants, the sampaguita, the national flower. From the animals, the carabao, the water buffalo of the Filipino farm.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:1.5105;--gp:0px;--mw:1083px"><figure class="jf zoom" style="--ar:1.5105;--mat:#E7EFF4"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-filipino-colorway-mood-board.webp" width="722" height="478" alt="Mood board of food, plant and animal inspired colorway palettes" decoding="async" loading="lazy"></div><figcaption>Food, plant and animal studies</figcaption></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">02</span><h2>Silhouette and render</h2></div><div class="ch-t"><p>Line sketches tested the collar height, the toe and the panel lines. The chosen shape was then rendered in the carabao colorway on a gum sole.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:1.4123;--gp:0px;--mw:1788px"><figure class="jf zoom" style="--ar:1.4123;--mat:#FEFEFE"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-carabao-colorway-sketches.webp" srcset="../../img/nicco-pintac-pamba-sneaker-carabao-colorway-sketches-800.webp 800w, ../../img/nicco-pintac-pamba-sneaker-carabao-colorway-sketches.webp 1192w" sizes="(max-width: 900px) 100vw, 60vw" width="1192" height="844" alt="Three line sketches of the sneaker beside a carabao photo, its palette and a black render on a gum sole" decoding="async" loading="lazy"></div></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">03</span><h2>Two colorways</h2></div><div class="ch-t"><p>Each colorway layers several leathers and suedes in close tones, so the shoe reads as one color from across the room and shows its texture up close.</p></div></div><div class="ch-m"><div class="cw2">
+      <div class="cwcard cw-pal">
+        <div class="cw-name"><span class="mono muted">01 · White / cream</span><h4>Sampaguita</h4></div>
+        <p>Named after the national flower. Instead of one flat white, the upper layers off-whites and creams like overlapping petals, so it looks soft and dimensional instead of stark.</p>
+        <div class="pal" role="list"><div role="listitem"><i style="background:#FAFAFA"></i><span><b>Toe</b>#FAFAFA</span></div><div role="listitem"><i style="background:#E2DED9"></i><span><b>Suede</b>#E2DED9</span></div><div role="listitem"><i style="background:#E2D6B3"></i><span><b>Tongue</b>#E2D6B3</span></div><div role="listitem"><i style="background:#C9C0B8"></i><span><b>Vamp</b>#C9C0B8</span></div></div>
+      </div>
+      <div class="cwcard cw-pal">
+        <div class="cw-name"><span class="mono muted">02 · Black / dark tones</span><h4>Carabao</h4></div>
+        <p>Named after the water buffalo of the Filipino farm. Black leather and suede borrow its strength and matte, weathered texture: rugged, but refined enough to dress up.</p>
+        <div class="pal" role="list"><div role="listitem"><i style="background:#1E1D1F"></i><span><b>Leather</b>#1E1D1F</span></div><div role="listitem"><i style="background:#3C3939"></i><span><b>Suede</b>#3C3939</span></div><div role="listitem"><i style="background:#9E7A64"></i><span><b>Lining</b>#9E7A64</span></div><div role="listitem"><i style="background:#D7BA82"></i><span><b>Aglet</b>#D7BA82</span></div></div>
+      </div>
+    </div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">04</span><h2>First to final prototype</h2></div><div class="ch-t"><p>The first prototype came back in cream on a gum cupsole. The final pairs moved to a white serrated cupsole, with the layered leathers and suedes of each colorway, made by hand.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:2.0571;--gp:0px;--mw:3024px"><figure class="jf zoom" style="--ar:2.0571;--mat:#CDCDD1"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-first-prototype-gum-sole.webp" srcset="../../img/nicco-pintac-pamba-sneaker-first-prototype-gum-sole-800.webp 800w, ../../img/nicco-pintac-pamba-sneaker-first-prototype-gum-sole.webp 2016w" sizes="(max-width: 900px) 100vw, 60vw" width="2016" height="980" alt="First PAMBA prototype in cream on a gum sole, side view" decoding="async" loading="lazy"></div><figcaption>First prototype, gum cupsole</figcaption></figure></div><div class="jr stack" style="--sum:2.3787;--gp:12px"><figure class="jf zoom" style="--ar:1.0454;--mat:#DBD7CD"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-first-prototype.webp" width="530" height="507" alt="First PAMBA prototype being laced at the workshop" decoding="async" loading="lazy"></div><figcaption>Lacing the first pair</figcaption></figure><figure class="jf zoom" style="--ar:1.3333;--mat:#3F3B32"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-final-prototype-black.webp" srcset="../../img/nicco-pintac-pamba-sneaker-final-prototype-black-800.webp 800w, ../../img/nicco-pintac-pamba-sneaker-final-prototype-black.webp 2048w" sizes="(max-width: 900px) 100vw, 60vw" width="2048" height="1536" alt="Final PAMBA prototype in black leather and suede on the workbench" decoding="async" loading="lazy"></div><figcaption>Final prototype</figcaption></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">05</span><h2>Details</h2></div><div class="ch-t"><p>The small parts carry the premium feel.</p></div></div><div class="ch-m"><div class="jr scroll" style="--sum:3.5977;--gp:24px"><figure class="jf zoom" style="--ar:1.1959;--mat:#877C80"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-toe-detail.webp" width="409" height="342" alt="Close-up of the perforated toe and suede mudguard on the black pair" decoding="async" loading="lazy"></div><figcaption>Perforated toe, suede mudguard</figcaption></figure><figure class="jf zoom" style="--ar:1.2023;--mat:#504140"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-lace-detail.webp" width="410" height="341" alt="Close-up of black leather laces with gold aglets" decoding="async" loading="lazy"></div><figcaption>Gold-tipped laces</figcaption></figure><figure class="jf zoom" style="--ar:1.1994;--mat:#B07E5F"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-collar-detail.webp" width="409" height="341" alt="Close-up of the padded collar and tan suede lining" decoding="async" loading="lazy"></div><figcaption>Padded collar, suede lining</figcaption></figure></div></div></section>
 </div>
-<dl class="tag">
-<div class="th">Spec · FW-05</div>
-<dt>Type</dt><dd>Premium casual sneaker</dd>
-<dt>Build</dt><dd>Handmade</dd>
-<dt>Upper</dt><dd>Leather and suede</dd>
-<dt>Colorways</dt><dd>Sampaguita, Carabao</dd>
-<dt>Stage</dt><dd>Prototype</dd>
-</dl>
-</div>
-<div class="sub-h"><b>Two colorways</b><span class="mono muted">Palettes sampled from the finished pairs</span><span class="ln"></span></div>
-<div class="cw2">
-<div class="cwcard cw-pal">
-<div class="cw-name"><span class="mono muted">01 · White / cream</span><h4>Sampaguita</h4></div>
-<p>Named after the national flower. Instead of one flat white, the upper layers off-whites and creams like overlapping petals, so it looks soft and dimensional instead of stark.</p>
-<div class="pal" role="list"><div role="listitem"><i style="background:#FAFAFA"></i><span><b>Toe</b>#FAFAFA</span></div><div role="listitem"><i style="background:#E2DED9"></i><span><b>Suede</b>#E2DED9</span></div><div role="listitem"><i style="background:#E2D6B3"></i><span><b>Tongue</b>#E2D6B3</span></div><div role="listitem"><i style="background:#C9C0B8"></i><span><b>Vamp</b>#C9C0B8</span></div></div>
-</div>
-<div class="cwcard cw-pal">
-<div class="cw-name"><span class="mono muted">02 · Black / dark tones</span><h4>Carabao</h4></div>
-<p>Named after the water buffalo of the Filipino farm. Black leather and suede borrow its strength and matte, weathered texture: rugged, but refined enough to dress up.</p>
-<div class="pal" role="list"><div role="listitem"><i style="background:#1E1D1F"></i><span><b>Leather</b>#1E1D1F</span></div><div role="listitem"><i style="background:#3C3939"></i><span><b>Suede</b>#3C3939</span></div><div role="listitem"><i style="background:#9E7A64"></i><span><b>Lining</b>#9E7A64</span></div><div role="listitem"><i style="background:#D7BA82"></i><span><b>Aglet</b>#D7BA82</span></div></div>
-</div>
-</div>
-<div class="sub-h"><b>First to final prototype</b><span class="ln"></span></div>
-<div class="grid g2">
-<figure class="ph zoom" style="--ar:1/1"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-first-prototype.webp" width="530" height="507" alt="First PAMBA prototype in cream on a gum sole, being laced at the workshop" decoding="async" loading="lazy"></div><figcaption>First prototype · gum cupsole</figcaption></figure>
-<figure class="ph zoom" style="--ar:1/1"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-final-prototype.webp" width="532" height="507" alt="Final PAMBA prototype pair in black leather and suede on lasts at the workshop" decoding="async" loading="lazy"></div><figcaption>Final prototype · white serrated cupsole</figcaption></figure>
-</div>
-<div class="sub-h"><b>Details</b><span class="ln"></span></div>
-<div class="grid g3">
-<figure class="ph zoom" style="--ar:6/5"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-toe-detail.webp" width="409" height="342" alt="Close-up of the perforated toe and suede mudguard on the black pair" decoding="async" loading="lazy"></div><figcaption>Perforated toe, suede mudguard</figcaption></figure>
-<figure class="ph zoom" style="--ar:6/5"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-lace-detail.webp" width="410" height="341" alt="Close-up of black leather laces with gold aglets" decoding="async" loading="lazy"></div><figcaption>Gold-tipped laces</figcaption></figure>
-<figure class="ph zoom" style="--ar:6/5"><div class="fr"><img src="../../img/nicco-pintac-pamba-sneaker-collar-detail.webp" width="409" height="341" alt="Close-up of the padded collar and tan suede lining" decoding="async" loading="lazy"></div><figcaption>Padded collar, suede lining</figcaption></figure>
-</div>
-
 </article>
-</div></section>
 <nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../footwear-design/bigwasi/"><span class="mono muted">Previous</span><span class="code mono">FW-04</span><b>BIGWASI</b><span class="k">Avant-garde high-top with Negros handwoven cloth</span></a><a class="cs-nc hub" href="../../footwear-design/"><span class="mono muted">All</span><b>Footwear design</b><span class="k">6 projects</span></a><a class="cs-nc" href="../../footwear-design/patchwork-rag-basketball-shoe/"><span class="mono muted">Next</span><span class="code mono">FW-06</span><b>Patchwork Rag Basketball</b><span class="k">Basketball shoe inspired by the basahan rag</span></a></nav>
 <section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">

@@ -898,6 +898,143 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 }
 @media (max-width:560px){.hb-grid,.hb-svc{grid-template-columns:minmax(0,1fr)}}
 
+/* ===================== Case study v2: whole products, chapters, justified galleries ===================== */
+:root{--rh:min(76svh,760px)}
+.cs-head{grid-template-columns:minmax(0,1fr);align-items:start;gap:clamp(18px,2.4vw,32px)}
+.cs-head h1{overflow-wrap:break-word;font-size:clamp(2.6rem,min(8.6vw,calc(86vw / var(--len,10) / .62)),8.6rem);max-width:none}
+.cs-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,4vw,64px);align-items:end}
+.cs-intro .lede{margin:0}
+.cs-meta{align-self:end}
+
+/* figures: the frame always takes the image's own shape, or holds it whole on its own background */
+.jf{margin:0;min-width:0;display:grid;gap:8px;align-content:start}
+.jf .fr{position:relative;aspect-ratio:var(--ar);background:var(--mat,var(--studio));overflow:hidden}
+.jf .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.jf.cut .fr img{padding:var(--pad,6%)}
+.jf.fit .fr{aspect-ratio:var(--fa)}
+.jf.zoom .fr img{transition:transform .6s cubic-bezier(.2,.6,.2,1)}
+.jf.zoom:hover .fr img{transform:scale(1.025)}
+
+/* justified rows: one shared height, widths follow each image's aspect ratio */
+.jr{display:flex;gap:12px;align-items:flex-start;width:100%;max-width:min(calc(var(--rh) * var(--sum) + var(--gp,0px)),var(--mw,100%));margin-inline:auto}
+.jr > .jf{flex:var(--ar) 1 0}
+
+/* cover stage */
+.cs-stage{background:var(--mat,var(--bg-2))}
+.cs-stage > .wrap{padding-block:0}
+.cs-stage.cut > .wrap,.cs-stage.multi > .wrap{padding-block:clamp(16px,3vw,40px)}
+.cs-stage.multi{background:var(--bg-2)}
+.lab .cs-stage.multi,.cs-lab .cs-stage.multi{background:var(--lab-2)}
+.stg-in{width:min(100%,var(--mw),calc(min(84svh,980px) * var(--ar)));margin-inline:auto}
+.cs-stage .jf .fr{background:transparent}
+.cs-stage.cut .jf .fr{background:var(--mat)}
+
+/* overview */
+.cs2-body{padding-bottom:clamp(8px,2vw,24px)}
+.ov2{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px clamp(24px,4vw,72px);align-items:start;padding-top:clamp(40px,6vw,84px)}
+.ov2-t p{font-size:clamp(1.12rem,1.35vw,1.3rem);line-height:1.62;max-width:60ch;margin:0 0 16px;text-wrap:pretty}
+
+.ov2-s{display:grid;gap:18px;align-content:start}
+.ov2-s .tag{margin:0}
+
+/* key facts */
+.kf{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));margin:clamp(32px,4.4vw,60px) 0 0;border-top:2px solid var(--fg);border-bottom:1px solid var(--line)}
+.kf > div{padding:16px 16px 18px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:8px}
+.kf > div + div{border-left:1px solid var(--line);padding-left:16px}
+.kf dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.1rem,4.2vw,3.9rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kf dt{color:var(--muted);font-size:.98rem;line-height:1.35;max-width:22ch}
+
+/* chapters */
+.ch{padding-top:clamp(56px,8vw,120px)}
+.ch-h{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(24px,4vw,72px);align-items:start;border-top:2px solid var(--fg);padding-top:16px}
+.ch-k{display:grid;gap:10px;align-content:start}
+.ch-n{color:var(--muted)}
+.ch-h h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,4vw,3.6rem);line-height:.92;text-transform:uppercase;margin:0;letter-spacing:-.005em;text-wrap:balance}
+.ch-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:62ch;margin:0 0 14px;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.ch-t p:last-child{margin-bottom:0}
+.ch-m{display:grid;gap:12px;margin-top:clamp(24px,3.4vw,44px)}
+.ch-m > .sys{margin-top:0}
+.ch-m > .cw-pick,.ch-m > .cw2{margin-top:0}
+
+/* split: text beside one image */
+.sp{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.sp.flip .sp-t{order:2}
+.sp-t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;max-width:52ch;margin:0 0 14px}
+.sp-t .pal{margin-bottom:12px}
+.sp-cap{color:var(--muted);font-size:1rem}
+.sp .jr{max-width:none}
+
+/* parts list beside an image */
+.pt{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.pt .jr{max-width:none}
+.pt-l{list-style:none;margin:0;padding:0;border-top:2px solid var(--fg);counter-reset:pt}
+.pt-l li{display:grid;gap:4px;padding:14px 0 15px;border-bottom:1px solid var(--line)}
+.pt-l b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.25rem,1.6vw,1.5rem);line-height:1.05;text-transform:uppercase}
+.pt-l span{color:var(--muted);font-size:1rem;line-height:1.5}
+
+/* sequences */
+.stp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px}
+.stp-i{display:grid;gap:12px;align-content:start;min-width:0}
+.stp-top{display:flex;align-items:center;gap:10px}
+.stp-top b{font-family:var(--f-display);font-weight:800;font-size:clamp(2rem,3.4vw,3rem);line-height:1}
+.stp-top .ln{flex:1;height:1px;background:var(--line-2)}
+.stp-i p{margin:0;font-size:.98rem;line-height:1.55;max-width:42ch}
+
+/* outbound links */
+.lk{display:grid;gap:8px;margin-top:8px}
+.lk p{margin:0}
+.lk ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.lk a{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px solid var(--line);text-decoration:none;font-weight:600}
+.lk a:hover{background:var(--bg-2)}
+.ch-m > .lk{margin-top:clamp(12px,2vw,24px);max-width:640px}
+.pal.wide{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+/* renders pages: the whole case sits in the dark lab */
+.cs2.cs-lab{margin-top:0;padding-block:0 clamp(40px,6vw,80px)}
+.lab .ch-h,.lab .pt-l,.lab .kf,.lab .stp-top{border-color:var(--lab-fg)}
+.lab .ch-n,.lab .kf dt,.lab .pt-l span,.lab .sp-cap{color:var(--lab-muted)}
+.lab .ch-t p,.lab .ov2-t p,.lab .sp-t p{color:color-mix(in srgb,var(--lab-fg) 84%,var(--lab))}
+
+.lab .kf > div + div,.lab .pt-l li{border-color:var(--lab-line)}
+.lab .stp-top .ln{background:var(--lab-line)}
+
+@media (max-width:899px){
+  .cs-intro,.ov2,.ch-h,.sp,.pt{grid-template-columns:minmax(0,1fr)}
+  .sp.flip .sp-t{order:0}
+  .kf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kf > div:nth-child(3){border-left:0;padding-left:0}
+  .kf > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .lab .kf > div:nth-child(n+3){border-color:var(--lab-line)}
+  .stp{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;padding-bottom:4px;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .stp::-webkit-scrollbar{display:none}
+  .stp-i{flex:0 0 min(78vw,360px);scroll-snap-align:start}
+  .stp::after{content:"";flex:0 0 1px}
+}
+@media (max-width:699px){
+  :root{--rh:min(70svh,560px)}
+  .jr.scroll{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:none;width:auto;
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px));scroll-padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .jr.scroll::-webkit-scrollbar{display:none}
+  .jr.scroll > .jf{flex:0 0 auto;width:min(82vw,calc(58vw * var(--ar)));scroll-snap-align:start}
+  .jr.scroll::after{content:"";flex:0 0 1px}
+  .jr.stack{flex-direction:column;align-items:stretch;max-width:none}
+  .jr.stack > .jf{flex:none}
+  .stg-in{width:min(100%,calc(78svh * var(--ar)))}
+  .cs-stage:not(.cut):not(.multi) > .wrap{padding-inline:0}
+  .cs-stage.multi .jr{flex-direction:column;align-items:stretch;max-width:none}
+  .cs-stage.multi .jr > .jf{flex:none}
+  .kf dd{font-size:clamp(1.9rem,9vw,2.6rem)}
+}
+.ph.whole .fr{background:var(--mat,var(--bg-2))}
+.ph.whole .fr img{object-fit:contain}
+.ph.whole.studio .fr,.ph.whole.sheet .fr{background:var(--mat,var(--studio))}
+/* home teasers: the image keeps its own shape inside the panel, so the product is never cut */
+.tz-img.whole{container-type:size;display:grid;place-items:center;overflow:visible}
+.tz-img.whole .fr{position:relative;inset:auto;width:min(100cqw,calc(100cqh * var(--ar)));height:auto;aspect-ratio:var(--ar);background:var(--mat)}
+.tz-img.whole.studio .fr,.tz-img.whole.sheet .fr{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto}
+@media (prefers-reduced-motion:reduce){.jf.zoom:hover .fr img{transform:none}}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -919,6 +1056,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
 </style>
+
 </head>
 <body>
 
@@ -942,7 +1080,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <div class="cs-head">
     <div class="cs-title">
       <div class="cs-tags"><span class="code mono">PD-04</span><span class="status">Concept</span></div>
-      <h1>Jolt Board</h1>
+      <h1 style="--len:5">Jolt Board</h1>
       <p class="cs-kick mono">Electric skateboard for city commuters</p>
     </div>
     <div class="cs-intro">
@@ -951,25 +1089,16 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
     </div>
   </div>
 </section>
-<div class="wrap cs-cover-w"><figure class="ph zoom cs-cover studio" style="--ar:16/7;--pad:5%;max-width:1374px"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard.webp" fetchpriority="high" width="1145" height="556" alt="Electric skateboard with a black deck and red wheels" decoding="async"></div></figure></div>
-<section class="cs-body"><div class="wrap">
-<article class="case cs-case" id="jolt-board">
-
-
-<div class="cs-ov"><p class="cs-ov-l mono">Overview</p><div class="cs-prose"><p>The deck is made from renewable bamboo and abaca fiber, tough but with some flex. Dual hub motors keep every wire out of sight, and an integrated lithium-ion pack does 15–20 mph for 8–10 miles.</p><p>The remote works in either hand, keeps the controls to the essentials, and has a safety strap so it stays with you in traffic.</p></div><aside class="cs-side"><dl class="tag">
-<div class="th">Spec · PD-04</div>
-<dt>Deck</dt><dd>27 in, bamboo and abaca</dd>
-<dt>Drive</dt><dd>Dual hub motors</dd>
-<dt>Speed</dt><dd>15–20 mph</dd>
-<dt>Range</dt><dd>8–10 miles per charge</dd>
-<dt>Remote</dt><dd>Ambidextrous, safety strap</dd>
-</dl></aside></div><div class="grid" style="--n:1">
-
-<figure class="ph studio zoom" style="--ar:16/6;--pad:5%"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard-remote.webp" width="698" height="342" alt="Three views of the black handheld remote" decoding="async" loading="lazy"></div><figcaption>Remote, three views</figcaption></figure>
+<article class="cs2" id="jolt-board">
+<div class="cs-stage cut" style="--mat:var(--studio)"><div class="wrap"><div class="stg-in" style="--ar:1.7410;--mw:1600px"><figure class="jf zoom cut studio" style="--ar:1.7410;--mat:var(--studio);--pad:4%"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard-render.webp" srcset="../../img/nicco-pintac-jolt-board-electric-skateboard-render-800.webp 800w, ../../img/nicco-pintac-jolt-board-electric-skateboard-render.webp 1304w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="1304" height="749" alt="Jolt Board electric skateboard with a black deck and red wheels" decoding="async"></div></figure></div></div></div>
+<div class="wrap cs2-body">
+<section class="ov2"><div class="ov2-t"><p>It was my own take on an electric skateboard, worked through as one system: a deck made from renewable bamboo and abaca fiber, hub motors that keep the wiring out of sight, an integrated battery, and a remote you can use with either hand.</p><p>The board reaches 15 to 20 mph and covers an estimated 8 to 10 miles on a single charge.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Spec · PD-04</div><dt>Deck</dt><dd>27 in, bamboo and abaca</dd><dt>Drive</dt><dd>Dual hub motors</dd><dt>Battery</dt><dd>Lithium-ion, integrated</dd><dt>Speed</dt><dd>15–20 mph</dd><dt>Range</dt><dd>8–10 miles per charge</dd><dt>Remote</dt><dd>Ambidextrous, safety strap</dd></dl><div class="lk"><p class="mono muted">Original project</p><ul><li><a href="https://www.behance.net/gallery/62671387/Jolt-Board-Electric-Skateboard-Design" target="_blank" rel="noopener"><span>Jolt-Board on Behance</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li></ul></div></aside></section>
+<dl class="kf" style="--n:4"><div><dt>deck length</dt><dd>27 in</dd></div><div><dt>top speed</dt><dd>15–20&nbsp;mph</dd></div><div><dt>range per charge</dt><dd>8–10&nbsp;mi</dd></div><div><dt>hub motors</dt><dd>2</dd></div></dl>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">01</span><h2>Sketches</h2></div><div class="ch-t"><p>Sketches worked through the whole system at once: the deck, the enclosure underneath for the battery and electronics, the hub motor, an LED display and the handheld remote.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:1.3342;--gp:0px;--mw:3000px"><figure class="jf zoom" style="--ar:1.3342;--mat:#FFFFFF"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard-sketch.webp" srcset="../../img/nicco-pintac-jolt-board-electric-skateboard-sketch-800.webp 800w, ../../img/nicco-pintac-jolt-board-electric-skateboard-sketch.webp 2000w" sizes="(max-width: 900px) 100vw, 60vw" width="2000" height="1499" alt="Ideation sketch of the electric skateboard with hub motor, LED display and remote on a purple triangle" decoding="async" loading="lazy"></div></figure></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">02</span><h2>Materials and drive</h2></div><div class="ch-t"><p>The deck is made from renewable bamboo and abaca fiber, a durable base with some flex. Dual hub motors drive the wheels directly, which keeps the system clean with no exposed wiring, and an integrated lithium-ion battery gives it 15–20 mph and 8–10 miles per charge.</p></div></div><div class="ch-m"><div class="pt"><div class="jr keep" style="--sum:2.2788;--gp:0px;--mw:2256px"><figure class="jf zoom cut studio" style="--ar:2.2788;--mat:var(--studio);--pad:4%"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard-top-and-underside.webp" srcset="../../img/nicco-pintac-jolt-board-electric-skateboard-top-and-underside-800.webp 800w, ../../img/nicco-pintac-jolt-board-electric-skateboard-top-and-underside.webp 1504w" sizes="(max-width: 900px) 100vw, 60vw" width="1504" height="660" alt="Top and underside of the board: bamboo deck, battery enclosure, hub motors and red wheels" decoding="async" loading="lazy"></div></figure></div><ol class="pt-l"><li><b>Bamboo deck</b><span>Bamboo and abaca fiber: sustainable, light and durable, with some flex.</span></li><li><b>Grip tape</b><span>Full-length grip on the top surface.</span></li><li><b>Carbon fiber enclosure</b><span>A light, tough cover that protects the battery and electronics.</span></li><li><b>Hub motors</b><span>Two motors built into the wheels, for a cleaner ride with no exposed wiring.</span></li><li><b>Polyurethane wheels</b><span>For better mobility on the road.</span></li></ol></div></div></section>
+<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">03</span><h2>The remote</h2></div><div class="ch-t"><p>The remote is ambidextrous and keeps the layout simple and easy to use. An integrated safety strap keeps it secure in your hand while you ride through busy streets.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:2.0409;--gp:0px;--mw:1047px"><figure class="jf zoom cut studio" style="--ar:2.0409;--mat:var(--studio);--pad:5%"><div class="fr"><img src="../../img/nicco-pintac-jolt-board-electric-skateboard-remote.webp" width="698" height="342" alt="Three views of the black handheld remote" decoding="async" loading="lazy"></div><figcaption>Remote, three views</figcaption></figure></div></div></section>
 </div>
-
 </article>
-</div></section>
 <nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../product-design/urban-mobility-e-trike/"><span class="mono muted">Previous</span><span class="code mono">PD-03</span><b>Urban Mobility E&#8209;trike</b><span class="k">E-trike and route system for Mandaluyong</span></a><a class="cs-nc hub" href="../../product-design/"><span class="mono muted">All</span><b>Product design</b><span class="k">5 projects</span></a><a class="cs-nc" href="../../product-design/exhibition-booths/"><span class="mono muted">Next</span><span class="code mono">PD-05</span><b>Exhibition Booths</b><span class="k">Two trade fair stand concepts</span></a></nav>
 <section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">
