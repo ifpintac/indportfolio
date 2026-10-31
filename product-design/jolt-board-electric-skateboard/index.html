@@ -1343,6 +1343,12 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   .c3-next b{font-size:clamp(2.2rem,12vw,4rem)}
 }
 @media (prefers-reduced-motion:reduce){.c3 .zoom:hover .fr img,.c3-next:hover .fr img{transform:none}}
+/* disclaimer note (e.g. an older project shown with updated research) */
+.c3-note{border-left:3px solid var(--pa);background:color-mix(in srgb,var(--pa) 9%,var(--bg));padding:14px 16px 14px 18px;border-radius:0 6px 6px 0}
+.c3-note b{display:block;font-family:var(--f-mono);font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;color:var(--pa-ink,var(--signal-ink))}
+[data-mode="dark"] .c3-note b{color:var(--pa)}
+.c3-note p{margin:0;font-size:.98rem;line-height:1.5}
+.c3-st-foot{margin:22px 0 0;font-family:var(--f-mono);font-weight:600;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;max-width:80ch}
 
 </style>
 
