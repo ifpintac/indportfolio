@@ -9,31 +9,27 @@ It's a single static page with no build step and no dependencies to install. Pla
 ## What's inside
 
 ```
-index.html            The whole site: markup, styles and scripts
-404.html              "Page not found" page for GitHub Pages
-Nicco-Pintac-Portfolio-2026.pdf  Printable slide-deck version of the portfolio, linked from About and Contact
-img/                  Project images (WebP), 800px mobile versions (*-800.webp)
-                      and the social share image (nicco-pintac-portfolio.jpg)
-favicon.svg           Browser tab icon
-favicon-32.png        PNG fallback icon
-apple-touch-icon.png  Home-screen icon for iPhone and iPad
-robots.txt            Lets search engines crawl the site
-sitemap.xml           Tells search engines where the page is
-.nojekyll             Tells GitHub Pages to serve the files as they are
-google*.html          Google Search Console ownership check (keep it)
-b39a9e555c83119ecc1395b44b58db36.txt  IndexNow key, tells Bing and other engines about updates (keep it)
+index.html                     Home: full-screen panels that snap as you scroll, one per project
+product-design/                Industrial and product design overview + one case study per project
+footwear-design/               Footwear and sneaker design overview + case studies
+3d-rendering/                  3D rendering overview + case studies
+404.html                       "Page not found" page for GitHub Pages
+Nicco-Pintac-Portfolio-2026.pdf  Printable slide-deck version of the portfolio
+img/                           Images (WebP, 800px mobile versions *-800.webp) and share images (*-share.jpg)
+favicon*.png, favicon.svg      Browser tab and search result icons
+apple-touch-icon.png           Home-screen icon for iPhone and iPad
+robots.txt                     Crawling rules (keeps image search on the project photos)
+sitemap.xml                    Every page plus its main images, for search engines
+google*.html                   Google Search Console ownership check (keep it)
+*.txt (32 hex characters)      IndexNow key for Bing and other engines (keep it)
+.nojekyll                      Tells GitHub Pages to serve the files as they are
 ```
 
-## Sections
+## Pages
 
-- **Home:** animated 8-bit topographic hero (WebGL, with a static fallback)
-- **Selected projects:** four featured picks and a filterable list of all 14 projects
-- **Product design:** Pocket Wrestler, Urban Mobility E-trike, E-kuliglig Tractor, Jolt Board, Exhibition Booths
-- **Footwear design:** Wave, Bloom, Finn Cotton, BIGWASI, PAMBA, Patchwork Rag Basketball, Sketchbook
-- **3D renders:** Vesper Mini Echo, Meta Quest 3, Formula 1 Car
-- **About, Behance archive and contact**
-
-Light mode is the default, and visitors can switch to dark mode with the toggle. Their choice is remembered.
+- **Home:** intro, the filterable project list, then a full-screen panel per discipline and per project (image, short pitch, key facts, link to the case study). Scrolling snaps from panel to panel.
+- **Case studies:** one page per project with the full story, specs, process and galleries, at addresses like `/footwear-design/wave-technical-sneaker/`.
+- **Discipline pages:** `/product-design/`, `/footwear-design/` and `/3d-rendering/` introduce each discipline and link to its case studies.
 
 ## Publish with GitHub Pages
 
