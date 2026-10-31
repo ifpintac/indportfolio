@@ -1093,6 +1093,257 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .ph .fr{background:var(--lab-2)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
+/* ===================== Case studies v3: editorial, project-themed, mobile-first ===================== */
+.c3{--pc:#1B1D19;--pa:#FF5A12;--pt:#ECE6DA;--on-pc:#F2F1EC;--ink:#191B17;--gut:max(16px,env(safe-area-inset-left,0px));--sec:clamp(64px,9vw,136px)}
+@media (min-width:900px){.c3{--gut:max(40px,env(safe-area-inset-left,0px))}}
+.c3 img{display:block}
+.c3 .fr{position:relative;overflow:hidden;background:var(--bg-2)}
+.c3 .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3 .fit .fr img{object-fit:contain}
+.c3 figure{margin:0;min-width:0}
+.c3 figcaption{margin-top:8px}
+.c3 .zoom{cursor:zoom-in}
+.c3 .zoom .fr img{transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.c3 .zoom:hover .fr img{transform:scale(1.03)}
+
+/* ---------- hero ---------- */
+.c3-hero{position:relative;isolation:isolate;min-height:clamp(540px,calc(100svh - var(--barh)),1000px);display:grid;color:var(--on-pc);background:var(--pc);overflow:hidden}
+.c3-hero .crumbs ol{margin:0 0 clamp(16px,2.6vh,28px);color:inherit;opacity:.78}
+.c3-hero .crumbs a:hover{color:inherit;opacity:1}
+.c3-tags{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.c3-tags .code{color:inherit;opacity:.8}
+.c3-tags .status{border-color:currentColor;color:inherit}
+.c3-tags .status.p{border-color:var(--pa);color:var(--pa)}
+.c3-tags .star .ic{width:18px;height:18px;color:var(--pa)}
+.c3-hero h1{font-family:var(--f-display);font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:-.015em;margin:14px 0 14px;
+  font-size:clamp(3rem,min(10.5vw,calc(92vw / var(--len,10) / .5)),10.5rem);overflow-wrap:break-word;text-wrap:balance}
+.c3-hero .kick{margin:0;font-family:var(--f-mono);font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85;max-width:42ch}
+.c3-hero .bgimg{position:absolute;inset:0;z-index:-2}
+.c3-hero .bgimg img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3-hero.photo .shade{position:absolute;inset:0;z-index:-1;background:var(--shade,linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 34%,rgba(0,0,0,0) 58%,rgba(0,0,0,.62) 100%))}
+.c3-hero.photo .h-in{align-self:end;padding-block:clamp(28px,6vh,72px)}
+.c3-hero.photo.top .h-in{align-self:start;padding-top:clamp(24px,4vh,48px)}
+.c3-hero.photo h1,.c3-hero.photo .kick{text-shadow:0 1px 24px rgba(0,0,0,.25)}
+.c3-hero.split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:minmax(100%,auto)}
+.c3-hero.split .h-img{align-self:stretch;min-height:100%}
+.c3-hero.split .h-in{align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:clamp(24px,4vh,48px) clamp(24px,3vw,48px) clamp(28px,6vh,64px) var(--gut)}
+.c3-hero.split .h-img{position:relative;background:var(--mat,var(--pt))}
+.c3-hero.split .h-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3-hero.split .h-img.fit img{object-fit:contain;padding:var(--pad,6%)}
+.c3-hero.split h1{font-size:clamp(2.8rem,min(7.4vw,calc(40vw / var(--len,10) / .5)),8.6rem)}
+.c3-hero .scroll-cue{position:absolute;right:var(--gut);bottom:clamp(20px,4vh,40px);display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.c3-hero .scroll-cue .ic{width:14px;height:14px}
+
+/* ---------- intro ---------- */
+.c3-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,88px);padding-block:var(--sec) 0;align-items:start}
+.c3-lede{font-family:var(--f-body);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.45rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 clamp(20px,3vw,36px);text-wrap:pretty;max-width:30ch}
+.c3-body p{font-size:clamp(1.05rem,1.2vw,1.2rem);line-height:1.7;margin:0 0 14px;max-width:60ch;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.c3-aside{display:grid;gap:16px;align-content:start}
+.c3-aside .tag{margin:0}
+.c3-links{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- section heads ---------- */
+.c3-sec{padding-top:var(--sec)}
+.c3-sh{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(28px,5vw,88px);align-items:end;margin-bottom:clamp(24px,3.6vw,52px)}
+.c3-sh .k{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pa-ink,var(--signal-ink))}
+.c3-sh .k b{font-family:var(--f-pixel);font-weight:400;font-size:12px;letter-spacing:.04em}
+.c3-sh .k::after{content:"";width:40px;height:2px;background:currentColor}
+.c3-sh h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2.3rem,5vw,4.6rem);line-height:.88;text-transform:uppercase;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.c3-sh .t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;margin:0 0 12px;max-width:58ch;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.c3-sh .t p:last-child{margin-bottom:0}
+
+/* themed panels (fixed colors in both light and dark modes) */
+.c3-panel{background:var(--pt);color:var(--ink);padding-block:var(--sec);margin-top:var(--sec)}
+.c3-panel .c3-sh .t p,.c3-panel .c3-body p{color:color-mix(in srgb,var(--ink) 82%,var(--pt))}
+.c3-panel figcaption,.c3-panel .muted{color:color-mix(in srgb,var(--ink) 62%,var(--pt))}
+.c3-panel .c3-sh .k{color:var(--pa-ink,#8A2E10)}
+.c3-dark{background:var(--pc);color:var(--on-pc);padding-block:var(--sec);margin-top:var(--sec)}
+.c3-dark .c3-sh .t p{color:color-mix(in srgb,var(--on-pc) 80%,var(--pc))}
+.c3-dark figcaption,.c3-dark .muted{color:color-mix(in srgb,var(--on-pc) 64%,var(--pc))}
+.c3-dark .c3-sh .k{color:var(--pa)}
+.c3-panel + .c3-sec,.c3-dark + .c3-sec{padding-top:var(--sec)}
+.c3-panel + .c3-panel,.c3-dark + .c3-dark,.c3-panel + .c3-dark,.c3-dark + .c3-panel{margin-top:0}
+
+/* ---------- research stats ---------- */
+.c3-stats{background:var(--pc);color:var(--on-pc);margin-top:var(--sec);padding-block:clamp(48px,7vw,104px)}
+.c3-stats .c3-sh{margin-bottom:clamp(28px,4vw,56px)}
+.c3-stats .c3-sh .k{color:var(--pa)}
+.c3-stats .c3-sh .t p{color:color-mix(in srgb,var(--on-pc) 80%,var(--pc))}
+.c3-st{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0;margin:0;border-top:1px solid color-mix(in srgb,var(--on-pc) 30%,transparent)}
+.c3-st > div{padding:20px 20px 4px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:12px}
+.c3-st > div + div{padding-left:20px;border-left:1px solid color-mix(in srgb,var(--on-pc) 18%,transparent)}
+.c3-st dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,5.4vw,5.2rem);line-height:.86;letter-spacing:-.015em;color:var(--pa);font-variant-numeric:tabular-nums}
+.c3-st dt{font-size:clamp(.95rem,1.05vw,1.05rem);line-height:1.45;color:color-mix(in srgb,var(--on-pc) 86%,var(--pc));max-width:30ch}
+.c3-st sup a,.c3 sup a{font-family:var(--f-mono);font-weight:600;font-size:.72em;text-decoration:none;color:inherit;opacity:.8;padding:0 2px}
+.c3-st sup a:hover{opacity:1;text-decoration:underline}
+
+/* ---------- mood board ---------- */
+.c3-mb .board-wrap{position:relative}
+.c3-board{position:relative;display:grid;grid-template-columns:repeat(24,minmax(0,1fr));grid-template-rows:repeat(var(--rows,14),minmax(0,1fr));aspect-ratio:24 / calc(var(--rows,14) * var(--rr,1.05));gap:0}
+.c3-board > *{position:relative;margin:0;transform:rotate(var(--rot,0deg));z-index:var(--z,1)}
+.c3-board .ref .fr,.c3-board .ref{height:100%}
+.c3-board .ref .fr{box-shadow:0 1px 2px rgba(0,0,0,.12),0 10px 28px -12px rgba(0,0,0,.35);outline:6px solid #fff;outline-offset:-1px}
+.c3-board .sk{height:100%}
+.c3-board .sk img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.c3-board .sk.cut img{mix-blend-mode:normal;filter:drop-shadow(0 14px 22px rgba(0,0,0,.18))}
+.c3-board .lbl{position:absolute;left:8px;bottom:8px;z-index:2;background:#fff;color:#191B17;font-family:var(--f-mono);font-weight:600;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;line-height:1.2;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.c3-board .note{background:#fff;color:#191B17;padding:clamp(10px,1.3vw,18px);box-shadow:0 10px 26px -14px rgba(0,0,0,.4);font-size:clamp(.82rem,1.05vw,1.02rem);line-height:1.38;align-self:start}
+.c3-board .note b{display:block;font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.05rem,1.6vw,1.5rem);line-height:.95;margin-bottom:6px}
+.c3-board .sw{display:grid;grid-template-rows:1fr auto;box-shadow:0 10px 26px -14px rgba(0,0,0,.4);background:#fff}
+.c3-board .sw i{display:block;min-height:0}
+.c3-board .sw span{font-family:var(--f-mono);font-weight:600;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;color:#191B17}
+.c3-board .tape::before{content:"";position:absolute;z-index:3;top:-9px;left:50%;width:54px;height:18px;transform:translateX(-50%) rotate(-3deg);background:color-mix(in srgb,var(--pa) 55%,#fff 45%);opacity:.85;
+  clip-path:polygon(0 12%,100% 0,96% 50%,100% 100%,0 88%,4% 50%)}
+
+/* ---------- sticky story ---------- */
+.c3-ss{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,88px);align-items:start}
+.c3-ss .s-t{position:sticky;top:calc(var(--barh) + 28px)}
+.c3-ss .s-t .c3-sh{grid-template-columns:minmax(0,1fr);margin-bottom:0}
+.c3-ss .s-m{display:grid;gap:clamp(12px,1.6vw,20px)}
+.c3-ss .s-m .fr{aspect-ratio:var(--ar,4/3)}
+
+/* ---------- process strip ---------- */
+.c3-strip .track{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,29vw,460px);gap:clamp(12px,1.4vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;
+  padding:4px var(--gut) 18px;scroll-padding-inline:var(--gut);overscroll-behavior-x:contain}
+@media (min-width:1700px){.c3-strip .track{padding-inline:calc((100vw - var(--wrap)) / 2)}}
+.c3-strip .card{scroll-snap-align:start;display:grid;gap:12px;align-content:start}
+.c3-strip .card .fr{aspect-ratio:var(--ar,4/5)}
+.c3-strip .card .n{display:flex;align-items:baseline;gap:10px;border-top:2px solid currentColor;padding-top:10px}
+.c3-strip .card .n b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1;color:var(--pa-ink,var(--signal-ink))}
+.c3-dark .c3-strip .card .n b,.c3-dark.c3-strip .card .n b{color:var(--pa)}
+.c3-strip .card .n span{font-family:var(--f-display);font-weight:700;font-size:clamp(1.2rem,1.5vw,1.45rem);text-transform:uppercase;line-height:1}
+.c3-strip .card p{margin:0;font-size:1rem;line-height:1.55;max-width:44ch}
+.c3-strip .ctl{display:flex;gap:8px}
+.c3-strip .ctl button{width:44px;height:44px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center}
+.c3-strip .ctl button:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.c3-strip .ctl .ic{width:16px;height:16px}
+.c3-strip .c3-sh{align-items:end}
+.c3-strip .c3-sh .t{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+
+/* ---------- anatomy (labelled close-up) ---------- */
+.c3-an{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.c3-an .a-img{position:relative}
+.c3-an .a-img .fr{aspect-ratio:var(--ar)}
+.c3-an .a-img.fit .fr{background:var(--mat,var(--studio))}
+.c3-an .pin{position:absolute;left:var(--x);top:var(--y);z-index:2;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:999px;border:2px solid #fff;background:var(--pa);color:#fff;
+  font-family:var(--f-display);font-weight:800;font-size:1rem;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:transform .2s}
+.c3-an .pin::after{content:"";position:absolute;inset:-7px;border-radius:999px;border:2px solid var(--pa);opacity:0;transform:scale(.7);transition:opacity .25s,transform .25s}
+.c3-an .pin:hover,.c3-an .pin.on{transform:scale(1.12)}
+.c3-an .pin.on::after{opacity:.9;transform:scale(1)}
+.c3-an ol{list-style:none;margin:0;padding:0;border-top:2px solid currentColor;counter-reset:a}
+.c3-an li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:13px 0 14px;border-bottom:1px solid color-mix(in srgb,currentColor 18%,transparent);cursor:default;transition:background .2s,padding .2s}
+.c3-an li::before{counter-increment:a;content:counter(a);grid-row:1 / span 2;width:28px;height:28px;border-radius:999px;background:var(--pa);color:#fff;font-family:var(--f-display);font-weight:800;font-size:.9rem;display:grid;place-items:center;margin-top:1px}
+.c3-an li b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.4vw,1.4rem);line-height:1.05;text-transform:uppercase}
+.c3-an li span{font-size:.98rem;line-height:1.5;opacity:.82}
+.c3-an li.on{background:color-mix(in srgb,var(--pa) 10%,transparent);padding-inline:8px}
+
+/* ---------- galleries ---------- */
+.c3-bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(64px,7.2vw,118px);gap:clamp(8px,1vw,14px)}
+.c3-bento > figure{grid-column:span var(--w,6);grid-row:span var(--h,4);display:grid;grid-template-rows:minmax(0,1fr) auto}
+.c3-bento > figure .fr{height:100%}
+.c3-bento figcaption{margin-top:6px}
+.c3-bleed{position:relative;height:var(--h,clamp(340px,72svh,860px));margin-top:var(--sec)}
+.c3-bleed.flush{margin-top:0}
+.c3-bleed .fr{position:absolute;inset:0}
+.c3-bleed figcaption{position:absolute;left:var(--gut);bottom:16px;margin:0;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.c3-duo{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:clamp(8px,1vw,14px)}
+.c3-duo .fr{aspect-ratio:var(--ar,4/5)}
+.c3-wide .fr{aspect-ratio:var(--ar,16/9)}
+.c3-q{margin:0;padding:0}
+.c3-q p{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,4.6vw,4.6rem);line-height:.92;letter-spacing:-.01em;margin:0;max-width:22ch;text-wrap:balance}
+.c3-q p em{font-style:normal;color:var(--pa-ink,var(--signal-ink))}
+.c3-dark .c3-q p em{color:var(--pa)}
+.c3-q footer{margin-top:16px}
+
+/* ---------- references ---------- */
+.c3-refs{padding-top:var(--sec)}
+.c3-refs ol{margin:0;padding:0;list-style:none;columns:2;column-gap:clamp(24px,4vw,64px);counter-reset:r}
+.c3-refs li{break-inside:avoid;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;padding:10px 0;border-top:1px solid var(--line);font-size:.92rem;line-height:1.45;color:var(--muted)}
+.c3-refs li::before{counter-increment:r;content:counter(r);font-family:var(--f-pixel);font-size:11px;color:var(--fg);padding-top:3px}
+.c3-refs li:target{background:color-mix(in srgb,var(--pa) 14%,transparent)}
+.c3-refs a{color:var(--fg);text-decoration-thickness:1px;text-underline-offset:2px;overflow-wrap:anywhere}
+
+/* ---------- next project ---------- */
+.c3-next{display:block;position:relative;isolation:isolate;margin-top:var(--sec);min-height:clamp(320px,52svh,560px);color:#fff;text-decoration:none;overflow:hidden;background:#111}
+.c3-next .fr{position:absolute;inset:0;z-index:-2;background:#111}
+.c3-next .fr img{transition:transform 1s cubic-bezier(.2,.6,.2,1)}
+.c3-next:hover .fr img{transform:scale(1.04)}
+.c3-next::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.66),rgba(0,0,0,.18) 60%,rgba(0,0,0,.05))}
+.c3-next .n-in{min-height:inherit;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding-block:clamp(28px,5vh,56px)}
+.c3-next .n-k{font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;display:flex;align-items:center;gap:10px}
+.c3-next b{font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,7vw,6.6rem);line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+.c3-next .n-s{opacity:.85;font-size:1.05rem}
+.c3-next .ic{width:22px;height:22px}
+.c3-more{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-block:18px}
+.c3-more a{font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.c3-more a:hover{color:var(--signal-ink)}
+.c3-more .ic{width:14px;height:14px}
+
+/* palette and system blocks inside themed sections */
+.c3-panel .pal,.c3-panel .pal > div + div,.c3-panel .pal span{border-color:rgba(25,27,23,.18)}
+.c3-panel .pal span{color:rgba(25,27,23,.62)}
+.c3-panel .pal span b{color:#191B17}
+.c3-panel .cwcard p{color:rgba(25,27,23,.82)}
+
+/* ---------- renders pages (dark) ---------- */
+.c3.lab-page{background:var(--lab);color:var(--lab-fg)}
+.c3.lab-page .c3-body p,.c3.lab-page .c3-sh .t p{color:color-mix(in srgb,var(--lab-fg) 82%,var(--lab))}
+.c3.lab-page figcaption,.c3.lab-page .muted{color:var(--lab-muted)}
+.c3.lab-page .c3-sh .k{color:var(--pa)}
+.c3.lab-page .c3-refs li{border-color:var(--lab-line);color:var(--lab-muted)}
+.c3.lab-page .c3-refs a,.c3.lab-page .c3-refs li::before{color:var(--lab-fg)}
+.c3.lab-page .fr{background:var(--lab-2)}
+.c3.lab-page .c3-more a:hover{color:var(--pa)}
+
+.c3-mb .swipe{display:none;align-items:center;gap:6px;font-family:var(--f-mono);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.7}
+/* strip captions read as body text, not labels */
+.c3-strip .card figcaption{font-family:var(--f-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:1rem;line-height:1.55;color:inherit;margin-top:0;display:grid;gap:8px}
+.c3-strip .card figcaption p{opacity:.82}
+/* contact block and footer on the dark render pages */
+.c3.lab-page .cs-cta-in{border-color:var(--lab-fg)}
+.c3.lab-page .cs-cta-in p{color:var(--lab-muted)}
+.c3.lab-page .cs-cta-in .email{color:var(--lab-fg)}
+.c3.lab-page .btn{border-color:var(--lab-fg);color:var(--lab-fg)}
+.c3.lab-page .btn:hover{background:var(--lab-2)}
+.c3.lab-page .btn.solid{background:var(--lab-fg);color:var(--lab)}
+.c3.lab-page .foot{color:var(--lab-muted);border-color:var(--lab-line)}
+.c3.lab-page .foot a{color:var(--lab-fg)}
+.c3.lab-page .crumbs a,.c3.lab-page .code{color:inherit}
+/* responsive ---------- */
+@media (max-width:1100px){
+  .c3-an{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+}
+@media (max-width:899px){
+  .c3{--sec:clamp(56px,14vw,88px)}
+  .c3-hero{min-height:0}
+  .c3-hero.photo{min-height:min(calc(100svh - var(--barh)),760px)}
+  .c3-hero.split{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+  .c3-hero.split .h-img{order:-1;aspect-ratio:var(--mar,4/3)}
+  .c3-hero.split .h-in{padding:22px var(--gut) 34px;gap:18px}
+  .c3-hero.split h1,.c3-hero h1{font-size:clamp(2.6rem,min(15vw,calc(90vw / var(--len,10) / .5)),5.6rem)}
+  .c3-hero .scroll-cue{display:none}
+  .c3-hero .bgimg img{object-position:var(--mpos,var(--pos,50% 50%))}
+  .c3-intro,.c3-sh,.c3-ss,.c3-an{grid-template-columns:minmax(0,1fr)}
+  .c3-sh{align-items:start}
+  .c3-ss .s-t{position:static}
+  .c3-st{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c3-st > div{padding:18px 14px 18px 0}
+  .c3-st > div:nth-child(odd){border-left:0;padding-left:0}
+  .c3-st > div:nth-child(n+3){border-top:1px solid color-mix(in srgb,var(--on-pc) 18%,transparent)}
+  .c3-st > div + div{padding-left:14px}
+  .c3-st > div:nth-child(odd){padding-left:0}
+  .c3-mb .board-wrap{overflow-x:auto;margin-inline:calc(-1 * var(--gut));padding:12px var(--gut) 14px;scrollbar-width:thin;overscroll-behavior-x:contain}
+  .c3-board{min-width:780px}
+  .c3-mb .swipe{display:inline-flex}
+  .c3-strip .track{grid-auto-columns:min(78vw,340px)}
+  .c3-bento{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(54px,14vw,96px)}
+  .c3-bento > figure{grid-column:span var(--mw,6);grid-row:span var(--mh,var(--h,4))}
+  .c3-duo.stack-m{grid-template-columns:minmax(0,1fr)}
+  .c3-refs ol{columns:1}
+  .c3-next b{font-size:clamp(2.2rem,12vw,4rem)}
+}
+@media (prefers-reduced-motion:reduce){.c3 .zoom:hover .fr img,.c3-next:hover .fr img{transform:none}}
+
 </style>
 
 </head>
@@ -1112,35 +1363,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   </div>
 </header>
 <nav class="mnav" id="mnav" aria-label="Site"><a href="../../">Home<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../product-design/" aria-current="page">Product<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../footwear-design/">Footwear<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../3d-rendering/">Renders<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../#about">About<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="#contact">Contact<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a></nav>
-<main class="cs" id="top" data-group>
-<section class="wrap cs-hero">
-  <nav class="crumbs mono" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../product-design/">Product design</a></li><li aria-current="page">E&#8209;kuliglig Tractor</li></ol></nav>
-  <div class="cs-head">
-    <div class="cs-title">
-      <div class="cs-tags"><span class="code mono">PD-02</span><span class="status">Concept</span></div>
-      <h1 style="--len:10">E&#8209;kuliglig Tractor</h1>
-      <p class="cs-kick mono">Electric hand tractor for Filipino farms</p>
-    </div>
-    <div class="cs-intro">
-      <p class="lede">The kuliglig, the Filipino hand tractor, is the workhorse of small farms. Its design has barely moved: an exposed diesel engine that hits the farmer with fumes, noise and vibration all day.</p>
-      <dl class="cs-meta"><div><dt>Discipline</dt><dd>Product design</dd></div><div><dt>Made with</dt><dd>Electric drive, sealed chassis</dd></div><div><dt>Stage</dt><dd>Concept</dd></div><div><dt>Designer</dt><dd>Nicco Pintac, Manila</dd></div></dl>
-    </div>
-  </div>
-</section>
-<article class="cs2" id="e-kuliglig">
-<div class="cs-stage" style="--mat:#463B47"><div class="wrap"><div class="stg-in" style="--ar:1.5760;--mw:1600px"><figure class="jf zoom" style="--ar:1.5760;--mat:#463B47"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-hand-tractor.webp 2000w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="2000" height="1269" alt="Farmer steering the red E-kuliglig hand tractor through a field at sunset" decoding="async"></div></figure></div></div></div>
-<div class="wrap cs2-body">
-<section class="ov2"><div class="ov2-t"><p>E-kuliglig reimagines it with a fully electric powertrain. Going electric removes the toxic exhaust and drastically reduces the mechanical fatigue of a long day behind the handles.</p><p>An enclosed chassis protects the operator and shields the internals from harsh weather and mud, which reduces maintenance and extends the machine's lifespan.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Spec · PD-02</div><dt>Motor</dt><dd>15 kW electric (20 HP equiv.)</dd><dt>Battery</dt><dd>2 × 96 V lithium-ion</dd><dt>Field time</dt><dd>8–10 h continuous</dd><dt>Road range</dt><dd>Up to 90 km per charge</dd><dt>Hitch</dt><dd>Modular rear</dd></dl></aside></section>
-<dl class="kf" style="--n:4"><div><dt>electric motor, about 20 HP</dt><dd>15 kW</dd></div><div><dt>lithium-ion batteries</dt><dd>2 × 96 V</dd></div><div><dt>of continuous field work</dt><dd>8–10 h</dd></div><div><dt>on the road per charge</dt><dd>90 km</dd></div></dl>
-<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">01</span><h2>Ideation</h2></div><div class="ch-t"><p>The project started under the working name El Traktor, with a reference board that pulled from off-road vehicles, motorcycles, appliances and sneakers.</p><p>Sketches explored the body shell, the wheels and wheel guards, the handlebars and a control display, looking for a form that reads as one sealed machine instead of an engine bolted to a frame.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:1.3342;--gp:0px;--mw:3000px"><figure class="jf zoom" style="--ar:1.3342;--mat:#FFFFFF"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches.webp 2000w" sizes="(max-width: 900px) 100vw, 60vw" width="2000" height="1499" alt="Ideation sketches of the electric tractor body, wheels, handlebars and control display on a teal block" decoding="async" loading="lazy"></div><figcaption>Ideation sketches</figcaption></figure></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">02</span><h2>The first build</h2></div><div class="ch-t"><p>The first version rolled on open steel cage wheels, the kind that grip in flooded rice paddies, under a black and maroon shell with a looped handlebar.</p><p>It was then built as a physical model: a wooden box frame, a body shell formed over it, and cage wheels cut and assembled by hand in the workshop.</p></div></div><div class="ch-m"><div class="jr stack" style="--sum:2.5475;--gp:12px"><figure class="jf zoom cut studio" style="--ar:1.1327;--mat:var(--studio)"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-cage-wheels-render.webp" width="1024" height="904" alt="Render of the first version with steel cage wheels and a black and maroon body" decoding="async" loading="lazy"></div><figcaption>First version, cage wheels</figcaption></figure><figure class="jf zoom cut studio" style="--ar:1.4148;--mat:var(--studio)"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-cage-wheels-rear.webp" width="996" height="704" alt="Second angle of the first version render" decoding="async" loading="lazy"></div><figcaption>Rear three-quarter</figcaption></figure></div><div class="jr scroll" style="--sum:3.4167;--gp:24px"><figure class="jf zoom" style="--ar:1.3333;--mat:#B4B6B3"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-box-frame.webp" width="820" height="615" alt="Wooden box frame for the tractor model on a workbench" decoding="async" loading="lazy"></div><figcaption>Box frame</figcaption></figure><figure class="jf zoom" style="--ar:1.3333;--mat:#A5988F"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-body-shell.webp" width="820" height="615" alt="Formed body shell over the frame in the workshop" decoding="async" loading="lazy"></div><figcaption>Forming the shell</figcaption></figure><figure class="jf zoom" style="--ar:0.7500;--mat:#3D281D"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-cage-wheel.webp" width="720" height="960" alt="Cage wheel being assembled by hand" decoding="async" loading="lazy"></div><figcaption>Assembling a cage wheel</figcaption></figure></div><div class="jr keep" style="--sum:1.3333;--gp:0px;--mw:2400px"><figure class="jf zoom" style="--ar:1.3333;--mat:#C1A698"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1200" alt="Finished physical model of the tractor with cage wheels in a hallway" decoding="async" loading="lazy"></div><figcaption>The finished model</figcaption></figure></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">03</span><h2>Electric drive</h2></div><div class="ch-t"><p>Inside the sealed body, a 15 kW electric motor delivers the equivalent of 20 HP, enough to work dense, wet soil and pull heavy agricultural loads.</p><p>Two 96 V lithium-ion batteries run it for 8 to 10 hours of continuous field work, or up to 90 km of travel on the road. A controller sets the motor speed, and every control sits on a panel at the handlebars.</p></div></div><div class="ch-m"><div class="pt"><div class="jr keep" style="--sum:0.8393;--gp:0px;--mw:1308px"><figure class="jf zoom" style="--ar:0.8393;--mat:#FFFFFF"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-battery-motor-cutaway.webp" width="872" height="1039" alt="Cutaway of the tractor showing the handlebar control panel, two 96 V batteries, the 15 kW motor and the controller" decoding="async" loading="lazy"></div></figure></div><ol class="pt-l"><li><b>Control panel</b><span>On the handlebars: speed and drive modes, without letting go of the grip.</span></li><li><b>Batteries</b><span>Two 96 V lithium-ion packs: 8–10 hours in the field or 90 km on the road.</span></li><li><b>E-motor</b><span>15 kW, about 20 HP. Powerful enough for wet soil.</span></li><li><b>Controller</b><span>Sets the speed of the motor.</span></li></ol></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">04</span><h2>Built for mud and rain</h2></div><div class="ch-t"><p>The enclosed chassis shields the drive from rain and mud and keeps the operator clear of moving parts. The control panel is weather-resistant and built into the handlebars, so speed and power change while both hands stay on the grips.</p><p>The rear hitch stays fully modular, so the tractor moves between standard plows, harrows and cultivators like the machines farmers already use.</p></div></div><div class="ch-m"><div class="jr scroll" style="--sum:3.9104;--gp:24px"><figure class="jf zoom" style="--ar:1.3047;--mat:#8C8C8C"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-body.webp" width="441" height="338" alt="Close-up render of the red and black sealed body" decoding="async" loading="lazy"></div><figcaption>Sealed body</figcaption></figure><figure class="jf zoom" style="--ar:1.3047;--mat:#353636"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-rear.webp" width="441" height="338" alt="Close-up render of the rear body and frame" decoding="async" loading="lazy"></div><figcaption>Rear body and frame</figcaption></figure><figure class="jf zoom" style="--ar:1.3009;--mat:#939293"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-controls.webp" width="441" height="339" alt="Close-up render of the handlebar control panel" decoding="async" loading="lazy"></div><figcaption>Handlebar control panel</figcaption></figure></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><span class="ch-n mono">05</span><h2>Drawn to size</h2></div><div class="ch-t"><p>A dimensioned front and side drawing fixed the proportions of the rubber-tire version: track width, tire size, and the length and angle of the handle. In the field, it swaps the cage wheels for deep-lug tires.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:1.3929;--gp:0px;--mw:3600px"><figure class="jf zoom" style="--ar:1.3929;--mat:#FFFFFF"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing.webp 2400w" sizes="(max-width: 900px) 100vw, 60vw" width="2400" height="1723" alt="Dimensioned front and side drawing of the electric tractor, in millimetres" decoding="async" loading="lazy"></div><figcaption>Front and side drawing, mm</figcaption></figure></div><div class="jr keep" style="--sum:1.3333;--gp:0px;--mw:1590px"><figure class="jf zoom" style="--ar:1.3333;--mat:#8A826F"><div class="fr"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-field.webp" width="1060" height="795" alt="E-kuliglig with rubber tires on a dirt path beside a rice field" decoding="async" loading="lazy"></div><figcaption>In the field</figcaption></figure></div></div></section>
-</div>
-</article>
-<nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../product-design/pocket-wrestler/"><span class="mono muted">Previous</span><span class="code mono">PD-01</span><b>Pocket Wrestler</b><span class="k">3D-printed finger trainer for climbers</span></a><a class="cs-nc hub" href="../../product-design/"><span class="mono muted">All</span><b>Product design</b><span class="k">5 projects</span></a><a class="cs-nc" href="../../product-design/urban-mobility-e-trike/"><span class="mono muted">Next</span><span class="code mono">PD-03</span><b>Urban Mobility E&#8209;trike</b><span class="k">E-trike and route system for Mandaluyong</span></a></nav>
-<section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
+<main class="c3" id="top" data-group style="--pc:#221B25;--pa:#E4492F;--pt:#EEE7DA;--pa-ink:#B5361F;--on-pc:#F4EFE6"><section class="c3-hero photo top" style="--pos:50% 42%;--mpos:16% 60%"><div class="bgimg"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-1400.webp 1400w, ../../img/nicco-pintac-e-kuliglig-electric-hand-tractor.webp 2000w" sizes="100vw" fetchpriority="high" width="2000" height="1269" alt="Farmer steering the red E-kuliglig hand tractor through a field at sunset" decoding="async"></div><div class="shade"></div><div class="wrap h-in"><nav class="crumbs mono" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../product-design/">Product design</a></li><li aria-current="page">E&#8209;kuliglig Tractor</li></ol></nav><div class="c3-tags"><span class="code mono">PD-02</span><span class="status">Concept</span></div><h1 style="--len:10">E&#8209;kuliglig Tractor</h1><p class="kick">Electric hand tractor for Filipino farms</p></div><span class="scroll-cue" aria-hidden="true">Scroll <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></span></section><section class="wrap c3-intro"><div><p class="c3-lede">The Filipino hand tractor, rebuilt around an electric drive and a sealed body.</p><div class="c3-body"><p>The kuliglig is the workhorse of small farms across the Philippines, but its design has stagnated. Machines on the market still run exposed diesel engines that hit the farmer with exhaust, noise and vibration all day.</p><p>E-kuliglig reimagines it with a fully electric powertrain. Going electric removes the toxic exhaust and drastically reduces mechanical fatigue, and an enclosed chassis shields the operator and the internals from weather and mud, cutting maintenance and adding years to the machine.</p></div></div><aside class="c3-aside"><dl class="cs-meta"><div><dt>Discipline</dt><dd>Product design</dd></div><div><dt>Made with</dt><dd>Electric drive, sealed chassis</dd></div><div><dt>Stage</dt><dd>Concept</dd></div><div><dt>Designer</dt><dd>Nicco Pintac, Manila</dd></div></dl><dl class="tag"><div class="th">Spec · PD-02</div><dt>Motor</dt><dd>15 kW electric (20 HP equiv.)</dd><dt>Battery</dt><dd>2 × 96 V lithium-ion</dd><dt>Field time</dt><dd>8–10 h continuous</dd><dt>Road range</dt><dd>Up to 90 km per charge</dd><dt>Hitch</dt><dd>Modular rear</dd></dl></aside></section><section class="c3-stats"><div class="wrap"><header class="c3-sh"><div><p class="k"><b>01</b>Context</p><h2>Small farms, heavy machines</h2></div><div class="t"><p>Filipino farms are getting smaller: the 2022 census counted 7.43 million of them, averaging less than a hectare.<sup><a href="#ref-2" aria-label="Source 2">2</a><a href="#ref-3" aria-label="Source 3">3</a></sup> On plots that size, a walk-behind tractor is often the machine that fits.</p><p>Mechanization is still climbing, and the hand tractors doing the work shake hard. Electric hand tractors are only at the prototype stage locally, like a 3 kW university e-Tractor built in 2020.<sup><a href="#ref-7" aria-label="Source 7">7</a></sup></p></div></header><dl class="c3-st" style="--n:4"><div><dt>average farm size in 2022, down from 1.31 ha in 2012<sup><a href="#ref-2" aria-label="Source 2">2</a></sup></dt><dd>0.83 ha</dd></div><div><dt>hp per hectare of mechanization on rice farms at the end of 2025<sup><a href="#ref-1" aria-label="Source 1">1</a></sup></dt><dd>2.81</dd></div><div><dt>hand vibration measured on a two-wheel tractor while plowing<sup><a href="#ref-4" aria-label="Source 4">4</a></sup></dt><dd>17 m/s²</dd></div><div><dt>hectares of rice harvested in 2023<sup><a href="#ref-6" aria-label="Source 6">6</a></sup></dt><dd>4.82M</dd></div></dl></div></section><section class="c3-panel c3-mb"><div class="wrap"><header class="c3-sh"><div><p class="k"><b>02</b>Mood board</p><h2>Rugged, sealed, friendly</h2></div><div class="t"><p>Working name: El Traktor. The reference board pulled from off-road vehicles, a café racer's tank, a carbon handlebar, an industrial 3D printer and a chunky runner: tough shapes with clean, closed surfaces. The sketches looked for a form that reads as one sealed machine instead of an engine bolted to a frame.</p></div></header><div class="board-wrap"><div class="c3-board" style="--rows:14;--rr:1.05"><figure class="ref tape zoom" style="grid-area:1 / 1 / span 6 / span 7;--rot:-2deg;--z:2"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-jeep.webp" width="531" height="531" alt="Off-road vehicle with a green body and big tires" decoding="async" loading="lazy"></div><span class="lbl">Off-road stance</span></figure><figure class="ref zoom" style="grid-area:7 / 2 / span 6 / span 6;--rot:2deg;--z:2"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-concept.webp" width="532" height="531" alt="Concept sketch of a compact off-road truck" decoding="async" loading="lazy"></div><span class="lbl">Compact utility</span></figure><figure class="sk zoom" style="grid-area:1 / 8 / span 14 / span 11;--z:1"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches-1400.webp 1400w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-ideation-sketches.webp 2000w" sizes="(max-width: 900px) 90vw, 60vw" width="2000" height="1499" alt="Ideation sketches of the electric tractor body, wheels, handlebars and control display on a teal block" decoding="async" loading="lazy"></figure><figure class="ref tape zoom" style="grid-area:1 / 19 / span 5 / span 6;--rot:2deg;--z:2"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-tank.webp" width="396" height="396" alt="Olive motorcycle fuel tank over an exposed engine" decoding="async" loading="lazy"></div><span class="lbl">Tank over engine</span></figure><figure class="ref zoom" style="grid-area:6 / 20 / span 5 / span 5;--rot:-2deg;--z:3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-handle.webp" width="396" height="396" alt="Carbon fiber handlebar detail" decoding="async" loading="lazy"></div><span class="lbl">Handlebar</span></figure><figure class="ref zoom" style="grid-area:10 / 18 / span 5 / span 5;--rot:2deg;--z:3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-printer.webp" width="531" height="531" alt="Dark grey industrial 3D printer cabinet" decoding="async" loading="lazy"></div><span class="lbl">Closed casing</span></figure><figure class="ref zoom" style="grid-area:11 / 1 / span 4 / span 7;--rot:-1deg;--z:3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-mb-ek-shoe.webp" width="714" height="396" alt="Red knit running shoe on a dark background" decoding="async" loading="lazy"></div><span class="lbl">Chunky sole</span></figure><div class="note" style="grid-area:12 / 8 / span 3 / span 5;--rot:-2deg;--z:4"><b>El Traktor</b>One sealed body. Controls in reach. Wheels that grip mud.</div><div class="sw" style="grid-area:12 / 14 / span 3 / span 2"><i style="background:#D33B2C"></i><span>Signal red</span></div><div class="sw" style="grid-area:12 / 16 / span 3 / span 2"><i style="background:#1C1C1E"></i><span>Black</span></div></div></div><p class="swipe"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg>Swipe to see the whole board</p></div></section><section class="c3-sec wrap"><blockquote class="c3-q"><p>Take the engine <em>out of the farmer's face.</em></p></blockquote></section><section class="c3-dark c3-strip"><div class="wrap"><header class="c3-sh"><div><p class="k"><b>03</b>First build</p><h2>Cage wheels and a hand-built model</h2></div><div class="t"><p>The first version rolled on open steel cage wheels, the kind that grip in flooded rice paddies, under a black and maroon shell with a looped handlebar. It was then built as a physical model: a wooden box frame, a body shell formed over it, and cage wheels cut and assembled by hand.</p><div class="ctl" role="group" aria-label="Scroll the steps"><button type="button" data-dir="-1" aria-label="Previous"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></button><button type="button" data-dir="1" aria-label="Next"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="0" y="0" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></button></div></div></header></div><div class="track"><figure class="card zoom" style="--ar:4/5"><div class="fr fitfr" style="background:var(--studio)"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-cage-wheels-render.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-cage-wheels-render-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-cage-wheels-render.webp 1024w" sizes="(max-width: 900px) 80vw, 32vw" width="1024" height="904" alt="Render of the first version with steel cage wheels" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>01</b><span>Render</span></div><p>The first version on steel cage wheels.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 55%"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-box-frame.webp" width="820" height="615" alt="Wooden box frame for the tractor model" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>02</b><span>Box frame</span></div><p>A wooden frame sets the body volume.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-body-shell.webp" width="820" height="615" alt="Formed body shell over the frame" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>03</b><span>Shell</span></div><p>The shell is formed over the frame.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-e-kuliglig-tractor-model-cage-wheel.webp" width="720" height="960" alt="Cage wheel being assembled by hand" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>04</b><span>Wheels</span></div><p>Cage wheels cut and assembled by hand.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 60%"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-physical-model.webp 1600w" sizes="(max-width: 900px) 80vw, 32vw" width="1600" height="1200" alt="Finished physical model of the tractor with cage wheels" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>05</b><span>Model</span></div><p>The finished model.</p></figcaption></figure></div></section><section class="c3-sec wrap"><header class="c3-sh"><div><p class="k"><b>04</b>Electric drive</p><h2>Power you can hold onto</h2></div><div class="t"><p>Inside the sealed body, a 15 kW electric motor delivers the equivalent of 20 HP, enough to work dense, wet soil and pull heavy loads. Two 96 V lithium-ion batteries run it for 8 to 10 hours of continuous field work, or up to 90 km on the road.</p><p>A controller sets the motor speed. The weather-resistant control panel sits on the handlebars, so speed and power change while both hands stay on the grips. The rear hitch stays modular for standard plows, harrows and cultivators.</p></div></header><dl class="kf" style="--n:4"><div><dt>electric motor, about 20 HP</dt><dd>15 kW</dd></div><div><dt>lithium-ion batteries</dt><dd>2 × 96 V</dd></div><div><dt>of continuous field work</dt><dd>8–10 h</dd></div><div><dt>on the road per charge</dt><dd>90 km</dd></div></dl><div style="height:clamp(24px,3vw,40px)"></div><div class="c3-ss"><div class="s-t"><header class="c3-sh"><div><p class="k">Cutaway</p><h2>What sits inside</h2></div><div class="t"><p>The cutaway shows how the parts are packed: batteries low and central for balance, the motor between the wheels, and every control at the handlebar.</p></div></header></div><div class="s-m"><figure class="zoom" style="--ar:872/1039"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-battery-motor-cutaway.webp" width="872" height="1039" alt="Cutaway of the tractor showing the handlebar control panel, two 96 V batteries, the 15 kW motor and the controller" decoding="async" loading="lazy"></div><figcaption>Cutaway, rubber-tire version</figcaption></figure><figure class="zoom" style="--ar:4/3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-controls.webp" width="441" height="339" alt="Close-up render of the handlebar control panel" decoding="async" loading="lazy"></div><figcaption>Handlebar control panel</figcaption></figure><figure class="zoom" style="--ar:4/3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-body.webp" width="441" height="338" alt="Close-up render of the red and black sealed body" decoding="async" loading="lazy"></div><figcaption>Sealed body</figcaption></figure></div></div></section><figure class="c3-bleed zoom"><div class="fr" style="--pos:50% 62%"><img src="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-field.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-field-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-hand-tractor-field.webp 1060w" sizes="100vw" width="1060" height="795" alt="E-kuliglig with rubber tires on a dirt path beside a rice field" decoding="async" loading="lazy"></div><figcaption>Rubber-tire version, in the field</figcaption></figure><section class="c3-sec wrap"><header class="c3-sh"><div><p class="k"><b>05</b>Drawn to size</p><h2>From sketch to dimensions</h2></div><div class="t"><p>A dimensioned front and side drawing fixed the proportions of the rubber-tire version: track width, tire size, and the length and angle of the handle.</p></div></header><div class="c3-wide" style="--ar:1.3929"><figure class="zoom fit"><div class="fr fitfr" style="background:#FFFFFF"><img src="../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing.webp" srcset="../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing-800.webp 800w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing-1400.webp 1400w, ../../img/nicco-pintac-e-kuliglig-electric-tractor-technical-drawing.webp 2400w" sizes="(max-width: 900px) 100vw, 90vw" width="2400" height="1723" alt="Dimensioned front and side drawing of the electric tractor, in millimetres" decoding="async" loading="lazy"></div><figcaption>Front and side drawing, mm</figcaption></figure></div></section><section class="wrap c3-refs" id="sources"><header class="c3-sh"><div><p class="k">Sources</p><h2>References</h2></div><div class="t"></div></header><ol><li id="ref-1"><span>&quot;PhilMech deploys 1,700 rice machines&quot;, Daily Tribune, 2026. <a href="https://tribune.net.ph/2026/07/27/philmech-deploys-1700-rice-machines" target="_blank" rel="noopener">tribune.net.ph</a></span></li><li id="ref-2"><span>&quot;Agri farms multiplied over past decades&quot; (2022 Census of Agriculture and Fisheries), Philippine Daily Inquirer, 2025. <a href="https://plus.inquirer.net/?p=215640" target="_blank" rel="noopener">plus.inquirer.net</a></span></li><li id="ref-3"><span>PSA, 2022 Census of Agriculture and Fisheries: farm and parcel characteristics (MIMAROPA release), 2025. <a href="https://rssomimaropa.psa.gov.ph/system/files/attachment-dir/2025-SR-004%202022%20Census%20of%20Agriculture%20and%20Fisheries%2C%20Agriculture%20Farm%20and%20Parcel%20Characteristics.pdf" target="_blank" rel="noopener">rssomimaropa.psa.gov.ph</a></span></li><li id="ref-4"><span>&quot;Baseline measurement and analysis of hand-arm transmitted vibration of an ergonomically designed two-wheel tractor&quot;, Philippine Agricultural Scientist (UPLB), 2015. <a href="https://www.ukdr.uplb.edu.ph/journal-articles/1816/" target="_blank" rel="noopener">www.ukdr.uplb.edu.ph</a></span></li><li id="ref-5"><span>IARC (WHO), &quot;Diesel engine exhaust carcinogenic&quot;, Press Release 213, 2012. <a href="https://www.iarc.who.int/wp-content/uploads/2018/07/pr213_E.pdf" target="_blank" rel="noopener">www.iarc.who.int</a></span></li><li id="ref-6"><span>PSA, Palay Situation Report, January to December 2023, 2024. <a href="https://psa.gov.ph/sites/default/files/csd/Palay%20Situation%20Report%2C%20January%20to%20December%202023.pdf" target="_blank" rel="noopener">psa.gov.ph</a></span></li><li id="ref-7"><span>&quot;Development of an electric hand tractor (e-Tractor) for agricultural operations&quot;, IOP Conference Series (UPLB), 2020. <a href="https://www.ukdr.uplb.edu.ph/journal-articles/251" target="_blank" rel="noopener">www.ukdr.uplb.edu.ph</a></span></li></ol></section><a class="c3-next" href="../../product-design/urban-mobility-e-trike/"><div class="fr" style="--pos:55% 55%"><img src="../../img/nicco-pintac-urban-mobility-e-trike.webp" srcset="../../img/nicco-pintac-urban-mobility-e-trike-800.webp 800w, ../../img/nicco-pintac-urban-mobility-e-trike.webp 1024w" sizes="100vw" width="1024" height="684" alt="Urban Mobility E-trike" decoding="async" loading="lazy"></div><div class="wrap n-in"><span class="n-k">Next project <svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span><b>Urban Mobility E&#8209;trike</b><span class="n-s">E-trike and route system for Mandaluyong</span></div></a><nav class="wrap c3-more" aria-label="More projects"><a href="../../product-design/pocket-wrestler/"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg>Previous: Pocket Wrestler</a><a href="../../product-design/">All product design (5)</a></nav><section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">
     <span class="code">Work together</span>
     <h2 id="cta-h">Have a product, a shoe or a render in mind?</h2>
@@ -1159,8 +1382,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <nav class="foot-nav" aria-label="Disciplines"><a href="../../product-design/">Product design</a><a href="../../footwear-design/">Footwear design</a><a href="../../3d-rendering/">3D rendering</a></nav>
   <a class="totop" href="#top">Back to top <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="3" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></a>
   
-</footer>
-</main>
+</footer></main>
 <dialog class="lb" id="lb" aria-label="Image viewer">
   <div class="lb-in">
     <div class="lb-top"><span class="mono" id="lb-count">01 / 01</span>
@@ -1737,6 +1959,27 @@ void main(){
     catch (_) { const r = document.createRange(); r.selectNodeContents($('#email-text')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); lbl.textContent = 'Selected, press Ctrl+C'; }
     setTimeout(() => { lbl.textContent = 'Copy email'; }, 2400);
   }));
+
+  /* Case studies: labelled close-ups (pins and list highlight each other) */
+  $$('.c3-an').forEach(an => {
+    const pins = $$('.pin', an), items = $$('li', an);
+    const set = (i, on) => { pins[i] && pins[i].classList.toggle('on', on); items[i] && items[i].classList.toggle('on', on); };
+    pins.forEach((p, i) => {
+      ['mouseenter', 'focus'].forEach(ev => p.addEventListener(ev, () => set(i, true)));
+      ['mouseleave', 'blur'].forEach(ev => p.addEventListener(ev, () => set(i, false)));
+      p.addEventListener('click', e => { e.preventDefault(); const on = !p.classList.contains('on'); pins.forEach((_, j) => set(j, false)); set(i, on); });
+    });
+    items.forEach((li, i) => { li.addEventListener('mouseenter', () => set(i, true)); li.addEventListener('mouseleave', () => set(i, false)); });
+  });
+  /* Case studies: process strip arrows */
+  $$('.c3-strip').forEach(st => {
+    const tr = $('.track', st); if (!tr) return;
+    const step = () => { const c = $('.card', tr); return c ? c.getBoundingClientRect().width + 16 : 300; };
+    const prev = $('[data-dir="-1"]', st), next = $('[data-dir="1"]', st);
+    const sync = () => { if (prev) prev.disabled = tr.scrollLeft < 8; if (next) next.disabled = tr.scrollLeft + tr.clientWidth > tr.scrollWidth - 8; };
+    [prev, next].forEach(b => b && b.addEventListener('click', () => tr.scrollBy({ left: step() * +b.dataset.dir, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
+    tr.addEventListener('scroll', sync, { passive: true }); sync();
+  });
 })();
 </script>
 

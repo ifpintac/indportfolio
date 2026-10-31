@@ -1093,6 +1093,257 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .lab .ph .fr{background:var(--lab-2)}
 .lab .tag::before{background:var(--lab)}
 .lab .tools{margin-top:clamp(28px,4vw,48px)}
+/* ===================== Case studies v3: editorial, project-themed, mobile-first ===================== */
+.c3{--pc:#1B1D19;--pa:#FF5A12;--pt:#ECE6DA;--on-pc:#F2F1EC;--ink:#191B17;--gut:max(16px,env(safe-area-inset-left,0px));--sec:clamp(64px,9vw,136px)}
+@media (min-width:900px){.c3{--gut:max(40px,env(safe-area-inset-left,0px))}}
+.c3 img{display:block}
+.c3 .fr{position:relative;overflow:hidden;background:var(--bg-2)}
+.c3 .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3 .fit .fr img{object-fit:contain}
+.c3 figure{margin:0;min-width:0}
+.c3 figcaption{margin-top:8px}
+.c3 .zoom{cursor:zoom-in}
+.c3 .zoom .fr img{transition:transform .7s cubic-bezier(.2,.6,.2,1)}
+.c3 .zoom:hover .fr img{transform:scale(1.03)}
+
+/* ---------- hero ---------- */
+.c3-hero{position:relative;isolation:isolate;min-height:clamp(540px,calc(100svh - var(--barh)),1000px);display:grid;color:var(--on-pc);background:var(--pc);overflow:hidden}
+.c3-hero .crumbs ol{margin:0 0 clamp(16px,2.6vh,28px);color:inherit;opacity:.78}
+.c3-hero .crumbs a:hover{color:inherit;opacity:1}
+.c3-tags{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.c3-tags .code{color:inherit;opacity:.8}
+.c3-tags .status{border-color:currentColor;color:inherit}
+.c3-tags .status.p{border-color:var(--pa);color:var(--pa)}
+.c3-tags .star .ic{width:18px;height:18px;color:var(--pa)}
+.c3-hero h1{font-family:var(--f-display);font-weight:800;text-transform:uppercase;line-height:.84;letter-spacing:-.015em;margin:14px 0 14px;
+  font-size:clamp(3rem,min(10.5vw,calc(92vw / var(--len,10) / .5)),10.5rem);overflow-wrap:break-word;text-wrap:balance}
+.c3-hero .kick{margin:0;font-family:var(--f-mono);font-weight:600;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85;max-width:42ch}
+.c3-hero .bgimg{position:absolute;inset:0;z-index:-2}
+.c3-hero .bgimg img{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3-hero.photo .shade{position:absolute;inset:0;z-index:-1;background:var(--shade,linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,0) 34%,rgba(0,0,0,0) 58%,rgba(0,0,0,.62) 100%))}
+.c3-hero.photo .h-in{align-self:end;padding-block:clamp(28px,6vh,72px)}
+.c3-hero.photo.top .h-in{align-self:start;padding-top:clamp(24px,4vh,48px)}
+.c3-hero.photo h1,.c3-hero.photo .kick{text-shadow:0 1px 24px rgba(0,0,0,.25)}
+.c3-hero.split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:minmax(100%,auto)}
+.c3-hero.split .h-img{align-self:stretch;min-height:100%}
+.c3-hero.split .h-in{align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:clamp(24px,4vh,48px) clamp(24px,3vw,48px) clamp(28px,6vh,64px) var(--gut)}
+.c3-hero.split .h-img{position:relative;background:var(--mat,var(--pt))}
+.c3-hero.split .h-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.c3-hero.split .h-img.fit img{object-fit:contain;padding:var(--pad,6%)}
+.c3-hero.split h1{font-size:clamp(2.8rem,min(7.4vw,calc(40vw / var(--len,10) / .5)),8.6rem)}
+.c3-hero .scroll-cue{position:absolute;right:var(--gut);bottom:clamp(20px,4vh,40px);display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.c3-hero .scroll-cue .ic{width:14px;height:14px}
+
+/* ---------- intro ---------- */
+.c3-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,88px);padding-block:var(--sec) 0;align-items:start}
+.c3-lede{font-family:var(--f-body);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.45rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 clamp(20px,3vw,36px);text-wrap:pretty;max-width:30ch}
+.c3-body p{font-size:clamp(1.05rem,1.2vw,1.2rem);line-height:1.7;margin:0 0 14px;max-width:60ch;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.c3-aside{display:grid;gap:16px;align-content:start}
+.c3-aside .tag{margin:0}
+.c3-links{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ---------- section heads ---------- */
+.c3-sec{padding-top:var(--sec)}
+.c3-sh{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px clamp(28px,5vw,88px);align-items:end;margin-bottom:clamp(24px,3.6vw,52px)}
+.c3-sh .k{display:flex;align-items:center;gap:12px;margin:0 0 12px;font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pa-ink,var(--signal-ink))}
+.c3-sh .k b{font-family:var(--f-pixel);font-weight:400;font-size:12px;letter-spacing:.04em}
+.c3-sh .k::after{content:"";width:40px;height:2px;background:currentColor}
+.c3-sh h2{font-family:var(--f-display);font-weight:800;font-size:clamp(2.3rem,5vw,4.6rem);line-height:.88;text-transform:uppercase;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.c3-sh .t p{font-size:clamp(1.05rem,1.2vw,1.18rem);line-height:1.68;margin:0 0 12px;max-width:58ch;color:color-mix(in srgb,var(--fg) 86%,var(--bg))}
+.c3-sh .t p:last-child{margin-bottom:0}
+
+/* themed panels (fixed colors in both light and dark modes) */
+.c3-panel{background:var(--pt);color:var(--ink);padding-block:var(--sec);margin-top:var(--sec)}
+.c3-panel .c3-sh .t p,.c3-panel .c3-body p{color:color-mix(in srgb,var(--ink) 82%,var(--pt))}
+.c3-panel figcaption,.c3-panel .muted{color:color-mix(in srgb,var(--ink) 62%,var(--pt))}
+.c3-panel .c3-sh .k{color:var(--pa-ink,#8A2E10)}
+.c3-dark{background:var(--pc);color:var(--on-pc);padding-block:var(--sec);margin-top:var(--sec)}
+.c3-dark .c3-sh .t p{color:color-mix(in srgb,var(--on-pc) 80%,var(--pc))}
+.c3-dark figcaption,.c3-dark .muted{color:color-mix(in srgb,var(--on-pc) 64%,var(--pc))}
+.c3-dark .c3-sh .k{color:var(--pa)}
+.c3-panel + .c3-sec,.c3-dark + .c3-sec{padding-top:var(--sec)}
+.c3-panel + .c3-panel,.c3-dark + .c3-dark,.c3-panel + .c3-dark,.c3-dark + .c3-panel{margin-top:0}
+
+/* ---------- research stats ---------- */
+.c3-stats{background:var(--pc);color:var(--on-pc);margin-top:var(--sec);padding-block:clamp(48px,7vw,104px)}
+.c3-stats .c3-sh{margin-bottom:clamp(28px,4vw,56px)}
+.c3-stats .c3-sh .k{color:var(--pa)}
+.c3-stats .c3-sh .t p{color:color-mix(in srgb,var(--on-pc) 80%,var(--pc))}
+.c3-st{display:grid;grid-template-columns:repeat(var(--n,4),minmax(0,1fr));gap:0;margin:0;border-top:1px solid color-mix(in srgb,var(--on-pc) 30%,transparent)}
+.c3-st > div{padding:20px 20px 4px 0;display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:12px}
+.c3-st > div + div{padding-left:20px;border-left:1px solid color-mix(in srgb,var(--on-pc) 18%,transparent)}
+.c3-st dd{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,5.4vw,5.2rem);line-height:.86;letter-spacing:-.015em;color:var(--pa);font-variant-numeric:tabular-nums}
+.c3-st dt{font-size:clamp(.95rem,1.05vw,1.05rem);line-height:1.45;color:color-mix(in srgb,var(--on-pc) 86%,var(--pc));max-width:30ch}
+.c3-st sup a,.c3 sup a{font-family:var(--f-mono);font-weight:600;font-size:.72em;text-decoration:none;color:inherit;opacity:.8;padding:0 2px}
+.c3-st sup a:hover{opacity:1;text-decoration:underline}
+
+/* ---------- mood board ---------- */
+.c3-mb .board-wrap{position:relative}
+.c3-board{position:relative;display:grid;grid-template-columns:repeat(24,minmax(0,1fr));grid-template-rows:repeat(var(--rows,14),minmax(0,1fr));aspect-ratio:24 / calc(var(--rows,14) * var(--rr,1.05));gap:0}
+.c3-board > *{position:relative;margin:0;transform:rotate(var(--rot,0deg));z-index:var(--z,1)}
+.c3-board .ref .fr,.c3-board .ref{height:100%}
+.c3-board .ref .fr{box-shadow:0 1px 2px rgba(0,0,0,.12),0 10px 28px -12px rgba(0,0,0,.35);outline:6px solid #fff;outline-offset:-1px}
+.c3-board .sk{height:100%}
+.c3-board .sk img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.c3-board .sk.cut img{mix-blend-mode:normal;filter:drop-shadow(0 14px 22px rgba(0,0,0,.18))}
+.c3-board .lbl{position:absolute;left:8px;bottom:8px;z-index:2;background:#fff;color:#191B17;font-family:var(--f-mono);font-weight:600;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 7px;line-height:1.2;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.c3-board .note{background:#fff;color:#191B17;padding:clamp(10px,1.3vw,18px);box-shadow:0 10px 26px -14px rgba(0,0,0,.4);font-size:clamp(.82rem,1.05vw,1.02rem);line-height:1.38;align-self:start}
+.c3-board .note b{display:block;font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.05rem,1.6vw,1.5rem);line-height:.95;margin-bottom:6px}
+.c3-board .sw{display:grid;grid-template-rows:1fr auto;box-shadow:0 10px 26px -14px rgba(0,0,0,.4);background:#fff}
+.c3-board .sw i{display:block;min-height:0}
+.c3-board .sw span{font-family:var(--f-mono);font-weight:600;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 7px;color:#191B17}
+.c3-board .tape::before{content:"";position:absolute;z-index:3;top:-9px;left:50%;width:54px;height:18px;transform:translateX(-50%) rotate(-3deg);background:color-mix(in srgb,var(--pa) 55%,#fff 45%);opacity:.85;
+  clip-path:polygon(0 12%,100% 0,96% 50%,100% 100%,0 88%,4% 50%)}
+
+/* ---------- sticky story ---------- */
+.c3-ss{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,88px);align-items:start}
+.c3-ss .s-t{position:sticky;top:calc(var(--barh) + 28px)}
+.c3-ss .s-t .c3-sh{grid-template-columns:minmax(0,1fr);margin-bottom:0}
+.c3-ss .s-m{display:grid;gap:clamp(12px,1.6vw,20px)}
+.c3-ss .s-m .fr{aspect-ratio:var(--ar,4/3)}
+
+/* ---------- process strip ---------- */
+.c3-strip .track{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(260px,29vw,460px);gap:clamp(12px,1.4vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;
+  padding:4px var(--gut) 18px;scroll-padding-inline:var(--gut);overscroll-behavior-x:contain}
+@media (min-width:1700px){.c3-strip .track{padding-inline:calc((100vw - var(--wrap)) / 2)}}
+.c3-strip .card{scroll-snap-align:start;display:grid;gap:12px;align-content:start}
+.c3-strip .card .fr{aspect-ratio:var(--ar,4/5)}
+.c3-strip .card .n{display:flex;align-items:baseline;gap:10px;border-top:2px solid currentColor;padding-top:10px}
+.c3-strip .card .n b{font-family:var(--f-display);font-weight:800;font-size:clamp(1.8rem,2.6vw,2.6rem);line-height:1;color:var(--pa-ink,var(--signal-ink))}
+.c3-dark .c3-strip .card .n b,.c3-dark.c3-strip .card .n b{color:var(--pa)}
+.c3-strip .card .n span{font-family:var(--f-display);font-weight:700;font-size:clamp(1.2rem,1.5vw,1.45rem);text-transform:uppercase;line-height:1}
+.c3-strip .card p{margin:0;font-size:1rem;line-height:1.55;max-width:44ch}
+.c3-strip .ctl{display:flex;gap:8px}
+.c3-strip .ctl button{width:44px;height:44px;border-radius:999px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center}
+.c3-strip .ctl button:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.c3-strip .ctl .ic{width:16px;height:16px}
+.c3-strip .c3-sh{align-items:end}
+.c3-strip .c3-sh .t{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+
+/* ---------- anatomy (labelled close-up) ---------- */
+.c3-an{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(20px,3.4vw,56px);align-items:center}
+.c3-an .a-img{position:relative}
+.c3-an .a-img .fr{aspect-ratio:var(--ar)}
+.c3-an .a-img.fit .fr{background:var(--mat,var(--studio))}
+.c3-an .pin{position:absolute;left:var(--x);top:var(--y);z-index:2;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:999px;border:2px solid #fff;background:var(--pa);color:#fff;
+  font-family:var(--f-display);font-weight:800;font-size:1rem;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:transform .2s}
+.c3-an .pin::after{content:"";position:absolute;inset:-7px;border-radius:999px;border:2px solid var(--pa);opacity:0;transform:scale(.7);transition:opacity .25s,transform .25s}
+.c3-an .pin:hover,.c3-an .pin.on{transform:scale(1.12)}
+.c3-an .pin.on::after{opacity:.9;transform:scale(1)}
+.c3-an ol{list-style:none;margin:0;padding:0;border-top:2px solid currentColor;counter-reset:a}
+.c3-an li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:13px 0 14px;border-bottom:1px solid color-mix(in srgb,currentColor 18%,transparent);cursor:default;transition:background .2s,padding .2s}
+.c3-an li::before{counter-increment:a;content:counter(a);grid-row:1 / span 2;width:28px;height:28px;border-radius:999px;background:var(--pa);color:#fff;font-family:var(--f-display);font-weight:800;font-size:.9rem;display:grid;place-items:center;margin-top:1px}
+.c3-an li b{font-family:var(--f-display);font-weight:700;font-size:clamp(1.15rem,1.4vw,1.4rem);line-height:1.05;text-transform:uppercase}
+.c3-an li span{font-size:.98rem;line-height:1.5;opacity:.82}
+.c3-an li.on{background:color-mix(in srgb,var(--pa) 10%,transparent);padding-inline:8px}
+
+/* ---------- galleries ---------- */
+.c3-bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(64px,7.2vw,118px);gap:clamp(8px,1vw,14px)}
+.c3-bento > figure{grid-column:span var(--w,6);grid-row:span var(--h,4);display:grid;grid-template-rows:minmax(0,1fr) auto}
+.c3-bento > figure .fr{height:100%}
+.c3-bento figcaption{margin-top:6px}
+.c3-bleed{position:relative;height:var(--h,clamp(340px,72svh,860px));margin-top:var(--sec)}
+.c3-bleed.flush{margin-top:0}
+.c3-bleed .fr{position:absolute;inset:0}
+.c3-bleed figcaption{position:absolute;left:var(--gut);bottom:16px;margin:0;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.c3-duo{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:clamp(8px,1vw,14px)}
+.c3-duo .fr{aspect-ratio:var(--ar,4/5)}
+.c3-wide .fr{aspect-ratio:var(--ar,16/9)}
+.c3-q{margin:0;padding:0}
+.c3-q p{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,4.6vw,4.6rem);line-height:.92;letter-spacing:-.01em;margin:0;max-width:22ch;text-wrap:balance}
+.c3-q p em{font-style:normal;color:var(--pa-ink,var(--signal-ink))}
+.c3-dark .c3-q p em{color:var(--pa)}
+.c3-q footer{margin-top:16px}
+
+/* ---------- references ---------- */
+.c3-refs{padding-top:var(--sec)}
+.c3-refs ol{margin:0;padding:0;list-style:none;columns:2;column-gap:clamp(24px,4vw,64px);counter-reset:r}
+.c3-refs li{break-inside:avoid;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;padding:10px 0;border-top:1px solid var(--line);font-size:.92rem;line-height:1.45;color:var(--muted)}
+.c3-refs li::before{counter-increment:r;content:counter(r);font-family:var(--f-pixel);font-size:11px;color:var(--fg);padding-top:3px}
+.c3-refs li:target{background:color-mix(in srgb,var(--pa) 14%,transparent)}
+.c3-refs a{color:var(--fg);text-decoration-thickness:1px;text-underline-offset:2px;overflow-wrap:anywhere}
+
+/* ---------- next project ---------- */
+.c3-next{display:block;position:relative;isolation:isolate;margin-top:var(--sec);min-height:clamp(320px,52svh,560px);color:#fff;text-decoration:none;overflow:hidden;background:#111}
+.c3-next .fr{position:absolute;inset:0;z-index:-2;background:#111}
+.c3-next .fr img{transition:transform 1s cubic-bezier(.2,.6,.2,1)}
+.c3-next:hover .fr img{transform:scale(1.04)}
+.c3-next::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.66),rgba(0,0,0,.18) 60%,rgba(0,0,0,.05))}
+.c3-next .n-in{min-height:inherit;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding-block:clamp(28px,5vh,56px)}
+.c3-next .n-k{font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85;display:flex;align-items:center;gap:10px}
+.c3-next b{font-family:var(--f-display);font-weight:800;font-size:clamp(2.6rem,7vw,6.6rem);line-height:.86;text-transform:uppercase;letter-spacing:-.01em}
+.c3-next .n-s{opacity:.85;font-size:1.05rem}
+.c3-next .ic{width:22px;height:22px}
+.c3-more{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;padding-block:18px}
+.c3-more a{font-family:var(--f-mono);font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.c3-more a:hover{color:var(--signal-ink)}
+.c3-more .ic{width:14px;height:14px}
+
+/* palette and system blocks inside themed sections */
+.c3-panel .pal,.c3-panel .pal > div + div,.c3-panel .pal span{border-color:rgba(25,27,23,.18)}
+.c3-panel .pal span{color:rgba(25,27,23,.62)}
+.c3-panel .pal span b{color:#191B17}
+.c3-panel .cwcard p{color:rgba(25,27,23,.82)}
+
+/* ---------- renders pages (dark) ---------- */
+.c3.lab-page{background:var(--lab);color:var(--lab-fg)}
+.c3.lab-page .c3-body p,.c3.lab-page .c3-sh .t p{color:color-mix(in srgb,var(--lab-fg) 82%,var(--lab))}
+.c3.lab-page figcaption,.c3.lab-page .muted{color:var(--lab-muted)}
+.c3.lab-page .c3-sh .k{color:var(--pa)}
+.c3.lab-page .c3-refs li{border-color:var(--lab-line);color:var(--lab-muted)}
+.c3.lab-page .c3-refs a,.c3.lab-page .c3-refs li::before{color:var(--lab-fg)}
+.c3.lab-page .fr{background:var(--lab-2)}
+.c3.lab-page .c3-more a:hover{color:var(--pa)}
+
+.c3-mb .swipe{display:none;align-items:center;gap:6px;font-family:var(--f-mono);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;opacity:.7}
+/* strip captions read as body text, not labels */
+.c3-strip .card figcaption{font-family:var(--f-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:1rem;line-height:1.55;color:inherit;margin-top:0;display:grid;gap:8px}
+.c3-strip .card figcaption p{opacity:.82}
+/* contact block and footer on the dark render pages */
+.c3.lab-page .cs-cta-in{border-color:var(--lab-fg)}
+.c3.lab-page .cs-cta-in p{color:var(--lab-muted)}
+.c3.lab-page .cs-cta-in .email{color:var(--lab-fg)}
+.c3.lab-page .btn{border-color:var(--lab-fg);color:var(--lab-fg)}
+.c3.lab-page .btn:hover{background:var(--lab-2)}
+.c3.lab-page .btn.solid{background:var(--lab-fg);color:var(--lab)}
+.c3.lab-page .foot{color:var(--lab-muted);border-color:var(--lab-line)}
+.c3.lab-page .foot a{color:var(--lab-fg)}
+.c3.lab-page .crumbs a,.c3.lab-page .code{color:inherit}
+/* responsive ---------- */
+@media (max-width:1100px){
+  .c3-an{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+}
+@media (max-width:899px){
+  .c3{--sec:clamp(56px,14vw,88px)}
+  .c3-hero{min-height:0}
+  .c3-hero.photo{min-height:min(calc(100svh - var(--barh)),760px)}
+  .c3-hero.split{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto}
+  .c3-hero.split .h-img{order:-1;aspect-ratio:var(--mar,4/3)}
+  .c3-hero.split .h-in{padding:22px var(--gut) 34px;gap:18px}
+  .c3-hero.split h1,.c3-hero h1{font-size:clamp(2.6rem,min(15vw,calc(90vw / var(--len,10) / .5)),5.6rem)}
+  .c3-hero .scroll-cue{display:none}
+  .c3-hero .bgimg img{object-position:var(--mpos,var(--pos,50% 50%))}
+  .c3-intro,.c3-sh,.c3-ss,.c3-an{grid-template-columns:minmax(0,1fr)}
+  .c3-sh{align-items:start}
+  .c3-ss .s-t{position:static}
+  .c3-st{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c3-st > div{padding:18px 14px 18px 0}
+  .c3-st > div:nth-child(odd){border-left:0;padding-left:0}
+  .c3-st > div:nth-child(n+3){border-top:1px solid color-mix(in srgb,var(--on-pc) 18%,transparent)}
+  .c3-st > div + div{padding-left:14px}
+  .c3-st > div:nth-child(odd){padding-left:0}
+  .c3-mb .board-wrap{overflow-x:auto;margin-inline:calc(-1 * var(--gut));padding:12px var(--gut) 14px;scrollbar-width:thin;overscroll-behavior-x:contain}
+  .c3-board{min-width:780px}
+  .c3-mb .swipe{display:inline-flex}
+  .c3-strip .track{grid-auto-columns:min(78vw,340px)}
+  .c3-bento{grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:clamp(54px,14vw,96px)}
+  .c3-bento > figure{grid-column:span var(--mw,6);grid-row:span var(--mh,var(--h,4))}
+  .c3-duo.stack-m{grid-template-columns:minmax(0,1fr)}
+  .c3-refs ol{columns:1}
+  .c3-next b{font-size:clamp(2.2rem,12vw,4rem)}
+}
+@media (prefers-reduced-motion:reduce){.c3 .zoom:hover .fr img,.c3-next:hover .fr img{transform:none}}
+
 </style>
 
 </head>
@@ -1112,32 +1363,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   </div>
 </header>
 <nav class="mnav" id="mnav" aria-label="Site"><a href="../../">Home<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../product-design/">Product<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../footwear-design/">Footwear<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../3d-rendering/" aria-current="page">Renders<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="../../#about">About<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a><a href="#contact">Contact<svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a></nav>
-<main class="cs" id="top" data-group>
-<section class="wrap cs-hero">
-  <nav class="crumbs mono" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../3d-rendering/">3d rendering</a></li><li aria-current="page">Vesper Mini Echo</li></ol></nav>
-  <div class="cs-head">
-    <div class="cs-title">
-      <div class="cs-tags"><span class="code mono">3D-01</span><span class="status p">Concept</span><span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></div>
-      <h1 style="--len:6">Vesper Mini Echo</h1>
-      <p class="cs-kick mono">Launch render set for an echo pedal</p>
-    </div>
-    <div class="cs-intro">
-      <p class="lede">Vesper is a compact echo pedal: two knobs, a tape-or-digital toggle, and an orbit graphic whose rings read like repeats fading out.</p>
-      <dl class="cs-meta"><div><dt>Discipline</dt><dd>3D rendering</dd></div><div><dt>Made with</dt><dd>Blender, Cycles</dd></div><div><dt>Stage</dt><dd>Concept</dd></div><div><dt>Designer</dt><dd>Nicco Pintac, Manila</dd></div></dl>
-    </div>
-  </div>
-</section>
-<article class="cs2 cs-lab lab" id="vesper">
-<div class="cs-stage" style="--mat:#F0EFEF"><div class="wrap"><div class="stg-in" style="--ar:1.7787;--mw:1600px"><figure class="jf zoom" style="--ar:1.7787;--mat:#F0EFEF"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="1800" height="1012" alt="Three Vesper Mini Echo pedals in cream, teal and rust on a white studio floor" decoding="async"></div></figure></div></div></div>
-<div class="wrap cs2-body">
-<section class="ov2"><div class="ov2-t"><p>I rendered it as a full launch set, the way a product page or a campaign would use it: a colorway lineup, clean catalogue angles, a hero frame, a low-key shot and a macro.</p><p>The cover shows the lineup, with cream, teal and rust in one frame so the range reads at a glance.</p></div><aside class="ov2-s"><dl class="tag"><div class="th">Shot list · 3D-01</div><dt>Product</dt><dd>Mini echo pedal</dd><dt>Controls</dt><dd>Time, Mix, Tape / Digi</dd><dt>Colorways</dt><dd>Cream, teal, rust</dd><dt>Shots</dt><dd>6</dd><dt>Renderer</dt><dd>Blender, Cycles</dd></dl></aside></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><h2>Catalogue angles</h2></div><div class="ch-t"><p>Clean three-quarter and top-down angles on white, ready for a store page or a spec sheet. The top-down view shows the Time and Mix knobs, the Tape / Digi toggle and the footswitch.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:2.0000;--gp:12px"><figure class="jf zoom" style="--ar:1.0000;--mat:#EFF0F0"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-render-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp 1400w" sizes="(max-width: 900px) 100vw, 60vw" width="1400" height="1400" alt="Teal Vesper pedal at a three-quarter angle on a white backdrop" decoding="async" loading="lazy"></div><figcaption>Three-quarter</figcaption></figure><figure class="jf zoom" style="--ar:1.0000;--mat:#ECECEC"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-top-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp 1400w" sizes="(max-width: 900px) 100vw, 60vw" width="1400" height="1400" alt="Teal Vesper pedal from directly above showing the Time and Mix knobs" decoding="async" loading="lazy"></div><figcaption>Top-down</figcaption></figure></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><h2>Hero frame</h2></div><div class="ch-t"><p>The launch frame: the teal pedal from above on a terracotta backdrop, with a hard sun shadow falling across it.</p></div></div><div class="ch-m"><div class="jr keep" style="--sum:0.8000;--gp:0px;--mw:1920px"><figure class="jf zoom" style="--ar:0.8000;--mat:#D78A67"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-hero-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp 1280w" sizes="(max-width: 900px) 100vw, 60vw" width="1280" height="1600" alt="Teal Vesper pedal on a terracotta backdrop with a hard shadow" decoding="async" loading="lazy"></div><figcaption>Hero, color backdrop</figcaption></figure></div></div></section>
-<section class="ch"><div class="ch-h"><div class="ch-k"><h2>Low key and macro</h2></div><div class="ch-t"><p>Two moodier frames to finish the set: the pedal on black reflective glass in low light, and a macro of the chrome footswitch with shallow depth of field.</p></div></div><div class="ch-m"><div class="jr stack" style="--sum:2.9991;--gp:12px"><figure class="jf zoom" style="--ar:1.4995;--mat:#000002"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1067" alt="Teal Vesper pedal on black reflective glass in low light" decoding="async" loading="lazy"></div><figcaption>Low key, black glass</figcaption></figure><figure class="jf zoom" style="--ar:1.4995;--mat:#8D9CA0"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp 1600w" sizes="(max-width: 900px) 100vw, 60vw" width="1600" height="1067" alt="Macro of the chrome footswitch with shallow depth of field" decoding="async" loading="lazy"></div><figcaption>Macro, footswitch</figcaption></figure></div></div></section>
-</div>
-</article>
-<nav class="wrap cs-next" aria-label="More projects"><a class="cs-nc" href="../../footwear-design/patchwork-rag-basketball-shoe/"><span class="mono muted">Previous</span><span class="code mono">FW-06</span><b>Patchwork Rag Basketball</b><span class="k">Basketball shoe inspired by the basahan rag</span></a><a class="cs-nc hub" href="../../3d-rendering/"><span class="mono muted">All</span><b>3d rendering</b><span class="k">3 projects</span></a><a class="cs-nc" href="../../3d-rendering/meta-quest-3-render-study/"><span class="mono muted">Next</span><span class="code mono">3D-02</span><b>Meta Quest 3</b><span class="k">Consumer tech render study</span></a></nav>
-<section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
+<main class="c3 lab-page" id="top" data-group style="--pc:#0E3A3F;--pa:#E8835A;--pt:#EEF0EC;--pa-ink:#E8835A;--on-pc:#EEF3F1"><section class="c3-hero split"><div class="h-in"><nav class="crumbs mono" aria-label="Breadcrumb"><ol><li><a href="../../">Home</a></li><li><a href="../../3d-rendering/">3d rendering</a></li><li aria-current="page">Vesper Mini Echo</li></ol></nav><div><div class="c3-tags"><span class="code mono">3D-01</span><span class="status p">Concept</span><span class="star" title="Featured"><svg class="ic px" style="--cw:11;--ch:11" viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="0" y="4" width="11" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="2" y="6" width="7" height="1"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="3" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="2" y="9" width="2" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="1" y="10" width="2" height="1"/><rect x="8" y="10" width="2" height="1"/><rect x="4" y="4" width="1" height="1" fill="#fff" fill-opacity=".6"/><rect x="3" y="5" width="1" height="1" fill="#fff" fill-opacity=".6"/></svg></span></div><h1 style="--len:6">Vesper Mini Echo</h1><p class="kick">Launch render set for an echo pedal</p></div></div><div class="h-img" style="--pos:50% 55%;--mat:#F0EFEF;--mar:16/10"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-colorways-1400.webp 1400w, ../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp 1800w" sizes="(max-width: 900px) 100vw, 60vw" fetchpriority="high" width="1800" height="1012" alt="Three Vesper Mini Echo pedals in cream, teal and rust on a white studio floor" decoding="async"></div></section><section class="wrap c3-intro"><div><p class="c3-lede">A six-shot launch set for a compact echo pedal, rendered in Blender.</p><div class="c3-body"><p>Vesper is a compact echo pedal concept: two knobs, a tape-or-digital toggle, and an orbit graphic whose rings read like repeats fading out.</p><p>I rendered it as a full launch set, the way a product page or a campaign would use it: a colorway lineup, clean catalogue angles, a hero frame, a low-key shot and a macro.</p></div></div><aside class="c3-aside"><dl class="cs-meta"><div><dt>Discipline</dt><dd>3D rendering</dd></div><div><dt>Made with</dt><dd>Blender, Cycles</dd></div><div><dt>Stage</dt><dd>Concept</dd></div><div><dt>Designer</dt><dd>Nicco Pintac, Manila</dd></div></dl><dl class="tag"><div class="th">Shot list · 3D-01</div><dt>Product</dt><dd>Mini echo pedal</dd><dt>Controls</dt><dd>Time, Mix, Tape / Digi</dd><dt>Colorways</dt><dd>Cream, teal, rust</dd><dt>Shots</dt><dd>6</dd><dt>Renderer</dt><dd>Blender, Cycles</dd></dl></aside></section><section class="c3-stats"><div class="wrap"><header class="c3-sh"><div><p class="k"><b>01</b>Context</p><h2>Most product photos are renders now</h2></div><div class="t"><p>Big brands moved to CGI years ago, and shoppers judge products by their pictures first.<sup><a href="#ref-1" aria-label="Source 1">1</a><a href="#ref-2" aria-label="Source 2">2</a></sup> I render in Blender's Cycles, a physically based path tracer, so light behaves the way it would in a real studio.<sup><a href="#ref-3" aria-label="Source 3">3</a></sup></p></div></header><dl class="c3-st" style="--n:3"><div><dt>of IKEA's product images were computer-generated by 2014<sup><a href="#ref-1" aria-label="Source 1">1</a></sup></dt><dd>75%</dd></div><div><dt>of shoppers start a product page by looking at the images<sup><a href="#ref-2" aria-label="Source 2">2</a></sup></dt><dd>56%</dd></div><div><dt>shots in this launch set</dt><dd>6</dd></div></dl></div></section><section class="c3-sec wrap"><header class="c3-sh"><div><p class="k"><b>02</b>The product</p><h2>An echo you can read</h2></div><div class="t"><p>The faceplate keeps to the essentials. The orbit graphic in the middle stands for the echo itself: rings that fade out like repeats.</p></div></header><div class="c3-an"><div class="a-img" style="--ar:1.0000;--mat:#ECECEC"><figure class="zoom"><div class="fr"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-top-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp 1400w" sizes="(max-width: 900px) 100vw, 66vw" width="1400" height="1400" alt="Teal Vesper pedal from directly above" decoding="async" loading="lazy"></div></figure><button type="button" class="pin" style="--x:42%;--y:22%" aria-label="1: Time">1</button><button type="button" class="pin" style="--x:58%;--y:22%" aria-label="2: Mix">2</button><button type="button" class="pin" style="--x:50%;--y:31%" aria-label="3: Tape / Digi toggle">3</button><button type="button" class="pin" style="--x:50%;--y:43%" aria-label="4: Orbit graphic">4</button><button type="button" class="pin" style="--x:50%;--y:73%" aria-label="5: Chrome footswitch">5</button></div><ol><li><b>Time</b><span>Sets the delay between repeats.</span></li><li><b>Mix</b><span>Blends the echo with the dry signal.</span></li><li><b>Tape / Digi toggle</b><span>Warm tape-style repeats or clean digital ones.</span></li><li><b>Orbit graphic</b><span>Rings that fade out like repeats.</span></li><li><b>Chrome footswitch</b><span>Turns the effect on and off.</span></li></ol></div></section><section class="c3-dark c3-strip"><div class="wrap"><header class="c3-sh"><div><p class="k"><b>03</b>Shot list</p><h2>Six frames, one campaign</h2></div><div class="t"><p>Every shot has one job, from the store page to the launch post.</p><div class="ctl" role="group" aria-label="Scroll the steps"><button type="button" data-dir="-1" aria-label="Previous"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></button><button type="button" data-dir="1" aria-label="Next"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="0" y="0" width="1" height="1"/><rect x="1" y="1" width="1" height="1"/><rect x="2" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></button></div></div></header></div><div class="track"><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 55%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-colorways-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-colorways-1400.webp 1400w, ../../img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp 1800w" sizes="(max-width: 900px) 80vw, 32vw" width="1800" height="1012" alt="Three Vesper pedals in cream, teal and rust" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>01</b><span>Lineup</span></div><p>All three colorways in one frame on a white floor.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-render-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp 1400w" sizes="(max-width: 900px) 80vw, 32vw" width="1400" height="1400" alt="Teal Vesper pedal at a three-quarter angle" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>02</b><span>Three-quarter</span></div><p>The catalogue angle for a store page.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 45%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-top-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-top.webp 1400w" sizes="(max-width: 900px) 80vw, 32vw" width="1400" height="1400" alt="Teal pedal from above" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>03</b><span>Top-down</span></div><p>Every control readable, for spec sheets.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-hero-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp 1280w" sizes="(max-width: 900px) 80vw, 32vw" width="1280" height="1600" alt="Teal pedal on a terracotta backdrop with a hard shadow" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>04</b><span>Hero</span></div><p>Terracotta backdrop and a hard sun shadow, to lead the launch.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp 1600w" sizes="(max-width: 900px) 80vw, 32vw" width="1600" height="1067" alt="Teal pedal on black reflective glass" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>05</b><span>Low key</span></div><p>Black reflective glass in low light.</p></figcaption></figure><figure class="card zoom" style="--ar:4/5"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp 1600w" sizes="(max-width: 900px) 80vw, 32vw" width="1600" height="1067" alt="Macro of the chrome footswitch" decoding="async" loading="lazy"></div><figcaption><div class="n"><b>06</b><span>Macro</span></div><p>The chrome footswitch, with shallow depth of field.</p></figcaption></figure></div></section><section class="c3-sec wrap"><div class="c3-bento"><figure class="zoom" style="--w:5;--h:8;--mw:6;--mh:6"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-hero-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-hero.webp 1280w" sizes="(max-width: 900px) 100vw, 50vw" width="1280" height="1600" alt="Teal Vesper pedal on a terracotta backdrop with a hard shadow" decoding="async" loading="lazy"></div><figcaption>Hero, color backdrop</figcaption></figure><figure class="zoom" style="--w:7;--h:4;--mw:3;--mh:3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-render-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-render.webp 1400w" sizes="(max-width: 900px) 100vw, 50vw" width="1400" height="1400" alt="Teal Vesper pedal at a three-quarter angle" decoding="async" loading="lazy"></div><figcaption>Catalogue, three-quarter</figcaption></figure><figure class="zoom" style="--w:7;--h:4;--mw:3;--mh:3"><div class="fr" style="--pos:50% 50%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-footswitch.webp 1600w" sizes="(max-width: 900px) 100vw, 50vw" width="1600" height="1067" alt="Macro of the chrome footswitch" decoding="async" loading="lazy"></div><figcaption>Macro, footswitch</figcaption></figure></div></section><figure class="c3-bleed zoom"><div class="fr" style="--pos:50% 55%"><img src="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp" srcset="../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass-800.webp 800w, ../../img/nicco-pintac-vesper-mini-echo-pedal-black-glass.webp 1600w" sizes="100vw" width="1600" height="1067" alt="Teal Vesper pedal on black reflective glass in low light" decoding="async" loading="lazy"></div><figcaption>Low key, black glass</figcaption></figure><section class="wrap c3-refs" id="sources"><header class="c3-sh"><div><p class="k">Sources</p><h2>References</h2></div><div class="t"></div></header><ol><li id="ref-1"><span>&quot;When you flip through an IKEA catalog, 75% of the photography you see is CGI&quot;, PetaPixel, 2014. <a href="https://petapixel.com/2014/08/28/flip-ikea-catalog-75-photography-see-cgi/" target="_blank" rel="noopener">petapixel.com</a></span></li><li id="ref-2"><span>Baymard Institute, &quot;Product page UX: include descriptive text or graphics for some product images&quot;, 2018. <a href="https://baymard.com/research-articles/product-images-descriptive-text" target="_blank" rel="noopener">baymard.com</a></span></li><li id="ref-3"><span>Blender Foundation, &quot;About&quot; and &quot;Rendering&quot;. <a href="https://www.blender.org/features/rendering/" target="_blank" rel="noopener">www.blender.org</a></span></li></ol></section><a class="c3-next" href="../../3d-rendering/meta-quest-3-render-study/"><div class="fr" style="--pos:45% 50%"><img src="../../img/nicco-pintac-meta-quest-3-3d-render.webp" srcset="../../img/nicco-pintac-meta-quest-3-3d-render-800.webp 800w, ../../img/nicco-pintac-meta-quest-3-3d-render-1400.webp 1400w, ../../img/nicco-pintac-meta-quest-3-3d-render.webp 1700w" sizes="100vw" width="1700" height="956" alt="Meta Quest 3" decoding="async" loading="lazy"></div><div class="wrap n-in"><span class="n-k">Next project <svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></span><b>Meta Quest 3</b><span class="n-s">Consumer tech render study</span></div></a><nav class="wrap c3-more" aria-label="More projects"><a href="../../footwear-design/patchwork-rag-basketball-shoe/"><svg class="ic px" style="--cw:4;--ch:7" viewBox="0 0 4 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="1" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="2" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg>Previous: Patchwork Rag Basketball</a><a href="../../3d-rendering/">All 3d rendering (3)</a></nav><section class="wrap cs-cta" id="contact" aria-labelledby="cta-h">
   <div class="cs-cta-in">
     <span class="code">Work together</span>
     <h2 id="cta-h">Have a product, a shoe or a render in mind?</h2>
@@ -1156,8 +1382,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <nav class="foot-nav" aria-label="Disciplines"><a href="../../product-design/">Product design</a><a href="../../footwear-design/">Footwear design</a><a href="../../3d-rendering/">3D rendering</a></nav>
   <a class="totop" href="#top">Back to top <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="3" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></a>
   <span class="tm">Meta and Quest are trademarks of Meta Platforms, Inc. Formula 1 and F1 are trademarks of Formula One Licensing B.V. The Quest 3 and Formula 1 renders are independent studies, made without affiliation to or endorsement by either company.</span>
-</footer>
-</main>
+</footer></main>
 <dialog class="lb" id="lb" aria-label="Image viewer">
   <div class="lb-in">
     <div class="lb-top"><span class="mono" id="lb-count">01 / 01</span>
@@ -1734,6 +1959,27 @@ void main(){
     catch (_) { const r = document.createRange(); r.selectNodeContents($('#email-text')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); lbl.textContent = 'Selected, press Ctrl+C'; }
     setTimeout(() => { lbl.textContent = 'Copy email'; }, 2400);
   }));
+
+  /* Case studies: labelled close-ups (pins and list highlight each other) */
+  $$('.c3-an').forEach(an => {
+    const pins = $$('.pin', an), items = $$('li', an);
+    const set = (i, on) => { pins[i] && pins[i].classList.toggle('on', on); items[i] && items[i].classList.toggle('on', on); };
+    pins.forEach((p, i) => {
+      ['mouseenter', 'focus'].forEach(ev => p.addEventListener(ev, () => set(i, true)));
+      ['mouseleave', 'blur'].forEach(ev => p.addEventListener(ev, () => set(i, false)));
+      p.addEventListener('click', e => { e.preventDefault(); const on = !p.classList.contains('on'); pins.forEach((_, j) => set(j, false)); set(i, on); });
+    });
+    items.forEach((li, i) => { li.addEventListener('mouseenter', () => set(i, true)); li.addEventListener('mouseleave', () => set(i, false)); });
+  });
+  /* Case studies: process strip arrows */
+  $$('.c3-strip').forEach(st => {
+    const tr = $('.track', st); if (!tr) return;
+    const step = () => { const c = $('.card', tr); return c ? c.getBoundingClientRect().width + 16 : 300; };
+    const prev = $('[data-dir="-1"]', st), next = $('[data-dir="1"]', st);
+    const sync = () => { if (prev) prev.disabled = tr.scrollLeft < 8; if (next) next.disabled = tr.scrollLeft + tr.clientWidth > tr.scrollWidth - 8; };
+    [prev, next].forEach(b => b && b.addEventListener('click', () => tr.scrollBy({ left: step() * +b.dataset.dir, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })));
+    tr.addEventListener('scroll', sync, { passive: true }); sync();
+  });
 })();
 </script>
 
