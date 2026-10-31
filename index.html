@@ -1060,6 +1060,44 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 .tz-img.whole.studio .fr,.tz-img.whole.sheet .fr{position:absolute;inset:0;width:auto;height:auto;aspect-ratio:auto}
 @media (prefers-reduced-motion:reduce){.jf.zoom:hover .fr img{transform:none}}
 
+/* ===================== Home: the whole project board in one frame ===================== */
+.home .board-sec{--pad:clamp(10px,2.4vh,28px);--chrome:calc(2 * var(--pad) + 96px);
+  --rowh:clamp(26px,calc((var(--panel) - var(--chrome) - 14px) / 14),54px);
+  min-height:var(--panel);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:var(--pad)}
+.home .board-sec > *,.home .board-sec .sec-label > *{min-width:0}
+.home .board-sec .sec-label{flex-wrap:nowrap;align-items:center;margin-bottom:clamp(6px,1.2vh,14px);gap:16px 24px}
+.home .board-sec .sec-title{display:flex;align-items:center;gap:20px;flex:1 1 auto}
+.home .board-sec .sec-label h2{font-size:clamp(1.7rem,min(3vw,5.4vh),2.8rem);line-height:1;white-space:nowrap}
+.home .board-sec .filter-hint{font-size:.74rem;white-space:nowrap}
+.home .board-sec .filters{flex:0 0 auto}
+.home .board-sec .filters button{padding:7px 11px;font-size:.72rem}
+.home .board-head{padding:4px 0 6px;font-size:.72rem}
+.home .board a{min-height:var(--rowh);padding-block:0;column-gap:16px}
+.home .board .t{font-size:clamp(1rem,min(1.75vw,calc(var(--rowh) * .5)),1.55rem);line-height:1;white-space:nowrap;min-width:0}
+.home .board .c-disc,.home .board .c-built{font-size:clamp(.82rem,calc(var(--rowh) * .34),1rem);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.home .board .status{padding:3px 8px;font-size:.66rem}
+.home .board .star .ic.px{--cell:1.5px}
+@media (max-width:1100px){
+  .home .board-sec .sec-label{flex-wrap:wrap}
+}
+@media (max-width:899px){
+  .home .board-sec{--pad:clamp(8px,1.6vh,18px);--chrome:calc(2 * var(--pad) + 92px)}
+  .home .board-sec .sec-label{flex-direction:column;align-items:stretch;gap:8px}
+  .home .board-sec .filter-hint{display:none}
+  .home .board-sec .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;box-sizing:border-box;width:0;min-width:calc(100% + 2 * max(16px, env(safe-area-inset-left, 0px)));
+    margin-inline:calc(-1 * max(16px, env(safe-area-inset-left, 0px)));padding-inline:max(16px, env(safe-area-inset-left, 0px))}
+  .home .board-sec .filters::-webkit-scrollbar{display:none}
+  .home .board-sec .filters button{flex:0 0 auto;padding:8px 12px}
+  .home .board a{grid-template-columns:auto minmax(0,1fr) auto;column-gap:12px;row-gap:0}
+  .home .board a .code{white-space:nowrap;font-size:11px}
+  .home .board a .code{grid-column:1;grid-row:1}
+  .home .board a .t{grid-column:2;grid-row:1;display:block;font-size:clamp(.85rem,min(4.5vw,calc(var(--rowh) * .56)),1.3rem);overflow:hidden;text-overflow:ellipsis}
+  .home .board a .t .star{display:inline-flex;vertical-align:-.1em;margin-left:6px}
+  .home .board a .st{grid-column:3;grid-row:1}
+  .home .board .status{font-size:.58rem;padding:3px 6px;letter-spacing:.06em}
+}
+@media (max-width:360px){.home .board a .t{font-size:clamp(.8rem,4.1vw,1rem)}.home .board a{column-gap:9px}}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -1142,7 +1180,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   <div class="sec-label">
     <div class="sec-title">
       <h2 id="board-h">Selected projects</h2>
-      <p class="filter-hint"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg><span>Pick a filter to see only the work you're after. The whole page follows.</span></p>
+      <p class="filter-hint"><svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg><span>Filter the whole page</span></p>
     </div>
     <div class="filters" role="group" aria-label="Filter projects">
       <button type="button" data-f="all" aria-pressed="true">All<sup>14</sup></button>
