@@ -1098,6 +1098,167 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 }
 @media (max-width:360px){.home .board a .t{font-size:clamp(.8rem,4.1vw,1rem)}.home .board a{column-gap:9px}}
 
+/* ===================== Home: About, Experience, Behance and Contact as one-screen panels ===================== */
+.home #cv{scroll-snap-align:start}
+.ab2,.cv2,.ct2{--pp:clamp(16px,3.6vh,44px)}
+/* About */
+.ab2{box-shadow:inset 0 2px 0 var(--fg)}
+.ab2-in{min-height:var(--panel);box-sizing:border-box;padding-block:var(--pp);display:grid;grid-template-columns:auto minmax(0,1fr) minmax(220px,.42fr);gap:clamp(20px,3.4vw,60px);align-items:center}
+.ab2-ph{margin:0;height:calc(var(--panel) - 2 * var(--pp));max-height:820px;aspect-ratio:1224/1900}
+.ab2-ph .fr{position:relative;height:100%;overflow:hidden;background:var(--bg-2)}
+.ab2-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.ab2-main{display:grid;gap:clamp(12px,2.2vh,24px);align-content:center;min-width:0}
+.ab2-k{display:flex;align-items:center;gap:12px;margin:0;flex-wrap:wrap}
+.ab2-k .code{background:var(--fg);color:var(--bg);padding:6px 8px 5px;clip-path:var(--px-corner)}
+.ab2 h2{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,min(4.6vw,7.4vh),5rem);line-height:.9;letter-spacing:-.01em;margin:0;max-width:16ch;text-wrap:balance}
+.ab2-txt{display:grid;gap:12px}
+.ab2-txt p{margin:0;font-size:clamp(1rem,min(1.2vw,2.1vh),1.18rem);line-height:1.55;max-width:58ch;color:color-mix(in srgb,var(--fg) 84%,var(--bg))}
+.ab2 .cta-row{margin-top:4px}
+.ab2-facts dl{margin:0;display:grid;border-top:2px solid var(--fg)}
+.ab2-facts dl > div{padding:clamp(8px,1.5vh,13px) 0;border-bottom:1px solid var(--line)}
+.ab2-facts dt{font-family:var(--f-mono);font-weight:600;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.ab2-facts dd{margin:0;font-weight:600;line-height:1.3}
+.ab2-facts dd span{color:var(--muted);font-weight:500;margin-left:8px;font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em}
+/* Experience & recognition */
+.cv2{box-shadow:inset 0 1px 0 var(--line)}
+.cv2-in{min-height:var(--panel);box-sizing:border-box;padding-block:var(--pp);display:flex;flex-direction:column;justify-content:center;gap:clamp(14px,2.6vh,30px)}
+.cv2-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--fg);padding-bottom:10px}
+.cv2-h h2{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,min(4vw,6vh),4rem);line-height:.9;margin:0}
+.cv2-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,72px)}
+.cv2 h3{margin:0 0 6px;font-size:.78rem;color:var(--muted)}
+.cv2 ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-2)}
+.cv2-xp li{display:grid;grid-template-columns:104px minmax(0,auto) minmax(0,1fr);gap:4px 14px;align-items:baseline;padding:clamp(5px,1.05vh,10px) 0;border-bottom:1px solid var(--line)}
+.cv2 .d{font-family:var(--f-mono);font-weight:600;font-size:.76rem;letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cv2-xp b{font-weight:650;white-space:nowrap}
+.cv2-xp .r{color:var(--muted);font-size:.94rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cv2-rec li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;align-items:baseline;padding:clamp(5px,1.05vh,10px) 0;border-bottom:1px solid var(--line)}
+.cv2-rec p{margin:0;font-size:.95rem;line-height:1.45;color:var(--muted)}
+.cv2-rec p b{color:var(--fg);font-weight:650}
+.cv2-tk{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px clamp(16px,2.4vw,36px)}
+.cv2-tk > div{border-top:2px solid var(--fg);padding-top:8px;min-width:0}
+.cv2-tk dt{color:var(--muted);font-size:.74rem;margin-bottom:4px}
+.cv2-tk dd{margin:0;font-size:.92rem;line-height:1.4}
+/* Behance list fits one screen */
+.home #archive{min-height:var(--panel);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:clamp(16px,3.6vh,44px);margin-top:0;border-top:1px solid var(--line)}
+.home #archive .sec-label{margin-bottom:clamp(8px,1.6vh,16px)}
+.home #archive .sec-label h2{font-size:clamp(2rem,min(4vw,6vh),4rem);line-height:.9}
+.home .arch a{padding-block:0;min-height:clamp(30px,calc((var(--panel) - 210px) / 12),52px);align-items:center}
+.home .arch-head{padding:4px 0 6px}
+/* Contact */
+.ct2{border-top:2px solid var(--fg);display:flex;flex-direction:column;min-height:var(--panel)}
+.ct2-in{flex:1;box-sizing:border-box;padding-block:var(--pp) clamp(10px,2vh,24px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,72px);align-items:center}
+.ct2-l{display:grid;gap:clamp(12px,2.2vh,24px);align-content:center;min-width:0}
+.ct2-k{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0}
+.ct2-k .code{background:var(--fg);color:var(--bg);padding:6px 8px 5px;clip-path:var(--px-corner)}
+.ct2 h2{font-family:var(--f-display);font-weight:800;font-size:clamp(3rem,min(8vw,12vh),8.2rem);line-height:.86;text-transform:uppercase;margin:0;letter-spacing:-.005em}
+.ct2 h2 span{color:var(--moss)}
+.ct2-lede{margin:0;font-size:clamp(1.05rem,min(1.5vw,2.4vh),1.4rem);line-height:1.4;font-weight:500;max-width:40ch}
+.ct2-mail{display:grid;gap:10px;border-top:1px solid var(--line-2);padding-top:clamp(10px,1.8vh,18px)}
+.ct2-mail .email{margin:0;font-size:clamp(1.8rem,min(3.6vw,5.6vh),3.2rem)}
+.ct2-links{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ct2-links a{position:relative;display:grid;gap:2px;padding:12px 34px 11px 14px;border:1px solid var(--line-2);border-radius:10px;text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.ct2-links b{font-family:var(--f-display);font-weight:700;font-size:1.3rem;line-height:1;text-transform:uppercase}
+.ct2-links span{font-family:var(--f-mono);font-weight:600;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ct2-links .ic{position:absolute;right:12px;top:13px;width:14px;height:14px}
+.ct2-links .ct2-pdf{display:none}
+.ct2-links a:hover,.ct2-links a:focus-visible{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.ct2-links a:hover span,.ct2-links a:focus-visible span{color:color-mix(in srgb,var(--bg) 70%,var(--fg))}
+.ct2-r{display:grid;gap:clamp(12px,2vh,22px);justify-items:center;align-content:center;min-width:0}
+.ct2 .tv{position:static;grid-area:auto;gap:10px;width:min(100%,calc((var(--panel) - 300px) * 1.2),520px)}
+.ct2 .tv-set{max-width:none}
+.ct2 .tv figcaption{font-size:.9rem}
+.ct2-facts{margin:0;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ct2-facts > div{border-top:2px solid var(--fg);padding-top:8px;min-width:0}
+.ct2-facts dt{color:var(--muted)}
+.ct2-facts dd{margin:4px 0 0;font-weight:600;line-height:1.25}
+.ct2-facts dd span{display:block;font-weight:400;color:var(--muted);font-size:.88rem}
+.ct2 .foot{padding-block:14px;border-top:1px solid var(--line)}
+@media (max-width:1100px){
+  .ab2-in{grid-template-columns:auto minmax(0,1fr)}
+  .ab2-facts{grid-column:2}
+  .ab2-facts dl{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
+  .ab2-ph{height:auto;align-self:stretch;max-height:none;width:clamp(180px,26vw,320px);aspect-ratio:auto}
+  .cv2-xp li{grid-template-columns:92px minmax(0,1fr)}
+  .cv2-xp .r{grid-column:2}
+}
+@media (max-width:899px){
+  .ab2,.cv2,.ct2{--pp:clamp(16px,3vh,28px)}
+  /* About on phones: headline beside a small portrait, one paragraph, three facts as rows */
+  .ab2-in{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"k k" "h ph" "t t" "c c" "f f";align-content:start;gap:14px 14px}
+  .ab2-main{display:contents}
+  .ab2-k{grid-area:k}
+  .ab2 h2{grid-area:h;align-self:center;font-size:clamp(1.9rem,8.6vw,3.2rem);max-width:none}
+  .ab2-ph{grid-area:ph;display:block;align-self:center;width:clamp(92px,26vw,170px);height:auto;max-height:none;aspect-ratio:auto}
+  .ab2-ph .fr{height:auto;aspect-ratio:1224/1900;border-radius:4px}
+  .ab2-txt{grid-area:t}
+  .ab2 .cta-row{grid-area:c;margin-top:0}
+  .ab2-facts{grid-area:f;grid-column:1 / -1}
+  .ab2-txt p{font-size:.98rem;line-height:1.5}
+  .ab2-txt p + p{display:none}
+  .ab2-facts dl{grid-template-columns:minmax(0,1fr)}
+  .ab2-facts dl > div{display:grid;grid-template-columns:96px minmax(0,1fr);align-items:baseline;gap:10px;padding:7px 0}
+  .ab2-facts dt{margin:0}
+  .ab2-facts dd{font-size:.95rem}
+  .ab2-facts dl > div:nth-child(1),.ab2-facts dl > div:nth-child(3){display:none}
+  .ab2 .cta-row .btn:nth-child(3){display:none}
+  .ab2-k{flex-wrap:nowrap}
+  .ab2-k .code + .mono{display:none}
+  .ab2-k::after{content:"";flex:1;height:1px;background:var(--line-2)}
+  .cv2-in{justify-content:flex-start}
+  .cv2-cols{grid-template-columns:minmax(0,1fr);gap:22px}
+  .cv2-xp .r{white-space:normal}
+  .cv2-tk{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* Contact on phones: everything actionable in the first screen, the TV below */
+  .ct2-in{grid-template-columns:minmax(0,1fr);align-content:start;gap:clamp(28px,6vh,48px)}
+  .ct2-l{gap:16px}
+  .ct2-k{flex-wrap:nowrap}
+  .ct2-k .code + .mono{display:none}
+  .ct2-k::after{content:"";flex:1;height:1px;background:var(--line-2)}
+  .ct2 h2{font-size:clamp(2.8rem,14vw,4.6rem)}
+  .ct2-lede{font-size:1.05rem}
+  .ct2-mail .email{font-size:clamp(1.6rem,8vw,2.4rem)}
+  .ct2-mail .cta-row .btn:nth-child(3){display:none}
+  .ct2-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ct2-links .ct2-pdf{display:block}
+  .ct2-links a{padding:11px 30px 10px 12px}
+  .ct2-links b{font-size:1.18rem}
+  .ct2 .tv{width:min(100%,360px)}
+  .ct2 .tv figcaption{display:none}
+  .home .arch .n{line-height:1.2;font-size:.97rem}
+  .home .arch a{min-height:32px;padding-block:4px}
+}
+/* Home hero fits one screen on laptops and desktops: the name and render scale with height as well as width */
+@media (min-width:901px){
+  .home .hero .wrap{padding-block:clamp(16px,3.4vh,56px) clamp(20px,4.4vh,72px);row-gap:clamp(10px,2.2vh,32px)}
+  .home .hero .name{font-size:clamp(4.2rem,min(15.5vw,24.5vh),15.5rem)}
+  .home .hero .statement{font-size:clamp(1.05rem,min(1.7vw,2.7vh),1.5rem);max-width:40ch}
+  .home .hero-copy{gap:clamp(14px,2.6vh,34px)}
+  .home .hero-obj .float{width:min(100%,600px,calc((var(--panel) - 170px) * .87))}
+}
+/* Small laptops and tablets in landscape (900 to 1100px): keep About and Experience to one screen */
+@media (min-width:900px) and (max-width:1100px){
+  .ab2-in{grid-template-rows:auto auto;align-content:center;row-gap:clamp(14px,2.4vh,24px)}
+  .ab2-ph{grid-row:1 / 3}
+  .ab2-main{gap:clamp(10px,1.8vh,18px);align-self:end}
+  .ab2-facts{grid-row:2;align-self:start}
+  .ab2-txt p + p{display:none}
+  .ab2-facts{grid-column:2}
+  .ab2-facts dl{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:18px}
+  .ab2-facts dl > div:nth-child(1),.ab2-facts dl > div:nth-child(3){display:none}
+  .ab2-facts dl > div{padding:8px 0}
+  .ab2-ph{align-self:center;height:calc(var(--panel) - 2 * var(--pp));width:auto;aspect-ratio:1224/1900;max-width:30vw}
+  .cv2-cols{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:32px}
+  .cv2-xp li{grid-template-columns:84px minmax(0,auto) minmax(0,1fr);gap:4px 12px}
+  .cv2-xp .r{grid-column:auto;font-size:.86rem}
+  .cv2-rec li{padding:5px 0}
+  .cv2-rec p{font-size:.88rem;line-height:1.35}
+  .ct2-facts dd span{display:none}
+  .cv2-in{gap:clamp(12px,2vh,24px)}
+  .cv2-tk dd{font-size:.84rem;line-height:1.32}
+  .home .board-sec{--chrome:calc(2 * var(--pad) + 140px)}
+}
+html.js-snap:has(main.home){scroll-snap-type:none}
+
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
 .btn .ic{width:15px;height:15px}
@@ -1825,74 +1986,71 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 </section>
 
 <!-- ================= ABOUT ================= -->
-<section class="wrap disc" id="about" aria-labelledby="about-h">
-  <div class="disc-head">
-    <span class="mono">Profile</span>
-    <h2 id="about-h">About</h2>
-    <p>Background, toolkit, experience and recognition.</p>
-  </div>
-  <p class="about-lead">I'm Nicco, an industrial and footwear designer from Manila. I design products, shoes and the systems around them.</p>
-  <div class="about-grid" data-group>
-    <figure class="ph portrait zoom" style="--pos:50% 30%"><div class="fr"><img src="img/nicco-pintac-product-footwear-designer.webp" srcset="img/nicco-pintac-product-footwear-designer-800.webp 800w, img/nicco-pintac-product-footwear-designer.webp 1224w" sizes="(max-width: 900px) 100vw, 60vw" width="1224" height="1900" alt="Nicco in a black and orange techwear vest and cargo shorts, mirror selfie" decoding="async" loading="lazy"></div></figure>
-    <div class="about-text">
-      <p>I studied industrial design at the University of Santo Tomas and have spent the years since moving between product, footwear, apparel, exhibition and graphic design, including two years as an art director leading a team of designers. Today I'm Product Design &amp; Innovation Lead at Music Tribe. Footwear has been the constant throughout. I've designed shoes since 2018, and several have gone into factory production.</p>
-      <p>My process runs from quick sketches to CAD, Blender renders and physical prototypes, whether that's a sample off a factory line or a 3D print on my desk. AI tools like Vizcom and Claude are part of that workflow too. They speed up concept visuals, colorway tests and research, and help me build custom tools that streamline the process.</p>
-      <p>I'm at my best on products that fit where they're used: built for local weather, local streets and the makers who produce them.</p>
-    </div>
-    <aside class="facts" aria-label="At a glance">
-      <dl>
-        <dt>Now</dt><dd>Product Design &amp; Innovation Lead, Music Tribe</dd>
-        <dt>Based in</dt><dd>Manila, Philippines</dd>
-        <dt>Studied</dt><dd>BFA Industrial Design, University of Santo Tomas, 2017</dd>
-        <dt>Footwear</dt><dd>Designing shoes since 2018</dd>
-        <dt>Open to</dt><dd>Freelance and full-time work</dd>
-      </dl>
+<section class="ab2" id="about" aria-labelledby="about-h" data-group>
+  <div class="wrap ab2-in">
+    <figure class="ab2-ph zoom"><div class="fr"><img src="img/nicco-pintac-product-footwear-designer.webp" srcset="img/nicco-pintac-product-footwear-designer-800.webp 800w, img/nicco-pintac-product-footwear-designer.webp 1224w" sizes="(max-width: 900px) 100vw, 60vw" width="1224" height="1900" alt="Nicco in a black and orange techwear vest and cargo shorts, mirror selfie" decoding="async" loading="lazy"></div></figure>
+    <div class="ab2-main">
+      <p class="ab2-k"><span class="code">About</span><span class="mono muted">Industrial + footwear designer · Manila</span></p>
+      <h2 id="about-h">I'm Nicco. I design products, shoes and the systems around them.</h2>
+      <div class="ab2-txt">
+        <p>I studied industrial design at the University of Santo Tomas and have worked across product, footwear, apparel, exhibition and graphic design since, including two years as an art director leading a team. Today I'm Product Design &amp; Innovation Lead at Music Tribe.</p>
+        <p>Footwear has been the constant: I've designed shoes since 2018, and several have gone into factory production. I work from sketches to CAD, Blender renders and prototypes, with AI tools like Vizcom and Claude speeding up concepts, colorways and research.</p>
+      </div>
       <div class="cta-row">
         <a class="btn solid" href="#contact">Get in touch <svg class="ic px" style="--cw:8;--ch:7" viewBox="0 0 8 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="4" y="0" width="1" height="1"/><rect x="5" y="1" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="0" y="3" width="8" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="4" y="6" width="1" height="1"/></svg></a>
+        <a class="btn" href="#cv">Experience <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="3" y="1" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="1" y="4" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="2" y="5" width="3" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></a>
         <a class="btn" href="Nicco-Pintac-Portfolio-2026.pdf" target="_blank" rel="noopener" type="application/pdf">Portfolio PDF <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a>
       </div>
+    </div>
+    <aside class="ab2-facts" aria-label="At a glance">
+      <dl>
+        <div><dt>Now</dt><dd>Product Design &amp; Innovation Lead, Music Tribe</dd></div>
+        <div><dt>Based in</dt><dd>Manila, Philippines<span>GMT+8</span></dd></div>
+        <div><dt>Studied</dt><dd>BFA Industrial Design, University of Santo Tomas, 2017</dd></div>
+        <div><dt>Footwear</dt><dd>Designing shoes since 2018</dd></div>
+        <div><dt>Open to</dt><dd>Freelance and full-time work</dd></div>
+      </dl>
     </aside>
   </div>
-  <div class="toolkit" aria-label="Toolkit">
-    <div class="tk"><span class="mono">3D</span><p>Blender, KeyShot, Rhino 3D, Fusion 360, Autodesk 3ds Max, AutoCAD, SketchUp, Enscape</p></div>
-    <div class="tk"><span class="mono">2D</span><p>Photoshop, Illustrator, InDesign, Premiere Pro, Procreate, Figma, Adobe XD, CorelDRAW, Canva</p></div>
-    <div class="tk"><span class="mono">AI</span><p>Vizcom, Claude, ChatGPT, Gemini</p></div>
-    <div class="tk"><span class="mono">Leadership</span><p>Creative direction, team leadership, brand strategy, project management, teaching and mentoring</p></div>
-  </div>
-  <div class="cols">
-    <div>
-      <h3>Experience</h3>
-      <ol class="tl">
-        <li><span class="d">Sep 2026 – Present</span><div><b>Music Tribe</b><span>Product Design &amp; Innovation Lead. Product design and innovation across Music Tribe's music and audio brands. Current work is under NDA and can be discussed in interviews.</span></div></li>
-        <li><span class="d">Sep 2024 – Sep 2026</span><div><b>Thirty-One Digital</b><span>Art Director. Led a design team on digital marketing and art directed shoots.</span></div></li>
-        <li><span class="d">Jun 2021 – Nov 2022</span><div><b>BrenPro Inc.</b><span>Head Apparel &amp; Merchandise Designer. Uniforms and apparel for esports athletes.</span></div></li>
-        <li><span class="d">May 2021 – Nov 2022</span><div><b>Finn Cotton</b><span>Lead Footwear Designer &amp; Community Manager.</span></div></li>
-        <li><span class="d">Nov 2019 – Jan 2021</span><div><b>Bestsource General Merchandising</b><span>Jr. Footwear &amp; Graphic Designer.</span></div></li>
-        <li><span class="d">Jun 2019 – Nov 2019</span><div><b>Motherland PH</b><span>Founder &amp; Lead Designer of a personal footwear label.</span></div></li>
-        <li><span class="d">Apr 2018 – Oct 2018</span><div><b>Centrex Corporation</b><span>Designer. Trade fair booths.</span></div></li>
-        <li><span class="d">Jun 2015 – Oct 2015</span><div><b>Bambike</b><span>Industrial Design Intern. Bamboo bikes and ramps, concept to prototype.</span></div></li>
-      </ol>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="cv2" id="cv" aria-labelledby="cv-h">
+  <div class="wrap cv2-in">
+    <header class="cv2-h"><h2 id="cv-h">Experience &amp; recognition</h2><span class="mono muted">2014 – 2026</span></header>
+    <div class="cv2-cols">
+      <div class="cv2-xp">
+        <h3 class="mono">Experience</h3>
+        <ol>
+          <li><span class="d">2026 – now</span><b>Music Tribe</b><span class="r">Product Design &amp; Innovation Lead</span></li>
+          <li><span class="d">2024 – 2026</span><b>Thirty-One Digital</b><span class="r">Art Director, leading a design team</span></li>
+          <li><span class="d">2021 – 2022</span><b>BrenPro Inc.</b><span class="r">Head Apparel &amp; Merchandise Designer, esports</span></li>
+          <li><span class="d">2021 – 2022</span><b>Finn Cotton</b><span class="r">Lead Footwear Designer &amp; Community Manager</span></li>
+          <li><span class="d">2019 – 2021</span><b>Bestsource General Merchandising</b><span class="r">Jr. Footwear &amp; Graphic Designer</span></li>
+          <li><span class="d">2019</span><b>Motherland PH</b><span class="r">Founder &amp; Lead Designer, footwear label</span></li>
+          <li><span class="d">2018</span><b>Centrex Corporation</b><span class="r">Designer, trade fair booths</span></li>
+          <li><span class="d">2015</span><b>Bambike</b><span class="r">Industrial Design Intern, bamboo bikes</span></li>
+        </ol>
+      </div>
+      <div class="cv2-rec">
+        <h3 class="mono">Recognition</h3>
+        <ol>
+          <li><span class="d">2023</span><p><b>University of Santo Tomas</b> Speaker · <b>DOST PTRI</b> Resource Speaker</p></li>
+          <li><span class="d">2022</span><p><b>MLBB Jersey Ranking</b> Top 1 Design · <b>Waze</b> Top Performer</p></li>
+          <li><span class="d">2019</span><p><b>Adidas HQ</b> Pensole Scholarship · <b>Philippine Footwear Design Competition</b> Semi-finalist · <b>Manila FAME</b> Designs featured · <b>Marikina City</b> Footwear Design Recognition</p></li>
+          <li><span class="d">2018</span><p><b>Pensole</b> 21 Days of Design, winner · <b>Foot Locker</b> Top 100 Design · <b>New Balance</b> Semi-finalist designer · <b>Sole Academy</b> Sneaker Design</p></li>
+          <li><span class="d">2017</span><p><b>Calling All Creators</b> Featured</p></li>
+          <li><span class="d">2015</span><p><b>Top Gear Philippines</b> Featured</p></li>
+          <li><span class="d">2014</span><p><b>Volkswagen</b> Car Design Contest, winner</p></li>
+        </ol>
+      </div>
     </div>
-    <div>
-      <h3>Recognition</h3>
-      <ul class="acc">
-        <li><span><b>Volkswagen</b> · Car Design Contest, winner</span><span class="y">2014</span></li>
-        <li><span><b>Top Gear Philippines</b> · Featured</span><span class="y">2015</span></li>
-        <li><span><b>Calling All Creators</b> · Featured</span><span class="y">2017</span></li>
-        <li><span><b>Foot Locker</b> · Top 100 Design</span><span class="y">2018</span></li>
-        <li><span><b>New Balance</b> · Semi-finalist designer</span><span class="y">2018</span></li>
-        <li><span><b>Sole Academy</b> · Sneaker Design</span><span class="y">2018</span></li>
-        <li><span><b>Pensole</b> · 21 Days of Design, winner</span><span class="y">2018</span></li>
-        <li><span><b>Philippine Footwear Design Competition</b> · Semi-finalist</span><span class="y">2019</span></li>
-        <li><span><b>Adidas HQ</b> · Pensole Scholarship</span><span class="y">2019</span></li>
-        <li><span><b>Manila FAME</b> · Designs featured</span><span class="y">2019</span></li>
-        <li><span><b>Marikina City</b> · Footwear Design Recognition</span><span class="y">2019</span></li>
-        <li><span><b>MLBB Jersey Ranking</b> · Top 1 Design</span><span class="y">2022</span></li>
-        <li><span><b>Waze</b> · Top Performer</span><span class="y">2022</span></li>
-        <li><span><b>University of Santo Tomas</b> · Speaker</span><span class="y">2023</span></li>
-        <li><span><b>DOST PTRI</b> · Resource Speaker</span><span class="y">2023</span></li>
-      </ul>
-    </div>
+    <dl class="cv2-tk" aria-label="Toolkit">
+      <div><dt class="mono">3D</dt><dd>Blender, KeyShot, Rhino 3D, Fusion 360, 3ds Max, AutoCAD, SketchUp, Enscape</dd></div>
+      <div><dt class="mono">2D</dt><dd>Photoshop, Illustrator, InDesign, Premiere Pro, Procreate, Figma, CorelDRAW</dd></div>
+      <div><dt class="mono">AI</dt><dd>Vizcom, Claude, ChatGPT, Gemini</dd></div>
+      <div><dt class="mono">Lead</dt><dd>Creative direction, team leadership, brand strategy, mentoring</dd></div>
+    </dl>
   </div>
 </section>
 
@@ -1918,34 +2076,28 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 </section>
 
 <!-- ================= CONTACT ================= -->
-<section class="wrap" id="contact" aria-labelledby="ct-h">
-  <div class="contact">
-    <div class="ct-head">
-      <span class="ct-eyebrow"><span class="code">END OF TRAIL</span><span class="mono muted">Contact · Available for freelance and full-time work</span></span>
+<section class="ct2" id="contact" aria-labelledby="ct-h">
+  <div class="wrap ct2-in">
+    <div class="ct2-l">
+      <p class="ct2-k"><span class="code">End of trail</span><span class="mono muted">Available for freelance and full-time work</span></p>
       <h2 id="ct-h">Let's build<br><span>the next one.</span></h2>
-    </div>
-    <div class="ct-body">
-      <p class="ct-lede">Have a product, a shoe or a render in mind? Send me a brief, a rough sketch or just a question.</p>
-      <div class="ct-mail">
-        <span class="code muted">Email</span>
+      <p class="ct2-lede">Have a product, a shoe or a render in mind? Send me a brief, a rough sketch or just a question.</p>
+      <div class="ct2-mail">
         <p class="email" id="email-text">ifpintac@gmail.com</p>
         <div class="cta-row">
           <button class="btn solid" type="button" data-copy="ifpintac@gmail.com"><svg aria-hidden="true" focusable="false" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span class="lbl">Copy email</span></button>
           <a class="btn" href="mailto:ifpintac@gmail.com"><svg aria-hidden="true" focusable="false" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>Open mail app</a>
+          <a class="btn" href="Nicco-Pintac-Portfolio-2026.pdf" target="_blank" rel="noopener" type="application/pdf">Portfolio PDF <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a>
         </div>
       </div>
-      <dl class="ct-facts">
-        <div><dt class="code">Based in</dt><dd>Manila, Philippines<span>GMT+8</span></dd></div>
-        <div><dt class="code">Open to</dt><dd>Freelance and full-time<span>Remote friendly</span></dd></div>
-        <div><dt class="code">Focus</dt><dd>Product and footwear<span>Plus 3D rendering</span></dd></div>
-      </dl>
-      <ul class="ct-links">
-        <li><a href="https://www.linkedin.com/in/isiahpintac/" target="_blank" rel="noopener"><span class="code">01</span><b>LinkedIn</b><span class="h">/in/isiahpintac</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
-        <li><a href="https://www.instagram.com/designics.ph/" target="_blank" rel="noopener"><span class="code">02</span><b>Instagram</b><span class="h">@designics.ph</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
-        <li><a href="https://www.behance.net/IsiahPintac" target="_blank" rel="noopener"><span class="code">03</span><b>Behance</b><span class="h">/IsiahPintac</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
-        <li class="pdf"><a href="Nicco-Pintac-Portfolio-2026.pdf" target="_blank" rel="noopener" type="application/pdf"><span class="code">04</span><b>Portfolio PDF</b><span class="h">41 pages · 8.5 MB</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
+      <ul class="ct2-links">
+        <li><a href="https://www.linkedin.com/in/isiahpintac/" target="_blank" rel="noopener"><b>LinkedIn</b><span>/in/isiahpintac</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
+        <li><a href="https://www.instagram.com/designics.ph/" target="_blank" rel="noopener"><b>Instagram</b><span>@designics.ph</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
+        <li><a href="https://www.behance.net/IsiahPintac" target="_blank" rel="noopener"><b>Behance</b><span>/IsiahPintac</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
+        <li class="ct2-pdf"><a href="Nicco-Pintac-Portfolio-2026.pdf" target="_blank" rel="noopener" type="application/pdf"><b>Portfolio</b><span>PDF, 2026</span><svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="2" y="0" width="5" height="1"/><rect x="5" y="1" width="2" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="2" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="1" y="5" width="1" height="1"/><rect x="0" y="6" width="1" height="1"/></svg></a></li>
       </ul>
     </div>
+    <div class="ct2-r">
     <figure class="tv" id="tv">
       <div class="tv-set">
         <canvas id="tv-canvas" width="200" height="162" role="img" aria-label="Pixel-art TV with the Nicco Pintac logo bouncing around the screen, like an old DVD screensaver"></canvas>
@@ -1956,10 +2108,16 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
         </div>
         <button class="tv-btn" id="tv-btn" type="button" aria-label="Change channel"></button>
       </div>
-      <figcaption><span class="code">Bonus round</span><span>You made it to the end. Keep watching for a perfect corner, or tap the screen to change channel.</span></figcaption>
+      <figcaption><span class="code">Bonus round</span><span>Keep watching for a perfect corner, or tap the screen to change channel.</span></figcaption>
     </figure>
+      <dl class="ct2-facts">
+        <div><dt class="code">Based in</dt><dd>Manila, PH<span>GMT+8</span></dd></div>
+        <div><dt class="code">Open to</dt><dd>Freelance, full-time<span>Remote friendly</span></dd></div>
+        <div><dt class="code">Focus</dt><dd>Product, footwear<span>Plus 3D rendering</span></dd></div>
+      </dl>
+    </div>
   </div>
-  <footer class="foot mono">
+  <footer class="foot mono wrap">
     <span><svg aria-hidden="true"><use href="#mark"/></svg>© 2026 Isiah Niccolas Pintac</span>
     <span>Manila · 14.5995° N 120.9842° E · Icons by Lucide</span>
     <a class="totop" href="#home">Back to top <svg class="ic px" style="--cw:7;--ch:7" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true" focusable="false"><rect x="3" y="0" width="1" height="1"/><rect x="2" y="1" width="3" height="1"/><rect x="1" y="2" width="1" height="1"/><rect x="3" y="2" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/></svg></a>
@@ -2230,7 +2388,7 @@ void main(){
   /* Nav state */
   const links = new Map($$('.nav a').map(a => [a.getAttribute('href').slice(1), a]));
   const mlinks = new Map($$('#mnav a').map(a => [a.getAttribute('href').slice(1), a]));
-  const navFor = { home: 'home', projects: 'home', product: 'product', footwear: 'footwear', renders: 'renders', about: 'about', archive: 'about', contact: 'contact' };
+  const navFor = { home: 'home', projects: 'home', product: 'product', footwear: 'footwear', renders: 'renders', about: 'about', cv: 'about', archive: 'about', contact: 'contact' };
   const io = new IntersectionObserver(es => {
     es.forEach(e => { if (!e.isIntersecting) return; const a = links.get(navFor[e.target.id]); if (a) { links.forEach(l => l.removeAttribute('aria-current')); a.setAttribute('aria-current', 'true'); mlinks.forEach(l => l.removeAttribute('aria-current')); const m = mlinks.get(navFor[e.target.id]); if (m) m.setAttribute('aria-current', 'true'); } });
   }, { rootMargin: '-45% 0px -50% 0px' });
@@ -2617,6 +2775,75 @@ void main(){
       radio(dots, b => { cw = b.dataset.cw; }); radio(cuts, b => { cut = b.dataset.cut; });
     });
   });
+
+  /* Home: smooth section snapping for mouse and trackpad (an eased glide instead of the browser's instant snap) */
+  if ($('main.home') && matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    root.classList.add('js-snap');
+    const SEL = '.home .hero, .home .board-sec, .home .dvp, .home .tz, .home .sk-panel, .home #about, .home #cv, .home #archive, .home #contact';
+    const bar = $('.bar'); const off = () => bar ? bar.getBoundingClientRect().bottom : 0;
+    const panels = () => $$(SEL).filter(el => el.offsetParent !== null).map(el => { const r = el.getBoundingClientRect(), t = Math.round(r.top + scrollY - off()); return { top: t, bottom: Math.round(t + r.height) }; })
+      .filter(p => p.bottom > p.top).sort((a, b) => a.top - b.top);
+    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const SLACK = 24;   // a panel only a few pixels taller than the screen still snaps as one
+    let animating = false, lockUntil = 0, acc = 0, lastWheel = 0, lastAbs = 0;
+    const glide = y => {
+      y = Math.max(0, Math.min(y, document.documentElement.scrollHeight - innerHeight));
+      const start = scrollY, d = y - start; if (Math.abs(d) < 2) return;
+      const dur = Math.min(1100, Math.max(650, 420 + Math.abs(d) * 0.45)), t0 = performance.now();
+      animating = true; root.style.scrollBehavior = 'auto';
+      const step = now => {
+        const p = Math.min(1, (now - t0) / dur); window.scrollTo(0, start + d * ease(p));
+        if (p < 1) requestAnimationFrame(step); else { animating = false; root.style.scrollBehavior = ''; lockUntil = performance.now() + 160; }
+      };
+      requestAnimationFrame(step);
+    };
+    /* dir: 1 down, -1 up. Returns true when it handled the move (so the native scroll should be cancelled). */
+    const move = (dir, amount) => {
+      const ps = panels(); if (!ps.length) return false;
+      const y = scrollY, vh = innerHeight - off();
+      let i = ps.length - 1; for (let k = 0; k < ps.length; k++) if (y < ps[k].top - 2) { i = k - 1; break; }
+      if (i < 0) { if (dir > 0) { glide(ps[0].top); return true; } return false; }
+      const cur = ps[i], tall = cur.bottom - cur.top > vh + SLACK;
+      if (dir > 0) {
+        if (tall && cur.bottom - (y + vh) > 4) {            // more of this tall panel below: read it naturally
+          if (amount > cur.bottom - (y + vh)) { glide(cur.bottom - vh); return true; }
+          return false;
+        }
+        if (i === ps.length - 1) return false;               // last panel: let the footer scroll normally
+        glide(ps[i + 1].top); return true;
+      }
+      if (y - cur.top > 4) {                                  // not at the top of this panel yet
+        if (tall && amount < y - cur.top) return false;
+        glide(cur.top); return true;
+      }
+      if (i === 0) return false;
+      const pv = ps[i - 1]; glide(pv.bottom - pv.top > vh + SLACK ? pv.bottom - vh : pv.top); return true;
+    };
+    window.addEventListener('wheel', e => {
+      if (e.ctrlKey || e.defaultPrevented || document.querySelector('dialog[open]') || $('#mnav.open')) return;
+      const dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
+      if (Math.abs(dy) < Math.abs(e.deltaX)) return;
+      const now = performance.now(), gap = now - lastWheel; lastWheel = now;
+      const a = Math.abs(dy), notch = a >= 60 && (gap > 220 || a >= lastAbs * 0.98); lastAbs = a;   // mouse notches stay constant; trackpad momentum decays
+      if (animating) { e.preventDefault(); return; }
+      if (now < lockUntil) { e.preventDefault(); if (!notch) lockUntil = now + 160; return; }   // absorb trackpad momentum after a glide
+      if (gap > 220) acc = 0;
+      acc += dy;
+      const ps = panels(), y = scrollY, vh = innerHeight - off();
+      const cur = ps.filter(p => p.top <= y + 2).pop();
+      const tall = cur && cur.bottom - cur.top > vh + SLACK;
+      if (!tall && Math.abs(acc) < 18) { e.preventDefault(); return; }               // ignore tiny accidental nudges
+      if (move(Math.sign(acc), Math.abs(dy))) { e.preventDefault(); acc = 0; }
+    }, { passive: false });
+    document.addEventListener('keydown', e => {
+      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || document.querySelector('dialog[open]')) return;
+      if (e.target.closest('input, textarea, select, [contenteditable], [role="radiogroup"], [role="tablist"], [role="slider"]')) return;
+      const k = e.key, dir = (k === 'PageDown' || k === 'ArrowDown' || (k === ' ' && !e.shiftKey)) ? 1 : (k === 'PageUp' || k === 'ArrowUp' || (k === ' ' && e.shiftKey)) ? -1 : 0;
+      if (!dir) return;
+      if (animating) { e.preventDefault(); return; }
+      if (move(dir, k.startsWith('Arrow') ? 60 : innerHeight * 0.85)) e.preventDefault();
+    });
+  }
 })();
 </script>
 
