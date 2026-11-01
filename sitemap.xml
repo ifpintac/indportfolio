@@ -81,10 +81,6 @@
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-urban-mobility-e-trike-canopy.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-urban-mobility-e-trike-low-angle.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-jolt-board-electric-skateboard.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://niccopintac.com/product-design/urban-mobility-e-trike/film/</loc>
-    <lastmod>2026-11-01</lastmod>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-mandaluyong-e-trike-system-design-film.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://niccopintac.com/img/nicco-pintac-mandaluyong-e-trike-system-design-film.jpg</video:thumbnail_loc>
@@ -96,7 +92,7 @@
       <video:family_friendly>yes</video:family_friendly>
       <video:uploader info="https://niccopintac.com/">Nicco Pintac</video:uploader>
     </video:video>
-  </url>
+</url>
   <url>
     <loc>https://niccopintac.com/product-design/jolt-board-electric-skateboard/</loc>
     <lastmod>2026-10-31</lastmod>

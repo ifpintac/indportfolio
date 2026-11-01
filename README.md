@@ -29,8 +29,7 @@ google*.html                   Google Search Console ownership check (keep it)
 ## Pages
 
 - **Home:** intro, the filterable project list, then a full-screen panel per discipline and per project (image, short pitch, key facts, link to the case study). Scrolling snaps from panel to panel.
-- **Case studies:** one page per project with the full story, specs, process and galleries, at addresses like `/footwear-design/wave-technical-sneaker/`.
-- **Film page:** `/product-design/urban-mobility-e-trike/film/` plays the 2:49 Mandaluyong E-trike System Design film with chapters (link to a moment with `?t=` seconds) and the full narration transcript.
+- **Case studies:** one page per project with the full story, specs, process and galleries, at addresses like `/footwear-design/wave-technical-sneaker/`. The Urban Mobility E-trike page opens with the 2:49 film (English subtitles on by default, credits at the bottom of the page).
 - **Discipline pages:** `/product-design/`, `/footwear-design/` and `/3d-rendering/` introduce each discipline and link to its case studies.
 
 ## Publish with GitHub Pages
