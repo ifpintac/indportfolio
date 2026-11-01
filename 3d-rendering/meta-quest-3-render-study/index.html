@@ -1655,6 +1655,42 @@ html.js-snap:has(main.home){scroll-snap-type:none}
 .c3-credit a,.c3 .tag dd a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .c3-credit a{color:var(--fg)}
 
+
+/* m-polish:start */
+/* ---------- mobile polish ---------- */
+@media (max-width:899px){
+  /* home teasers: pictures that are fitted whole keep their own shape and sit right on the title */
+  #pamba.tz > .tz-img .fr{aspect-ratio:auto}
+  #patchwork.tz > .tz-img .fr{aspect-ratio:var(--mar,3/2)}
+  .case.tz:has(> .tz-img.whole),.case.tz:has(> .tz-img.studio),.case.tz:has(> .tz-img.sheet){grid-template-rows:auto auto;align-content:center}
+  .tz-img.whole,.tz-img.studio,.tz-img.sheet{height:auto;container-type:normal;display:block;overflow:hidden}
+  .tz-img.whole .fr{position:relative;inset:auto;width:min(100%,calc(40svh * var(--ar)));height:auto;margin-inline:auto;aspect-ratio:var(--ar)}
+  .tz-img.studio .fr,.tz-img.sheet .fr{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:var(--mar,3/2);max-height:40svh}
+  .cv2-xp b{white-space:normal}
+  /* phones and tablets: the mood board restacks into pairs, the main sketch and a palette strip,
+     so nothing is cropped and there is no sideways swipe */
+  .c3-mb .board-wrap{overflow:visible;margin-inline:0;padding:16px 0 4px}
+  .c3-mb .swipe{display:none}
+  .c3-board{min-width:0;grid-template-columns:repeat(60,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:auto;aspect-ratio:auto;
+    row-gap:24px;margin-inline:-6px;align-items:center}
+  .c3-board > *{grid-area:auto!important;grid-column:var(--mc,1 / -1)!important;order:var(--mo,99);margin-inline:6px;
+    transform:rotate(calc(var(--rot,0deg) * .75))}
+  .c3-board .ref,.c3-board .ref .fr,.c3-board .sk{height:auto}
+  .c3-board .ref .fr{aspect-ratio:var(--ma,4/3);outline-width:5px}
+  .c3-board .sk img{height:auto}
+  .c3-board .sw{height:76px;min-height:76px}
+  .c3-board .sw span{white-space:normal;line-height:1.15}
+  .c3-board .note{align-self:center;font-size:.9rem}
+  .c3-board .lbl{left:6px;bottom:6px;font-size:.58rem;padding:3px 6px}
+  .c3-board .tape::before{width:46px;height:16px;top:-8px}
+}
+@media (min-width:700px) and (max-width:899px){
+  .c3-board{max-width:640px;margin-inline:auto;row-gap:30px}
+  .c3-board > *{margin-inline:8px}
+  .c3-board .sw{height:88px;min-height:88px}
+  .c3-board .note{font-size:1rem}
+}
+/* m-polish:end */
 </style>
 
 </head>
