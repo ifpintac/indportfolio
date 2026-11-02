@@ -2462,5 +2462,17 @@ void main(){
 })();
 </script>
 
+<script>
+/* Film: if the first request for the video stalls (no data a few seconds after play, or a 'stalled'
+   event before any data), reload the source once and carry on playing. */
+(() => {
+  const v = document.querySelector('#film video'); if (!v) return;
+  let retried = false, want = false;
+  const retry = () => { if (retried || v.readyState > 0) return; retried = true; v.load(); if (want) v.play().catch(() => {}); };
+  v.addEventListener('play', () => { want = true; setTimeout(() => { if (v.readyState === 0) retry(); }, 4000); });
+  v.addEventListener('stalled', () => { if (v.readyState === 0) retry(); });
+  v.addEventListener('error', () => retry(), true);
+})();
+</script>
 </body>
 </html>
