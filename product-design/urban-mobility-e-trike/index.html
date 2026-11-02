@@ -1037,7 +1037,7 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 
 /* ===================== Home: the whole project board in one frame ===================== */
 .home .board-sec{--pad:clamp(10px,2.4vh,28px);--chrome:calc(2 * var(--pad) + 96px);
-  --rowh:clamp(26px,calc((var(--panel) - var(--chrome) - 14px) / 14),54px);
+  --rowh:clamp(26px,calc((var(--panel) - var(--chrome) - 14px) / 15),54px);
   min-height:var(--panel);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding-block:var(--pad)}
 .home .board-sec > *,.home .board-sec .sec-label > *{min-width:0}
 .home .board-sec .sec-label{flex-wrap:nowrap;align-items:center;margin-bottom:clamp(6px,1.2vh,14px);gap:16px 24px}
@@ -1689,6 +1689,11 @@ html.js-snap:has(main.home){scroll-snap-type:none}
   .c3-board .sw{height:88px;min-height:88px}
   .c3-board .note{font-size:1rem}
 }
+
+/* 3D index with four projects: two by two on desktop */
+@media (min-width:901px){.hb-grid.n4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* gallery chapter labels sit close to the frames they introduce */
+.g-chap + .g-shot{padding-top:14px}
 /* m-polish:end */
 </style>
 
