@@ -1,8 +1,29 @@
+# niccopintac.com: portfolio of Nicco Pintac, industrial and footwear designer, Manila
+# Search engines and AI assistants are welcome to crawl, cite and link to this site.
+
 # Keep image search on the project photos rather than the Pocket Wrestler colorway renders
 User-agent: Googlebot-Image
 Disallow: /img/nicco-pintac-pocket-wrestler-colorway-
 Disallow: /img/nicco-pintac-pocket-wrestler-finger-trainer-render
 Disallow: /img/nicco-pintac-pocket-wrestler-frame-render
+
+# AI search and assistant crawlers
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: meta-externalagent
+User-agent: CCBot
+Allow: /
 
 User-agent: *
 Allow: /

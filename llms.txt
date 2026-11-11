@@ -1,0 +1,50 @@
+# Nicco Pintac
+
+> Nicco Pintac (Isiah Niccolas Pintac) is a Filipino industrial designer and footwear designer based in Manila, Philippines. This is his portfolio of industrial and product design, footwear design and 3D product rendering. He is open to freelance and full-time work, remote or in the Philippines.
+
+Key facts:
+
+- Full name: Isiah Niccolas Pintac (goes by Nicco)
+- Based in Manila, Philippines (GMT+8); works remotely
+- BFA Industrial Design, University of Santo Tomas, 2017
+- Designing footwear since 2018; several designs produced in factories, mostly lifestyle sneakers
+- Since 2026: product design and innovation at Music Tribe (under NDA, not shown in the portfolio)
+- Tools: Blender (Cycles), KeyShot, Tequila, Photoshop, Illustrator, InDesign, Procreate, Figma; AI tools Vizcom, Claude, ChatGPT and Gemini
+- Contact: ifpintac@gmail.com · https://www.linkedin.com/in/isiahpintac/
+
+## About
+
+- [About Nicco Pintac](https://niccopintac.com/about/): bio, quick facts, experience, recognition, tools and FAQ
+
+## Industrial and product design
+
+- [Industrial and product design](https://niccopintac.com/product-design/): Consumer products, mobility concepts and equipment, taken from research and sketches to CAD, renders and prototypes.
+- [Pocket Wrestler](https://niccopintac.com/product-design/pocket-wrestler/): 3D-printed finger trainer for climbers, prototype
+- [Urban Mobility E-trike](https://niccopintac.com/product-design/urban-mobility-e-trike/): E-trike and route system for Mandaluyong, concept
+- [Jolt Board](https://niccopintac.com/product-design/jolt-board-electric-skateboard/): Electric skateboard for city commuters, concept
+- [E-kuliglig Tractor](https://niccopintac.com/product-design/e-kuliglig-electric-hand-tractor/): Electric hand tractor for Filipino farms, 2017 thesis
+- [Exhibition Booths](https://niccopintac.com/product-design/exhibition-booths/): Two trade fair stand concepts
+
+## Footwear design
+
+- [Footwear design](https://niccopintac.com/footwear-design/): Sneakers, technical and climbing shoes, from concept sketches and CMF to tech packs and factory prototypes.
+- [Wave Technical Footwear](https://niccopintac.com/footwear-design/wave-technical-sneaker/): Weather-resistant high-top, three prototypes and a final
+- [Finn Cotton Collection](https://niccopintac.com/footwear-design/finn-cotton-sneaker-collection/): Original sneaker collection for a Filipino brand
+- [PAMBA Sneakers](https://niccopintac.com/footwear-design/pamba-sneakers/): Handmade premium leather court sneaker
+- [BIGWASI](https://niccopintac.com/footwear-design/bigwasi/): Avant-garde high-top with Negros handwoven cloth
+- [Bloom Climbing Shoes](https://niccopintac.com/footwear-design/bloom-climbing-shoes/): Climbing shoes with printed textiles, concept
+
+## 3D product rendering
+
+- [3D product rendering](https://niccopintac.com/3d-rendering/): Launch imagery for products: lighting, materials, camera and art direction, from catalogue angles to hero shots.
+- [Vesper Mini Echo](https://niccopintac.com/3d-rendering/vesper-mini-echo-pedal/): Launch render set for an echo pedal
+- [Palma P8](https://niccopintac.com/3d-rendering/palma-p8-retro-handheld/): Launch render set for a retro handheld
+- [Meta Quest 3](https://niccopintac.com/3d-rendering/meta-quest-3-render-study/): Consumer tech render study
+- [Formula 1 Car](https://niccopintac.com/3d-rendering/formula-1-car-render/): Studio hero render study
+
+## Optional
+
+- [Portfolio PDF](https://niccopintac.com/Nicco-Pintac-Portfolio-2026.pdf): the portfolio in one 43-page PDF
+- [Patchwork Rag Basketball](https://niccopintac.com/footwear-design/patchwork-rag-basketball-shoe/): basketball shoe concept inspired by the basahan rag, part of the Finn Cotton work
+
+Elsewhere: [LinkedIn](https://www.linkedin.com/in/isiahpintac/) · [Behance](https://www.behance.net/IsiahPintac) · [Instagram](https://www.instagram.com/designics.ph/) · [GitHub](https://github.com/ifpintac)

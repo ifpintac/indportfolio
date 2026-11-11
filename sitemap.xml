@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://niccopintac.com/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-pocket-wrestler-3d-printed-finger-trainer.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-e-kuliglig-electric-hand-tractor.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-urban-mobility-e-trike.webp</image:loc></image:image>
@@ -23,6 +23,11 @@
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-footwear-concept-07.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-footwear-concept-08.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-footwear-concept-09.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://niccopintac.com/about/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-product-footwear-designer.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://niccopintac.com/product-design/pocket-wrestler/</loc>
@@ -294,7 +299,7 @@
   </url>
   <url>
     <loc>https://niccopintac.com/3d-rendering/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-vesper-mini-echo-pedal-colorways.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-meta-quest-3-3d-render.webp</image:loc></image:image>
     <image:image><image:loc>https://niccopintac.com/img/nicco-pintac-formula-1-car-3d-render.webp</image:loc></image:image>
