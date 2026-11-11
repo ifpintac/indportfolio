@@ -740,9 +740,7 @@ figcaption{font-size:.76rem;line-height:1.45;letter-spacing:.06em}
 
 /* ===================== Multi-page: snap-scrolling home, case studies, discipline hubs ===================== */
 :root{--barh:calc(60px + env(safe-area-inset-top,0px));--panel:calc(100svh - var(--barh))}
-html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
-@media (max-height:540px),(prefers-reduced-motion:reduce){html:has(main.home){scroll-snap-type:y proximity}}
-.home .hero,.home .board-sec,.home .dvp,.home .tz,.home .sk-panel,.home #about,.home #archive,.home #contact{scroll-snap-align:start}
+html:has(main.home){scroll-padding-top:var(--barh)}
 .home .hero{min-height:var(--panel);display:grid;align-items:center}
 .home .board-sec{padding-block:clamp(32px,6vh,72px) clamp(32px,5vh,56px)}
 .home .disc{padding-top:0}
@@ -1075,7 +1073,6 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
 @media (max-width:360px){.home .board a .t{font-size:clamp(.8rem,4.1vw,1rem)}.home .board a{column-gap:9px}}
 
 /* ===================== Home: About, Experience, Behance and Contact as one-screen panels ===================== */
-.home #cv{scroll-snap-align:start}
 .ab2,.cv2,.ct2{--pp:clamp(16px,3.6vh,44px)}
 /* About */
 .ab2{box-shadow:inset 0 2px 0 var(--fg)}
@@ -1233,7 +1230,6 @@ html:has(main.home){scroll-snap-type:y mandatory;scroll-padding-top:var(--barh)}
   .cv2-tk dd{font-size:.84rem;line-height:1.32}
   .home .board-sec{--chrome:calc(2 * var(--pad) + 140px)}
 }
-html.js-snap:has(main.home){scroll-snap-type:none}
 
 /* icons (Lucide) */
 .ic{width:1.05em;height:1.05em;flex:0 0 auto;vertical-align:-.16em}
@@ -2803,75 +2799,6 @@ void main(){
       radio(dots, b => { cw = b.dataset.cw; }); radio(cuts, b => { cut = b.dataset.cut; });
     });
   });
-
-  /* Home: smooth section snapping for mouse and trackpad (an eased glide instead of the browser's instant snap) */
-  if ($('main.home') && matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    root.classList.add('js-snap');
-    const SEL = '.home .hero, .home .board-sec, .home .dvp, .home .tz, .home .sk-panel, .home #about, .home #cv, .home #archive, .home #contact';
-    const bar = $('.bar'); const off = () => bar ? bar.getBoundingClientRect().bottom : 0;
-    const panels = () => $$(SEL).filter(el => el.offsetParent !== null).map(el => { const r = el.getBoundingClientRect(), t = Math.round(r.top + scrollY - off()); return { top: t, bottom: Math.round(t + r.height) }; })
-      .filter(p => p.bottom > p.top).sort((a, b) => a.top - b.top);
-    const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    const SLACK = 24;   // a panel only a few pixels taller than the screen still snaps as one
-    let animating = false, lockUntil = 0, acc = 0, lastWheel = 0, lastAbs = 0;
-    const glide = y => {
-      y = Math.max(0, Math.min(y, document.documentElement.scrollHeight - innerHeight));
-      const start = scrollY, d = y - start; if (Math.abs(d) < 2) return;
-      const dur = Math.min(1100, Math.max(650, 420 + Math.abs(d) * 0.45)), t0 = performance.now();
-      animating = true; root.style.scrollBehavior = 'auto';
-      const step = now => {
-        const p = Math.min(1, (now - t0) / dur); window.scrollTo(0, start + d * ease(p));
-        if (p < 1) requestAnimationFrame(step); else { animating = false; root.style.scrollBehavior = ''; lockUntil = performance.now() + 160; }
-      };
-      requestAnimationFrame(step);
-    };
-    /* dir: 1 down, -1 up. Returns true when it handled the move (so the native scroll should be cancelled). */
-    const move = (dir, amount) => {
-      const ps = panels(); if (!ps.length) return false;
-      const y = scrollY, vh = innerHeight - off();
-      let i = ps.length - 1; for (let k = 0; k < ps.length; k++) if (y < ps[k].top - 2) { i = k - 1; break; }
-      if (i < 0) { if (dir > 0) { glide(ps[0].top); return true; } return false; }
-      const cur = ps[i], tall = cur.bottom - cur.top > vh + SLACK;
-      if (dir > 0) {
-        if (tall && cur.bottom - (y + vh) > 4) {            // more of this tall panel below: read it naturally
-          if (amount > cur.bottom - (y + vh)) { glide(cur.bottom - vh); return true; }
-          return false;
-        }
-        if (i === ps.length - 1) return false;               // last panel: let the footer scroll normally
-        glide(ps[i + 1].top); return true;
-      }
-      if (y - cur.top > 4) {                                  // not at the top of this panel yet
-        if (tall && amount < y - cur.top) return false;
-        glide(cur.top); return true;
-      }
-      if (i === 0) return false;
-      const pv = ps[i - 1]; glide(pv.bottom - pv.top > vh + SLACK ? pv.bottom - vh : pv.top); return true;
-    };
-    window.addEventListener('wheel', e => {
-      if (e.ctrlKey || e.defaultPrevented || document.querySelector('dialog[open]') || $('#mnav.open')) return;
-      const dy = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * innerHeight : e.deltaY;
-      if (Math.abs(dy) < Math.abs(e.deltaX)) return;
-      const now = performance.now(), gap = now - lastWheel; lastWheel = now;
-      const a = Math.abs(dy), notch = a >= 60 && (gap > 220 || a >= lastAbs * 0.98); lastAbs = a;   // mouse notches stay constant; trackpad momentum decays
-      if (animating) { e.preventDefault(); return; }
-      if (now < lockUntil) { e.preventDefault(); if (!notch) lockUntil = now + 160; return; }   // absorb trackpad momentum after a glide
-      if (gap > 220) acc = 0;
-      acc += dy;
-      const ps = panels(), y = scrollY, vh = innerHeight - off();
-      const cur = ps.filter(p => p.top <= y + 2).pop();
-      const tall = cur && cur.bottom - cur.top > vh + SLACK;
-      if (!tall && Math.abs(acc) < 18) { e.preventDefault(); return; }               // ignore tiny accidental nudges
-      if (move(Math.sign(acc), Math.abs(dy))) { e.preventDefault(); acc = 0; }
-    }, { passive: false });
-    document.addEventListener('keydown', e => {
-      if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || document.querySelector('dialog[open]')) return;
-      if (e.target.closest('input, textarea, select, [contenteditable], [role="radiogroup"], [role="tablist"], [role="slider"]')) return;
-      const k = e.key, dir = (k === 'PageDown' || k === 'ArrowDown' || (k === ' ' && !e.shiftKey)) ? 1 : (k === 'PageUp' || k === 'ArrowUp' || (k === ' ' && e.shiftKey)) ? -1 : 0;
-      if (!dir) return;
-      if (animating) { e.preventDefault(); return; }
-      if (move(dir, k.startsWith('Arrow') ? 60 : innerHeight * 0.85)) e.preventDefault();
-    });
-  }
 })();
 </script>
 
